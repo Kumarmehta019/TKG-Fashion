@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'cloudinary',
     'reviews.apps.ReviewsConfig',
-    
     'sellers',
+    'categories',
 ]
 
 CLOUDINARY_STORAGE = {
