@@ -16,6 +16,7 @@ class Product(models.Model):
     # image = models.CharField(max_length=500, default=None) -> make this another relationship (as Mike said)
     category = models.ForeignKey("categories.Category", on_delete = models.CASCADE)
 
+
     def __str__(self):
         return f'Product: {self.name}, Size: {self.size}, Category: {self.category}'
     

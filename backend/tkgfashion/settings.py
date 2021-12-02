@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'reviews.apps.ReviewsConfig',
     'categories',
     
+    
     'genders'
 ]
 
