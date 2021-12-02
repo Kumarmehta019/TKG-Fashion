@@ -45,7 +45,7 @@ class ProductDetailView(APIView):
             product.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
         except:
-            return Response(status=status.HTPP_500_INTERNAL_SERVER_ERROR)
+            return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     ## UPDATE ROUTE
     def put(self, request, pk):

@@ -12,6 +12,7 @@ djangorestframework = "*"
 cloudinary = "*"
 dj3-cloudinary-storage = "*"
 pillow = "*"
+pyjwt = "*"
 
 [dev-packages]
 

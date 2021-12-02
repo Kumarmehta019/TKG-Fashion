@@ -1,12 +1,12 @@
 [
 {
-  "model": "reviews.review",
-  "pk": 1,
-  "fields": {
+"model": "reviews.review",
+"pk": 1,
+"fields": {
     "comment": "Amazing!",
     "rating": 5,
     "image": "images/Black__White_Aesthetic_Minimalist_Signature_Logo_ucoebu",
     "product": 1
-  }
+}
 }
 ]
