@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from .models import Product
-from .serializers import ProductSerializer
+from .serializers import ProductSerializer, PopulatedProductSerializer
 from django.http.response import HttpResponse
 
 
@@ -13,7 +13,7 @@ class ProductListView(APIView):
         # get all the products from the db
         products = Product.objects.all()
         print('PRODUCTS ->', products)
-        serialized_products = ProductSerializer(products, many=True)
+        serialized_products = PopulatedProductSerializer(products, many=True)
         print('SERIALIZED PRODUCTS ->', serialized_products)
         return Response(serialized_products.data, status=status.HTTP_200_OK)
 
@@ -35,7 +35,7 @@ class ProductDetailView(APIView):
     def get(self, _request, pk):
         product = Product.objects.get(id=pk)
         # converts python object into JSON
-        serialized_product = ProductSerializer(product)
+        serialized_product = PopulatedProductSerializer(product)
         return Response(serialized_product.data, status=status.HTTP_200_OK)
 
     ## DELETE BY ID
