@@ -1,0 +1,12 @@
+[
+{
+  "model": "products.product",
+  "pk": 1,
+  "fields": {
+    "name": "jeans",
+    "price": 10,
+    "size": "M",
+    "stock": 10
+  }
+}
+]
