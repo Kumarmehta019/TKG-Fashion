@@ -40,12 +40,9 @@ class ProductDetailView(APIView):
 
     ## DELETE BY ID
     def delete(self, request, pk):
-        print('helloy-->')
         try:
             product = Product.objects.get(id=pk)
-            print('hello1-->')
             product.delete()
-            print('hello2-->')
             return Response(status=status.HTTP_204_NO_CONTENT)
         except:
             return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
