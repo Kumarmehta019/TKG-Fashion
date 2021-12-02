@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'cloudinary',
     'reviews.apps.ReviewsConfig',
-    'jwt_auth'
+    'jwt_auth',
+    'sellers',
+    'categories'
 ]
 
 CLOUDINARY_STORAGE = {
