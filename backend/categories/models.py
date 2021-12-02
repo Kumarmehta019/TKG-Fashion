@@ -13,7 +13,7 @@ class Category(models.Model):
     ('Socks', 'Socks')
   )
 
-  name = models.CharField(max_length = 50, choices = CATEGORIES)
+  name = models.CharField(max_length = 50, default=None, choices = CATEGORIES)
 
   def __str__(self):
     return f'Category: {self.name}'

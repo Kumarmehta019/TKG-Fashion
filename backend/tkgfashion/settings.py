@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'jwt_auth',
     'sellers',
     'categories',
-    'colours'
+    'colours',
+    'images'
 ]
 
 CLOUDINARY_STORAGE = {
