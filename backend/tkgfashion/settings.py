@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'products',
     'rest_framework',
     'cloudinary',
-    'reviews.apps.ReviewsConfig'
+    'reviews.apps.ReviewsConfig',
+    
+    'sellers',
 ]
 
 CLOUDINARY_STORAGE = {
