@@ -9,6 +9,9 @@ psycopg2-binary = "*"
 pylint = "*"
 autopep8 = "*"
 djangorestframework = "*"
+cloudinary = "*"
+dj3-cloudinary-storage = "*"
+pillow = "*"
 
 [dev-packages]
 

@@ -38,8 +38,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'products',
-    'rest_framework'
+    'rest_framework',
+    'cloudinary',
+    'reviews.apps.ReviewsConfig'
 ]
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dwvbpmbul',
+    'API_KEY': 662789228662159,
+    'API_SECRET': 'PBFzYGbXD8lo2Yd_4RkRq6xIuIU'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -127,3 +137,4 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
