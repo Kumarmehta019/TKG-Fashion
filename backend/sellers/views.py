@@ -9,9 +9,9 @@ class SellerListView(APIView):
     def get(self, _request):
         # get all the sellers from the db
         sellers = Seller.objects.all()
-        print('PRODUCTS ->', sellers)
+        print('SELLERS ->', sellers)
         serialized_sellers = SellerSerializer(sellers, many=True)
-        print('SERIALIZED PRODUCTS ->', serialized_sellers)
+        print('SERIALIZED SELLERS ->', serialized_sellers)
         return Response(serialized_sellers.data, status=status.HTTP_200_OK)
 
     ## POST ROUTE

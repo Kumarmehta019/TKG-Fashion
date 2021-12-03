@@ -43,7 +43,10 @@ INSTALLED_APPS = [
     'reviews.apps.ReviewsConfig',
     'jwt_auth',
     'sellers',
-    'categories'
+    'categories',
+    'colours',
+    'images',
+    'genders'
 ]
 
 CLOUDINARY_STORAGE = {
