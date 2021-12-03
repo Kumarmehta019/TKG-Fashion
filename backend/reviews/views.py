@@ -1,9 +1,12 @@
+from rest_framework.exceptions import NotFound
 from .models import Review
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status ## status code
 from .serializers import ReviewSerializer, PopulatedReviewSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.exceptions import PermissionDenied
+
 
 class ReviewDetailView(APIView):
     permission_classes = (IsAuthenticatedOrReadOnly,)
@@ -11,9 +14,11 @@ class ReviewDetailView(APIView):
     def delete(self, request, pk):
         try:
             review = Review.objects.get(id=pk)
-            review.delete()
-        except:
-            return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        except Review.DoesNotExist:
+            raise NotFound()
+        if review.owner != request.user: # theoretically can put this line in update too
+            raise PermissionDenied()
+        review.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     
     def put(self, request, pk):
@@ -34,6 +39,9 @@ class ReviewListView(APIView):
     permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def post(self,request):
+        print("ID ->", request.user.id)
+        print("DATA ->", request.data)
+        request.data["owner"] = request.user.id
         review = PopulatedReviewSerializer(data = request.data)
         if review.is_valid():
             review.save() # <--- django ORM method to save to db

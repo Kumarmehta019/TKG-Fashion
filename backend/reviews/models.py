@@ -4,7 +4,7 @@ from django.db import models
 class Review(models.Model):
     comment = models.TextField()
     rating = models.IntegerField()
-    image = models.ImageField(upload_to='images/')
+    # image = models.ImageField(upload_to='images/')
     product = models.ForeignKey('products.Product', on_delete=models.CASCADE)
     owner = models.ForeignKey('jwt_auth.User', on_delete=models.CASCADE)
 

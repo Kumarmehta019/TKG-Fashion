@@ -8,4 +8,4 @@ class ReviewSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class PopulatedReviewSerializer(ReviewSerializer):
-    owner = UserSerializer()
+    owner_set = UserSerializer(read_only = True, many = True)

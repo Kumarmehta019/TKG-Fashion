@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Product
-from reviews.serializers import ReviewSerializer
+from reviews.serializers import PopulatedReviewSerializer
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,4 +11,4 @@ class PopulatedProductSerializer(ProductSerializer):
     class Meta:
         model = Product
         fields = '__all__'
-    review_set = ReviewSerializer(read_only = True, many = True)
+    review_set = PopulatedReviewSerializer(read_only = True, many = True)
