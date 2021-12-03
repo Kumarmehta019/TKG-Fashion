@@ -12,10 +12,11 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name='Image',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(choices=[('T-Shirts', 'T-Shirts'), ('Jeans', 'Jeans'), ('Dresses', 'Dresses'), ('Jumpers', 'Jumpers'), ('Shorts', 'Shorts'), ('Shirts', 'Shirts'), ('Trousers', 'Trousers'), ('Socks', 'Socks')], default=None, max_length=50)),
+                ('title', models.CharField(default=None, max_length=500)),
+                ('image', models.ImageField(upload_to='images/')),
             ],
         ),
     ]

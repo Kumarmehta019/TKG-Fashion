@@ -12,10 +12,10 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name='Colour',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(choices=[('T-Shirts', 'T-Shirts'), ('Jeans', 'Jeans'), ('Dresses', 'Dresses'), ('Jumpers', 'Jumpers'), ('Shorts', 'Shorts'), ('Shirts', 'Shirts'), ('Trousers', 'Trousers'), ('Socks', 'Socks')], default=None, max_length=50)),
+                ('name', models.CharField(choices=[('Black', 'Black'), ('Yellow', 'Yellow'), ('Blue', 'Blue'), ('Red', 'Red'), ('Green', 'Green'), ('Orange', 'Orange'), ('White', 'White'), ('Purple', 'Purple'), ('Brown', 'Brown'), ('Grey', 'Grey'), ('Beige', 'Beige'), ('Pink', 'Pink')], default=None, max_length=100)),
             ],
         ),
     ]

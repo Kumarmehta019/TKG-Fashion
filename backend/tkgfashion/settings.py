@@ -41,9 +41,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'cloudinary',
     'reviews.apps.ReviewsConfig',
+    'jwt_auth',
+    'sellers',
     'categories',
-    
-    
+    'colours',
+    'images',
     'genders'
 ]
 
@@ -64,6 +66,18 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'jwt_auth.authentication.JWTAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+}
 
 ROOT_URLCONF = 'tkgfashion.urls'
 
@@ -141,4 +155,6 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'jwt_auth.User'
 
