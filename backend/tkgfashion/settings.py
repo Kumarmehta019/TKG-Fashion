@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'categories',
     'colours',
     'images',
-    'genders'
+    'genders',
+    'orders'
 ]
 
 CLOUDINARY_STORAGE = {
