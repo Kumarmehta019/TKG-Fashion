@@ -3,6 +3,7 @@ from rest_framework import serializers
 from images.serializers import ImageSerializer
 from .models import Product
 from reviews.serializers import PopulatedReviewSerializer
+from categories.serializers import CategorySerializer
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,3 +16,4 @@ class PopulatedProductSerializer(ProductSerializer):
         fields = '__all__'
     review_set = PopulatedReviewSerializer(read_only = True, many = True)
     image_set = ImageSerializer(read_only = True, many = True)
+    category_set = CategorySerializer(read_only = True)
