@@ -1,56 +1,86 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import { Modal, Button, Form, Header } from 'semantic-ui-react'
 
 
 const Register = () => {
-  // const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    username: '',
+    email: '',
+    password: '',
+    passwordConfirmation: '',
+  })
+
+  // const [errors, setErrors] = useState({
+  //   firstName: '',
+  //   lastName: '',
   //   username: '',
   //   email: '',
   //   password: '',
-  //   passwordConfirmation: ''
+  //   passwordConfirmation: '',
   // })
 
   const [open, setOpen] = useState(false)
-  const [saved, setSaved] = useState(false)
+
+
+  const handleChange = (event) => {
+    console.log(event.target.value)
+    const newFormData = { ...formData, [event.target.name]: event.target.value }
+    setFormData(newFormData)
+  }
 
   function handleSubmit(event) {
     event.preventDefault()
-    setSaved(true)
+    console.log('Form Data ->', formData)
   }
 
   return (
     <div className="modal-wrapper">
       <Modal
         as={Form}
-        handleSubmit={event => handleSubmit(event)}
+        onSubmit={handleSubmit}
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         open={open}
-        trigger={<Button>Show Modal</Button>}
+        trigger={<p>Register</p>}
       >
         <Header>Register</Header>
         <Modal.Content>
-          <Form.Group widths={2}>
-            <Form.Input label='First name' placeholder='First name' />
-            <Form.Input label='Last name' placeholder='Last name' />
-          </Form.Group>
-          <Form.Field>
-            <label>username</label>
-            <input placeholder='Username' />
-          </Form.Field>
-          <Form.Field>
-            <label>Password</label>
-            <input placeholder='Password' />
-          </Form.Field>
-          <Form.Field>
-            <label>Password Confirmation</label>
-            <input placeholder='Password Confirmation' />
-          </Form.Field>
-          {saved ? <div>Saved!</div> : null}
+          <Form >
+            <Form.Group widths={2}>
+              <Form.Field onChange={handleChange} value={formData.firstName}>
+                <label>First Name</label>
+                <input name='firstName' placeholder='e.g. Jane' />
+              </Form.Field>
+
+              <Form.Field onChange={handleChange} value={formData.lastName}>
+                <label>Last Name</label>
+                <input name='lastName' placeholder='e.g. Smith' />
+              </Form.Field>
+            </Form.Group>
+
+            <Form.Field onChange={handleChange} value={formData.username}>
+              <label>Username</label>
+              <input name='username' placeholder='e.g. janesmith123' />
+            </Form.Field>
+
+            <Form.Field onChange={handleChange} value={formData.password}>
+              <label>Password</label>
+              <input name='password' />
+            </Form.Field>
+
+            <Form.Field onChange={handleChange} value={formData.passwordConfirmation}>
+              <label>Password Confirmation</label>
+              <input name='passwordConfirmation' />
+            </Form.Field>
+
+          </Form>
         </Modal.Content>
         <Modal.Actions>
           <Button type="submit" color="red" icon="times" content="Close" />
-          <Button type="submit" color="green" icon="save" content="Save" />
+          <Button type="submit" color="green" icon="save" content="Register" />
         </Modal.Actions>
       </Modal>
 

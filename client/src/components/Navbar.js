@@ -17,11 +17,9 @@ const Navbar = () => {
         <Dropdown.Menu>
           <Dropdown.Item>
             <Register />
-            Register
           </Dropdown.Item>
           <Dropdown.Item>
             <Login />
-            Login
           </Dropdown.Item>
           <Dropdown.Item>
           My Account
