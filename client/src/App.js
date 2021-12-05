@@ -1,16 +1,23 @@
 import React from 'react'
-import axios from 'axios'
+import { BrowserRouter, Switch } from 'react-router-dom'
+import NavBar from './components/NavBar'
+import Footer from './components/Footer'
 
-function App() {
-  React.useEffect(() => {
-    const getData = async () => {
-      const res = await axios.get('api/products') // * <-- replace with your endpoint
-      console.log(res.data)
-    }
-    getData()
-  })
 
-  return <h1>Hello World</h1>
+
+const App = () => {
+
+
+  return (
+    <BrowserRouter>
+      <NavBar />
+      <div className="site-wrapper">
+        <Switch>
+        </Switch>
+      </div>
+      <Footer />
+    </BrowserRouter>
+  )
 }
 
 export default App
