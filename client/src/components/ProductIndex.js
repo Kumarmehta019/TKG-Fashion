@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Card, Container, Dropdown, Grid, Header, Icon, Menu } from 'semantic-ui-react'
+import { Card, Container, Dropdown, Grid, Header, Icon, Menu, Image } from 'semantic-ui-react'
 
 const ProductIndex = () => {
 
@@ -65,7 +65,7 @@ const ProductIndex = () => {
                     <>
                       <Card key ={product.name}>
                         <Card.Content>
-                          <Card.Header>Insert image here</Card.Header>
+                          <Card.Header><Image src={product.image_set[0].image} /></Card.Header>
                         </Card.Content>
                         <Card.Content>{product.name}</Card.Content>
                         <Card.Content extra>£ {product.price}</Card.Content>
