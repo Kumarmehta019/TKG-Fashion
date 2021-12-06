@@ -1,10 +1,10 @@
 import React from 'react'
 
 const Home = () => {
-
-
   return (
-    <h1>TKG Fashion</h1>
+    <div id='home-section'>
+      <h1>HOMESCREEN TESTING</h1>
+    </div>
   )
 }
 
