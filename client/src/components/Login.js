@@ -11,7 +11,7 @@ const Login = () => {
   const navigate = useNavigate()
   const [open, setOpen] = useState(false)
   const [formData, setformData] = useState({
-    username: '',
+    email: '',
     password: '',
   })
   const [error, setError] = useState(false)
@@ -30,7 +30,7 @@ const Login = () => {
     try {
       const { data } = await axios.post('api/auth/login/', formData)
       setItemToLocalStorage(data.token)
-      navigate('api/index')
+      navigate('/browse')
     } catch (err) {
       setError(true)
     }
@@ -52,9 +52,9 @@ const Login = () => {
         <Header>Register</Header>
         <Modal.Content>
 
-          <Form.Field onChange={handleChange} value={formData.username}>
-            <label>Username</label>
-            <input name='username' placeholder='e.g. janesmith123' />
+          <Form.Field onChange={handleChange} value={formData.email}>
+            <label>Email</label>
+            <input name='email' placeholder='e.g. janesmith@email.com' />
           </Form.Field>
 
           <Form.Field onChange={handleChange} value={formData.password}>

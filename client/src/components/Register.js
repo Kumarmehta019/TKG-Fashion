@@ -11,7 +11,7 @@ const Register = () => {
     username: '',
     email: '',
     password: '',
-    passwordConfirmation: '',
+    password_confirmation: '',
     firstName: '',
     lastName: '',
   })
@@ -20,7 +20,7 @@ const Register = () => {
     username: '',
     email: '',
     password: '',
-    passwordConfirmation: '',
+    password_confirmation: '',
     firstName: '',
     lastName: '',
   })
@@ -74,9 +74,9 @@ const Register = () => {
             <input name='password' />
           </Form.Field>
 
-          <Form.Field onChange={handleChange} value={formData.passwordConfirmation}>
+          <Form.Field onChange={handleChange} value={formData.password_confirmation}>
             <label>Password Confirmation</label>
-            <input name='passwordConfirmation' />
+            <input name='password_confirmation' />
           </Form.Field>
 
           <Form.Group widths={2}>
