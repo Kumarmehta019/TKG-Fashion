@@ -13,6 +13,7 @@ cloudinary = "*"
 dj3-cloudinary-storage = "*"
 pillow = "*"
 pyjwt = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 

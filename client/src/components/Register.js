@@ -1,26 +1,29 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import { Modal, Button, Form, Header } from 'semantic-ui-react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 
 const Register = () => {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
     username: '',
     email: '',
     password: '',
     passwordConfirmation: '',
+    firstName: '',
+    lastName: '',
   })
 
-  // const [errors, setErrors] = useState({
-  //   firstName: '',
-  //   lastName: '',
-  //   username: '',
-  //   email: '',
-  //   password: '',
-  //   passwordConfirmation: '',
-  // })
+  const [errors, setErrors] = useState({
+    username: '',
+    email: '',
+    password: '',
+    passwordConfirmation: '',
+    firstName: '',
+    lastName: '',
+  })
 
   const [open, setOpen] = useState(false)
 
@@ -31,9 +34,16 @@ const Register = () => {
     setFormData(newFormData)
   }
 
-  function handleSubmit(event) {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     console.log('Form Data ->', formData)
+    try {
+      await axios.post('api/auth/register/', formData)
+      navigate('api/auth/login/')
+    } catch (err) {
+      console.log(err)
+      setErrors(err.response.data.errors)
+    }
   }
 
   return (
@@ -48,35 +58,39 @@ const Register = () => {
       >
         <Header>Register</Header>
         <Modal.Content>
-          <Form >
-            <Form.Group widths={2}>
-              <Form.Field onChange={handleChange} value={formData.firstName}>
-                <label>First Name</label>
-                <input name='firstName' placeholder='e.g. Jane' />
-              </Form.Field>
 
-              <Form.Field onChange={handleChange} value={formData.lastName}>
-                <label>Last Name</label>
-                <input name='lastName' placeholder='e.g. Smith' />
-              </Form.Field>
-            </Form.Group>
+          <Form.Field onChange={handleChange} value={formData.username}>
+            <label>Username</label>
+            <input name='username' placeholder='e.g. janesmith123' />
+          </Form.Field>
 
-            <Form.Field onChange={handleChange} value={formData.username}>
-              <label>Username</label>
-              <input name='username' placeholder='e.g. janesmith123' />
+          <Form.Field onChange={handleChange} value={formData.email}>
+            <label>Email</label>
+            <input name='email' placeholder='e.g. jane@email.com' />
+          </Form.Field>
+
+          <Form.Field onChange={handleChange} value={formData.password}>
+            <label>Password</label>
+            <input name='password' />
+          </Form.Field>
+
+          <Form.Field onChange={handleChange} value={formData.passwordConfirmation}>
+            <label>Password Confirmation</label>
+            <input name='passwordConfirmation' />
+          </Form.Field>
+
+          <Form.Group widths={2}>
+            <Form.Field onChange={handleChange} value={formData.firstName}>
+              <label>First Name</label>
+              <input name='firstName' placeholder='e.g. Jane' />
             </Form.Field>
 
-            <Form.Field onChange={handleChange} value={formData.password}>
-              <label>Password</label>
-              <input name='password' />
+            <Form.Field onChange={handleChange} value={formData.lastName}>
+              <label>Last Name</label>
+              <input name='lastName' placeholder='e.g. Smith' />
             </Form.Field>
+          </Form.Group>
 
-            <Form.Field onChange={handleChange} value={formData.passwordConfirmation}>
-              <label>Password Confirmation</label>
-              <input name='passwordConfirmation' />
-            </Form.Field>
-
-          </Form>
         </Modal.Content>
         <Modal.Actions>
           <Button type="submit" color="red" icon="times" content="Close" />
