@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Card, Container, Dropdown, Grid, Header, Icon, Menu, Image } from 'semantic-ui-react'
+import { Card, Container, Dropdown, Grid, Header, Menu, Image } from 'semantic-ui-react'
 
 const ProductIndex = () => {
 
@@ -11,12 +10,17 @@ const ProductIndex = () => {
   const category = [
     { key: 1, text: 'T-Shirts', value: 'T-Shirts' },
     { key: 2, text: 'Jumpers', value: 'Jumpers' },
-    { key: 3, text: 'Dresses', value: 'Dresses' }
+    { key: 3, text: 'Dresses', value: 'Dresses' },
+    { key: 4, text: 'Shorts', value: 'Shorts' },
+    { key: 5, text: 'Jeans', value: 'Jeans' },
+    { key: 6, text: 'Shirts', value: 'Shirts' },
+    { key: 7, text: 'Socks', value: 'Socks' },
+    { key: 8, text: 'Trousers', value: 'Trousers' }
   ]
 
   const gender = [
-    { key: 1, text: 'Male', value: 'M' },
-    { key: 2, text: 'Female', value: 'F' }
+    { key: 1, text: 'Male', value: 'M', icon: 'male' },
+    { key: 2, text: 'Female', value: 'F', icon: 'female' }
   ]
 
   const priceOptions = [
