@@ -76,5 +76,57 @@
     "gender": "M",
     "colour": "Black"
   }
+},
+{
+  "model": "products.product",
+  "pk": 7,
+  "fields": {
+    "name": "Men Plaid Spliced Shirt",
+    "price": 18,
+    "size": "M",
+    "stock": 37,
+    "category": "Shirts",
+    "gender": "M",
+    "colour": "Black"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 8,
+  "fields": {
+    "name": "Men Collared Shirt",
+    "price": 16,
+    "size": "S",
+    "stock": 24,
+    "category": "Shirts",
+    "gender": "M",
+    "colour": "Green"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 9,
+  "fields": {
+    "name": "Men Slogan Graphic Shorts",
+    "price": 12,
+    "size": "L",
+    "stock": 42,
+    "category": "Shorts",
+    "gender": "M",
+    "colour": "Blue"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 10,
+  "fields": {
+    "name": "Men Letter Graphic Shorts",
+    "price": 10,
+    "size": "M",
+    "stock": 25,
+    "category": "Shorts",
+    "gender": "M",
+    "colour": "Beige"
+  }
 }
 ]

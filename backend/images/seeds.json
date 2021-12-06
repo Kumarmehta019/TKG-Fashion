@@ -52,5 +52,41 @@
     "image": "images/men-jeans_zubklo",
     "product": 6
   }
+},
+{
+  "model": "images.image",
+  "pk": 7,
+  "fields": {
+    "title": "Men Plaid Shirt Image",
+    "image": "images/men-shirt-plaid_rgegnc",
+    "product": 7
+  }
+},
+{
+  "model": "images.image",
+  "pk": 8,
+  "fields": {
+    "title": "Men Shirt Green Image",
+    "image": "images/men-shirt-green_ie1lqj",
+    "product": 8
+  }
+},
+{
+  "model": "images.image",
+  "pk": 9,
+  "fields": {
+    "title": "Men Blue Shorts Image",
+    "image": "images/men-shorts-blue_uotgpi",
+    "product": 9
+  }
+},
+{
+  "model": "images.image",
+  "pk": 10,
+  "fields": {
+    "title": "Men Shorts Beige Image",
+    "image": "images/men-shorts-beige_clw9ze",
+    "product": 10
+  }
 }
 ]
