@@ -19,6 +19,11 @@ const ProductIndex = () => {
     { key: 2, text: 'Female', value: 'F' }
   ]
 
+  const priceOptions = [
+    { key: 1, text: 'Low to High', value: 1, icon: 'sort amount down' },
+    { key: 2, text: 'High to Low', value: 2, icon: 'sort amount up' }
+  ]
+
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get('api/products') // * <-- replace with your endpoint
@@ -51,6 +56,19 @@ const ProductIndex = () => {
     }
   }
 
+  const handlePrice = (_event, data) => {
+    const filteredArray = [...filteredProducts]
+    if (data.value === 1) {
+      const sortedArray = filteredArray.sort((a, b) => a.price - b.price)
+      setFilteredProducts(sortedArray)
+    } else if (data.value === 2) {
+      const sortedArray = filteredArray.sort((a, b) => b.price - a.price)
+      setFilteredProducts(sortedArray)
+    } else {
+      setFilteredProducts([...products])
+    }
+  }
+
 
 
   return (
@@ -77,6 +95,9 @@ const ProductIndex = () => {
                 </Menu>
                 <Menu style={{ margin: '10px' }} compact>
                   <Dropdown placeholder='By Gender' options={gender} onChange={handleGender} clearable item/>
+                </Menu>
+                <Menu style={{ margin: '10px' }} compact>
+                  <Dropdown placeholder='By Price' options={priceOptions} onChange={handlePrice} clearable item/>
                 </Menu>
                 {/* <Menu text vertical>
                   <Menu.Item header><Icon name='filter'/> Filter</Menu.Item>
