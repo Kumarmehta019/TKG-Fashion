@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar'
+// import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './components/Home'
 import Profile from './components/Profile'
@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="site-wrapper">
         <Routes>
           <Route exact path='/' element={<Home />} />
