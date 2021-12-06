@@ -30,7 +30,7 @@ const ProductIndex = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axios.get('api/products') // * <-- replace with your endpoint
+      const { data } = await axios.get('api/products') 
       console.log(data)
       setProducts(data)
       setFilteredProducts(data)
@@ -93,6 +93,7 @@ const ProductIndex = () => {
                   />
                 </Grid.Column> 
               </Container>
+
               <Container>
                 <Menu style={{ margin: '10px' }} compact>
                   <Dropdown placeholder='By Category' options={category} onChange={handleCategory} clearable item/>
@@ -103,27 +104,7 @@ const ProductIndex = () => {
                 <Menu style={{ margin: '10px' }} compact>
                   <Dropdown placeholder='By Price' options={priceOptions} onChange={handlePrice} clearable item/>
                 </Menu>
-                {/* <Menu text vertical>
-                  <Menu.Item header><Icon name='filter'/> Filter</Menu.Item>
-                  <Dropdown item multiple fluid text='Categories'>
-                    <Dropdown.Menu>
-                      <Dropdown.Item>T-Shirts</Dropdown.Item>
-                      <Dropdown.Item>Jumpers</Dropdown.Item>
-                      <Dropdown.Item>Dresses</Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
-                </Menu>
-
-                <Menu text vertical>
-                  <Dropdown item fluid text='By Price'>
-                    <Dropdown.Menu>
-                      <Dropdown.Item>Low to High</Dropdown.Item>
-                      <Dropdown.Item>High to Low</Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
-                </Menu> */}
               </Container>
-
             </Grid.Column>
 
             <Grid.Column width={13}>
