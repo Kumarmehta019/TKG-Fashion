@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useNagivate, useLocation } from 'react-router-dom'
 import { Container, Image, Menu, Icon, Dropdown, Modal, Header, Button } from 'semantic-ui-react'
 import { getPayload, getUsernameFromLocalStorage } from './helpers/auth'
+import Register from './Register'
+import Login from './Login'
 
 
 const NavBar = () => {
   const [open, setOpen] = useState([])
-  const history = useHistory()
+  const navigate = useNagivate()
   const location = useLocation()
 
   useEffect(() => {
@@ -22,7 +24,7 @@ const NavBar = () => {
 
   const handleLogout = () => {
     window.localStorage.removeItem('token')
-    history.push('/')
+    navigate.push('/')
   }
 
   const username = getUsernameFromLocalStorage()
@@ -39,9 +41,9 @@ const NavBar = () => {
         
         {!userIsAuthenticated() ?
           <>
-            <Menu.Item position='right' as='a' href=''><Icon name='signup' size='large' />Register</Menu.Item>
-            <Menu.Item as='a' href=''><Icon name='user circle' size='large' />Sign In</Menu.Item>
-            <Menu.Item as='a' href=''><Icon name='shopping bag' size='large' />Bag</Menu.Item>
+            <Menu.Item position='right' as='a'><Icon name='signup' size='large' /><Register /></Menu.Item>
+            <Menu.Item as='a'><Icon name='user circle' size='large' /><Login /></Menu.Item>
+            <Menu.Item as='a'><Icon name='shopping bag' size='large' />Bag</Menu.Item>
           </>
           :
           <>
