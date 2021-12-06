@@ -9,14 +9,45 @@ class Product(models.Model):
         ('L','large'),
         ('XL','extra-large')
     )
+
+    CATEGORIES = (
+        ('T-Shirts', 'T-Shirts'),
+        ('Jeans', 'Jeans'),
+        ('Dresses', 'Dresses'),
+        ('Jumpers', 'Jumpers'), 
+        ('Shorts', 'Shorts'),
+        ('Shirts', 'Shirts'),
+        ('Trousers', 'Trousers'),
+        ('Socks', 'Socks')
+    )
+
+    COLOURS = (
+        ('Black', 'Black'),
+        ('Yellow', 'Yellow'),
+        ('Blue', 'Blue'),
+        ('Red', 'Red'),
+        ('Green', 'Green'),
+        ('Orange', 'Orange'),
+        ('White', 'White'),
+        ('Purple', 'Purple'),
+        ('Brown', 'Brown'),
+        ('Grey', 'Grey'),
+        ('Beige', 'Beige'),
+        ('Pink', 'Pink')
+    )
+
+    GENDERS = (
+        ('M', 'Male'),
+        ('F', 'Female')
+    )
+
     name = models.CharField(max_length=100, default=None)
     price = models.IntegerField()
     size = models.CharField(max_length=10, default=None, choices=SIZES)
     stock = models.IntegerField()
-    # image = models.CharField(max_length=500, default=None) -> make this another relationship (as Mike said)
-    category = models.ForeignKey("categories.Category", on_delete = models.CASCADE)
-    gender = models.ForeignKey("genders.Gender", on_delete = models.CASCADE)
-    colour = models.ForeignKey("colours.Colour", on_delete = models.CASCADE)
+    category = models.CharField(max_length=50, default=None, choices=CATEGORIES)
+    gender = models.CharField(max_length=50, default=None, choices=GENDERS)
+    colour = models.CharField(max_length=50, default=None, choices=COLOURS)
     
     def __str__(self):
         return f'Product: {self.name}, Size: {self.size}, Category: {self.category}, Colour: {self.colour}'
