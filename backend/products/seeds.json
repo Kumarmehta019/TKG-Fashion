@@ -1,2 +1,28 @@
 [
+{
+  "model": "products.product",
+  "pk": 1,
+  "fields": {
+    "name": "Letter Graphic Pullover",
+    "price": 8,
+    "size": "M",
+    "stock": 23,
+    "category": "Jumpers",
+    "gender": "F",
+    "colour": "Beige"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 2,
+  "fields": {
+    "name": "High Waist Ripped Jeans",
+    "price": 22,
+    "size": "L",
+    "stock": 30,
+    "category": "Jeans",
+    "gender": "F",
+    "colour": "Blue"
+  }
+}
 ]

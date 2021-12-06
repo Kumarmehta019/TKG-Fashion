@@ -1,0 +1,20 @@
+[
+{
+  "model": "images.image",
+  "pk": 1,
+  "fields": {
+    "title": "Letter Graphic Jumpers Image",
+    "image": "images/letter-graphic_xn6xnq",
+    "product": 1
+  }
+},
+{
+  "model": "images.image",
+  "pk": 2,
+  "fields": {
+    "title": "High Waist Jeans Image",
+    "image": "images/high-waist-jeans_hsatvt",
+    "product": 2
+  }
+}
+]
