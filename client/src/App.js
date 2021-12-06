@@ -1,20 +1,29 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import NavBar from './components/NavBar'
+import Footer from './components/Footer'
+import Home from './components/Home'
+import Profile from './components/Profile'
 import ProductIndex from './components/ProductIndex'
 
-function App() {
+const App = () => {
+
 
   return (
-    <>
-      <BrowserRouter>
+    <BrowserRouter>
+      <NavBar />
+      <div className="site-wrapper">
         <Routes>
-          <Route exact path ='/browse' element={<ProductIndex/>} />
+          <Route exact path='/' element={<Home />} />
+          <Route exact path='/profile' element={<Profile />} />
+          <Route exact path='/browse' element={<ProductIndex />} />
         </Routes>
-        
-      </BrowserRouter>
-    </>
+      </div>
+      <Footer />
+    </BrowserRouter>
   )
-    
 }
 
 export default App
+
+
