@@ -11,3 +11,32 @@
 #home-section, #profile-section {
   min-height: 85vh;
 }
+
+//! *** PRODUCTSHOW ***
+
+.product-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+
+}
+
+.product-name {
+  font-size: 35px;
+  padding: 10px;
+  text-align: center;
+}
+
+.product-price {
+  font-size: 25px;
+  padding: 10px;
+}
+.product-colour {
+  font-size: 25px;
+  padding: 10px;
+}
+.product-size {
+  font-size: 25px;
+  padding: 10px;
+}
+
