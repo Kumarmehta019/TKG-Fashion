@@ -24,5 +24,57 @@
     "gender": "F",
     "colour": "Blue"
   }
+},
+{
+  "model": "products.product",
+  "pk": 3,
+  "fields": {
+    "name": "Self Tie Rib-Knit Dress",
+    "price": 15,
+    "size": "L",
+    "stock": 40,
+    "category": "Dresses",
+    "gender": "F",
+    "colour": "Green"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 4,
+  "fields": {
+    "name": "Houndstooth Flap Pocket Zipper Dress",
+    "price": 19,
+    "size": "M",
+    "stock": 42,
+    "category": "Dresses",
+    "gender": "F",
+    "colour": "Black"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 5,
+  "fields": {
+    "name": "Trim Drop Shoulder Bomber Jacket",
+    "price": 22,
+    "size": "L",
+    "stock": 24,
+    "category": "Jumpers",
+    "gender": "F",
+    "colour": "Black"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 6,
+  "fields": {
+    "name": "Men Solid Skinny Jeans",
+    "price": 18,
+    "size": "M",
+    "stock": 22,
+    "category": "Jeans",
+    "gender": "M",
+    "colour": "Black"
+  }
 }
 ]
