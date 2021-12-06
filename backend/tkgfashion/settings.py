@@ -107,6 +107,7 @@ DATABASES = {
         'NAME': 'tkg-fashion',
         'HOST': 'localhost',
         'PORT': 5432
+
 	}
 }
 

@@ -32,10 +32,12 @@ class ProductListView(APIView):
 ## CREATE, DELETE & UPDATE ROUTE
 class ProductDetailView(APIView):
     ## GET BY ID
-    def get(self, _request, pk):
+    def get(self, request, pk):
         product = Product.objects.get(id=pk)
+        print("PRODUCT ->", product)
         # converts python object into JSON
         serialized_product = PopulatedProductSerializer(product)
+        print("SERIALIZED PRODUCT ->", serialized_product)
         return Response(serialized_product.data, status=status.HTTP_200_OK)
 
     ## DELETE BY ID
