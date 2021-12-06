@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { useNagivate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { Container, Image, Menu, Icon, Dropdown, Modal, Header, Button } from 'semantic-ui-react'
 import { getPayload, getUsernameFromLocalStorage } from './helpers/auth'
 import Register from './Register'
 import Login from './Login'
 
 
-const NavBar = () => {
+const Navbar = () => {
   const [open, setOpen] = useState([])
-  const navigate = useNagivate()
+  const navigate = useNavigate()
   const location = useLocation()
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const NavBar = () => {
 
   const handleLogout = () => {
     window.localStorage.removeItem('token')
-    navigate.push('/')
+    navigate('/')
   }
 
   const username = getUsernameFromLocalStorage()
@@ -88,4 +88,4 @@ const NavBar = () => {
   )
 }
 
-export default NavBar
+export default Navbar
