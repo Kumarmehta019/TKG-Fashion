@@ -128,5 +128,96 @@
     "gender": "M",
     "colour": "Beige"
   }
+},
+{
+  "model": "products.product",
+  "pk": 11,
+  "fields": {
+    "name": "Guys Graphic Shorts",
+    "price": 9,
+    "size": "L",
+    "stock": 30,
+    "category": "Shorts",
+    "gender": "M",
+    "colour": "Black"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 12,
+  "fields": {
+    "name": "Men Cargo Trousers",
+    "price": 17,
+    "size": "L",
+    "stock": 20,
+    "category": "Trousers",
+    "gender": "M",
+    "colour": "Green"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 13,
+  "fields": {
+    "name": "Men Letter Tee",
+    "price": 9,
+    "size": "M",
+    "stock": 30,
+    "category": "T-Shirts",
+    "gender": "M",
+    "colour": "Black"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 14,
+  "fields": {
+    "name": "Men Slogan Tee",
+    "price": 9,
+    "size": "M",
+    "stock": 35,
+    "category": "T-Shirts",
+    "gender": "M",
+    "colour": "Black"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 15,
+  "fields": {
+    "name": "Polka Dot Sleeve Dress",
+    "price": 8,
+    "size": "XL",
+    "stock": 40,
+    "category": "Dresses",
+    "gender": "F",
+    "colour": "Red"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 16,
+  "fields": {
+    "name": "Women Ripped Skinny Jeans",
+    "price": 12,
+    "size": "XL",
+    "stock": 35,
+    "category": "Jeans",
+    "gender": "F",
+    "colour": "Blue"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 17,
+  "fields": {
+    "name": "Women Crew Neck Tee",
+    "price": 6,
+    "size": "L",
+    "stock": 20,
+    "category": "T-Shirts",
+    "gender": "F",
+    "colour": "Purple"
+  }
 }
 ]

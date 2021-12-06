@@ -88,5 +88,68 @@
     "image": "images/men-shorts-beige_clw9ze",
     "product": 10
   }
+},
+{
+  "model": "images.image",
+  "pk": 11,
+  "fields": {
+    "title": "Mens Shorts Black Image",
+    "image": "images/men-shorts-black_dta9fp",
+    "product": 11
+  }
+},
+{
+  "model": "images.image",
+  "pk": 12,
+  "fields": {
+    "title": "Men Cargo Trs Image",
+    "image": "images/men-cargo-trs_lrfvsd",
+    "product": 12
+  }
+},
+{
+  "model": "images.image",
+  "pk": 13,
+  "fields": {
+    "title": "Men Dad Tshirt Image",
+    "image": "images/men-dad-tshirt_aa0c3x",
+    "product": 13
+  }
+},
+{
+  "model": "images.image",
+  "pk": 14,
+  "fields": {
+    "title": "Men Gaming Slogan Tee Image",
+    "image": "images/men-gaming-tshirt_ckt1oh",
+    "product": 14
+  }
+},
+{
+  "model": "images.image",
+  "pk": 15,
+  "fields": {
+    "title": "Women Polka Dress Image",
+    "image": "images/women-polka-dress_net8mv",
+    "product": 15
+  }
+},
+{
+  "model": "images.image",
+  "pk": 16,
+  "fields": {
+    "title": "Women Jeans Image",
+    "image": "images/women-jeans_ia5d3o",
+    "product": 16
+  }
+},
+{
+  "model": "images.image",
+  "pk": 17,
+  "fields": {
+    "title": "Women Purple Tshirt Image",
+    "image": "images/women-ny-tshirt_ojnm59",
+    "product": 17
+  }
 }
 ]
