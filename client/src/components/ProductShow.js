@@ -2,13 +2,18 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import { Grid, Image, Divider, Header, Container, Comment, Segment, Button, Accordion, Icon } from 'semantic-ui-react'
+import { Grid, Image, Divider, Header, Container, Comment, Segment, Button, Accordion, Icon, Form } from 'semantic-ui-react'
 
 
 const ProductShow = () => {
 
   const [product, setProduct] = useState([])
   const [reviews, setReviews] = useState([])
+  // const [reviewData, setReviewData] = useState({
+  //   comment: '',
+  //   rating: '',
+  //   // owner_id: reviews.owner.username,
+  // })
   const { id } = useParams()
 
   useEffect(() => {
@@ -24,6 +29,11 @@ const ProductShow = () => {
     }
     getData()
   }, [id])
+
+  const handleChange = (event) => {
+    const newReviewData = { ...reviews, [event.target.name]: event.target.value }
+    setReviews(newReviewData)
+  }
 
 
   const accordion = [
@@ -60,12 +70,24 @@ const ProductShow = () => {
                     <Comment.Author><Icon name='user circle'/>Author: {review.owner.username}</Comment.Author>
                     <Comment.Metadata>
                       <div><Icon name='calendar alternate'/>Posted on: {review.posted_on}</div>
+                      <div><Icon name='star'/>Rating: {review.rating}/5</div>
                     </Comment.Metadata>
                     <Comment.Text>{review.comment}</Comment.Text>
                   </Comment.Content>
                 )
               })}
             </Comment>
+
+            <Form reply>
+              <Form.Field onChange={handleChange}>
+                <label>Username: </label>
+                <label>Rating out of 5:</label>
+                <input type='number' min={1} max={5} value={reviews.rating}/>
+              </Form.Field>
+              <Form.TextArea value={reviews.comment}/>
+              <Button content='Add a Comment' icon='comment alternate outline' labelPosition='left' color='teal'></Button>
+            </Form>
+
           </Comment.Group>
         ),
       },
@@ -87,7 +109,7 @@ const ProductShow = () => {
               <p className='product-name' textAlign='center'>{product.name}</p>
               <p className='product-price'><Icon name='gbp' />{product.price}</p>
               <Container>
-                <Segment compact inverted color={product.colour} />
+                <Button circular color={`${product.colour}`} disabled/>
               </Container>
               <br />
               <div className='product-colour'>Colour: {product.colour}</div>
