@@ -18,8 +18,17 @@ const HeroCarousel = () => {
 
 
 
-
-
+  const product = products.map(product => {
+    return product
+  }) 
+  console.log('PRODUCT ARRAY->', product)
+    
+  const images = product.map(image => {
+    return image.image_set[0].image
+  })
+  console.log('IMAGES ARRAY->', product)
+    
+  
 
 
   return (
@@ -31,13 +40,13 @@ const HeroCarousel = () => {
         totalSlides={10}
         interval={5000}
         isPlaying={true}
+        visibleSlides={1}
       >
         <Slider>
-          {products.map(product => {
+          {images.map(image => {
             return (
-
-              <Slide key={product.name}>
-                <Image src={product.image_set[0].image}></Image>
+              <Slide key={image}>
+                <Image src={image}></Image>
               </Slide>
             )
           })}
