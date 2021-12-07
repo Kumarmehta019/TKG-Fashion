@@ -1,19 +1,55 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Card, Container, Dropdown, Grid, Header, Icon, Menu } from 'semantic-ui-react'
+import { Card, Container, Dropdown, Grid, Header, Icon, Menu, Image } from 'semantic-ui-react'
 
 const ProductIndex = () => {
 
   const [products, setProducts] = useState([])
+  const [filteredProducts, setFilteredProducts] = useState([])
+
+  const category = [
+    { key: 1, text: 'T-Shirts', value: 'T-Shirts' },
+    { key: 2, text: 'Jumpers', value: 'Jumpers' },
+    { key: 3, text: 'Dresses', value: 'Dresses' }
+  ]
+
+  const gender = [
+    { key: 1, text: 'Male', value: 'M' },
+    { key: 2, text: 'Female', value: 'F' }
+  ]
 
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get('api/products') // * <-- replace with your endpoint
       console.log(data)
       setProducts(data)
+      setFilteredProducts(data)
     }
     getData()
   }, [])
+
+  const handleCategory = (_event, data) => {
+    if (!data.value){
+      setFilteredProducts([...products])
+    } else {
+      const filterArray = products.filter(product => {
+        return product.category === data.value
+      })
+      setFilteredProducts(filterArray)
+    }
+  }
+
+  const handleGender = (_event, data) => {
+    if (!data.value){
+      setFilteredProducts([...products])
+    } else {
+      const filterGender = products.filter(product => {
+        return product.gender === data.value
+      })
+      setFilteredProducts(filterGender)
+    }
+  }
 
 
 
@@ -26,16 +62,23 @@ const ProductIndex = () => {
           <Grid.Row>
             <Grid.Column width={3} textAlign='left'>
               <Container>
-                {/* <Grid.Column>
+                <Grid.Column>
                   <Header 
                     as='h2'
-                    content='Filter'
+                    content='Filters'
                     icon='filter'
+                    size ='medium'
                   />
-                </Grid.Column> */}
+                </Grid.Column> 
               </Container>
               <Container>
-                <Menu text vertical>
+                <Menu style={{ margin: '10px' }} compact>
+                  <Dropdown placeholder='By Category' options={category} onChange={handleCategory} clearable item/>
+                </Menu>
+                <Menu style={{ margin: '10px' }} compact>
+                  <Dropdown placeholder='By Gender' options={gender} onChange={handleGender} clearable item/>
+                </Menu>
+                {/* <Menu text vertical>
                   <Menu.Item header><Icon name='filter'/> Filter</Menu.Item>
                   <Dropdown item multiple fluid text='Categories'>
                     <Dropdown.Menu>
@@ -53,22 +96,23 @@ const ProductIndex = () => {
                       <Dropdown.Item>High to Low</Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
-                </Menu>
+                </Menu> */}
               </Container>
 
             </Grid.Column>
 
             <Grid.Column width={13}>
-              <Card.Group>
-                {products.map(product => {
+              <Card.Group itemsPerRow={3}>
+                {filteredProducts.map(product => {
                   return (
                     <>
                       <Card key ={product.name}>
+                        <Image src={product.image_set[0].image} />
                         <Card.Content>
-                          <Card.Header>Insert image here</Card.Header>
+                          <Card.Header>{product.name}</Card.Header>
+                          <Card.Description>GBP £{product.price}</Card.Description>
                         </Card.Content>
-                        <Card.Content>{product.name}</Card.Content>
-                        <Card.Content extra>£ {product.price}</Card.Content>
+                        {/* <Card.Content extra>GBP £{product.price}</Card.Content> */}
                       </Card>
                     </>
                   )
@@ -78,8 +122,6 @@ const ProductIndex = () => {
 
           </Grid.Row>
         </Grid>
-          
-        
       </Container>
     </>
   )

@@ -1,0 +1,56 @@
+[
+{
+  "model": "images.image",
+  "pk": 1,
+  "fields": {
+    "title": "Letter Graphic Jumpers Image",
+    "image": "images/letter-graphic_xn6xnq",
+    "product": 1
+  }
+},
+{
+  "model": "images.image",
+  "pk": 2,
+  "fields": {
+    "title": "High Waist Jeans Image",
+    "image": "images/high-waist-jeans_hsatvt",
+    "product": 2
+  }
+},
+{
+  "model": "images.image",
+  "pk": 3,
+  "fields": {
+    "title": "Rib-Knit Dress Image",
+    "image": "images/rib-knit-dress_ogl7f3",
+    "product": 3
+  }
+},
+{
+  "model": "images.image",
+  "pk": 4,
+  "fields": {
+    "title": "Zipper Dress Image",
+    "image": "images/zipper-dress_g7wp73",
+    "product": 4
+  }
+},
+{
+  "model": "images.image",
+  "pk": 5,
+  "fields": {
+    "title": "Bomber Jacket Image",
+    "image": "images/bomber-jacket_x4bm4x",
+    "product": 5
+  }
+},
+{
+  "model": "images.image",
+  "pk": 6,
+  "fields": {
+    "title": "Mens Skinny Jeans Image",
+    "image": "images/men-jeans_zubklo",
+    "product": 6
+  }
+}
+]
