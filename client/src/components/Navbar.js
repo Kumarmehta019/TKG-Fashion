@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { Container, Image, Menu, Icon, Dropdown, Modal, Header, Button } from 'semantic-ui-react'
@@ -54,7 +53,7 @@ const Navbar = () => {
                 <Dropdown.Menu size='mini'>
                   <Dropdown.Header>Signed In / Register </Dropdown.Header>
                   <Dropdown.Item as='a' href='/profile' icon='user circle' size='large' text={username} />
-                  {/* <Modal
+                  <Modal
                     basic
                     onClose={() => setOpen(false)}
                     onOpen={() => setOpen(true)}
@@ -78,7 +77,7 @@ const Navbar = () => {
                         <Icon name='checkmark' /> Yes
                       </Button>
                     </Modal.Actions>
-                  </Modal> */}
+                  </Modal>
                 </Dropdown.Menu>
               </Dropdown>
             </Menu.Item>
