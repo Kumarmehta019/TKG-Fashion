@@ -28,6 +28,10 @@ const ProductIndex = () => {
     { key: 2, text: 'High to Low', value: 2, icon: 'sort amount up' }
   ]
 
+  const colors = [
+    { key: 1, text: 'Black', value: 'Black' }
+  ]
+
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get('api/products') 
