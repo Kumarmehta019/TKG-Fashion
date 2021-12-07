@@ -72,12 +72,13 @@ const ProductShow = () => {
 
 
   // console.log(product.image_set[0].image)
+  // console.log(product)
   return (
     <Container>
       <Grid divided='vertically'>
         <Grid.Row columns={2}>
           <Grid.Column>
-            {/* <Image src={product.image_set !== undefined ? product.image_set[0].image : null} /> */}
+            <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
             {/* <Image size='large' src={product.image_set[0].image} /> */}
           </Grid.Column>
 
