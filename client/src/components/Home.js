@@ -1,10 +1,17 @@
 import React from 'react'
+import { Container } from 'semantic-ui-react'
+import Categories from './Categories'
 import HeroCarousel from './HeroCarousel'
 
 const Home = () => {
   return (
     <div id='home-section'>
-      <HeroCarousel />
+      <Container style={{ background: 'black' }}>
+        <HeroCarousel />
+      </Container>
+      <Container style={{ background: 'black' }}>
+        <Categories />
+      </Container>
     </div>
   )
 }
