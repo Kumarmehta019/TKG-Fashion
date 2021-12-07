@@ -145,7 +145,7 @@ const ProductIndex = () => {
                     <>
                       <Link to={`/${product.id}`}>
                         <Card key={product.name}>
-                          {/* <Image src={product.image_set !== undefined ? product.image_set[0].image : null} /> */}
+                          <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
                           <Card.Content>
                             <Card.Header>{product.name}</Card.Header>
                             <Card.Description>GBP £{product.price}</Card.Description>
