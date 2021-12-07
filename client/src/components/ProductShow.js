@@ -1,13 +1,16 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
-import { Grid, Image, Divider, Header, Container, Comment, Segment, Button, Accordion, Icon } from 'semantic-ui-react'
+import { useParams, Link } from 'react-router-dom'
+import { Grid, Image, Card, Divider, Header, Container, Comment, Segment, Button, Accordion, Icon } from 'semantic-ui-react'
 
 
 const ProductShow = () => {
 
   const [product, setProduct] = useState([])
+  const [allProducts, setAllProducts] = useState([])
+  const [category, setCategory] = useState([])
+  const [hasError, setHasError] = useState(false)
   const { id } = useParams()
 
   useEffect(() => {
@@ -15,14 +18,38 @@ const ProductShow = () => {
       try {
         const { data } = await axios.get(`api/products/${id}`)
         console.log(data)
+        window.scrollTo(0, 0)
         setProduct(data)
+        setCategory(product.category)
       } catch (err) {
         console.log(err)
+        setHasError(true)
       }
     }
     getData()
   }, [id])
 
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const { data } = await axios.get('api/products')
+        console.log(data)
+        setAllProducts(data)
+      } catch (err) {
+        console.log(err)
+        setHasError(true)
+      }
+    }
+    getData()
+  }, [])
+
+  const filterByCategory = () => {
+
+    return allProducts.filter(product => {
+      return product.category === category
+    })
+
+  }
 
   const accordion = [
     {
@@ -50,9 +77,9 @@ const ProductShow = () => {
       title: 'Reviews',
       content: {
         content: (
-        // {product.review_set.map(review => {
-        //   console.log(review.comment)
-        // })}
+          // {product.review_set.map(review => {
+          //   console.log(review.comment)
+          // })}
           <Comment.Group>
             <Comment>
               <Comment.Content>
@@ -70,9 +97,10 @@ const ProductShow = () => {
   ]
 
 
-
+  // console.log(category)
   // console.log(product.image_set[0].image)
-  // console.log(product)
+  // console.log(product.category)
+  // console.log(filteredProducts)
   return (
     <Container>
       <Grid divided='vertically'>
@@ -105,29 +133,45 @@ const ProductShow = () => {
 
       <Divider />
 
-      <p>You may also like...</p>
-      <Grid>
-        <Grid.Row columns={4}>
-          <Grid.Column>
-            <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-          </Grid.Column>
-          <Grid.Column>
-            <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-          </Grid.Column>
-          <Grid.Column>
-            <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-          </Grid.Column>
-          <Grid.Column>
-            <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-      
-    </Container>
-  
-  
+      <Header as='h3'>You may also like...</Header>
+      {filterByCategory().length ?
+        <Container>
+          <Grid>
+            <Grid.Row columns={4}>
 
-  
+              {filterByCategory().map((product, index) => {
+                console.log(product)
+                console.log(product.name)
+                return (
+                  <>
+                    <Grid.Column>
+                      <Link key={index} to={`/${product.id}`}>
+                        <Card>
+                          <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
+                          <Card.Content>
+                            <Card.Header>{product.name}</Card.Header>
+                            <Card.Description>GBP £{product.price}</Card.Description>
+                          </Card.Content>
+                        </Card>
+                      </Link>
+                    </Grid.Column>
+                  </>
+                )
+              })}
+              
+            </Grid.Row>
+          </Grid>
+        </Container>
+        :
+        <Header as='h3'>{hasError ? 'Looks like you&apos;ve grabbed the last gem! 💎 ' : 'Loading products... 👗 🩳 👚 '}</Header>
+      }
+
+    </Container>
+
+
+
+
+
 
 
   )
