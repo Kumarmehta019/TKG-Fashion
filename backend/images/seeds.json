@@ -178,5 +178,50 @@
     "image": "images/tweed-dress_dbwzsg",
     "product": 20
   }
+},
+{
+  "model": "images.image",
+  "pk": 21,
+  "fields": {
+    "title": "Women Planet Tshirt Image",
+    "image": "images/women-planet-tshirt_k0obzq",
+    "product": 21
+  }
+},
+{
+  "model": "images.image",
+  "pk": 22,
+  "fields": {
+    "title": "Mushroom Tshirt Image",
+    "image": "images/mushroom-shirt_kvzunb",
+    "product": 22
+  }
+},
+{
+  "model": "images.image",
+  "pk": 23,
+  "fields": {
+    "title": "Pink Hoodie Image",
+    "image": "images/teddy-hoodie_tmf5qu",
+    "product": 23
+  }
+},
+{
+  "model": "images.image",
+  "pk": 24,
+  "fields": {
+    "title": "Men Black Socks Image",
+    "image": "images/men-socks_szrkoi",
+    "product": 24
+  }
+},
+{
+  "model": "images.image",
+  "pk": 25,
+  "fields": {
+    "title": "Men Socks Stripe Image",
+    "image": "images/men-socks-stripe_s6gqt6",
+    "product": 25
+  }
 }
 ]

@@ -258,5 +258,70 @@
     "gender": "F",
     "colour": "White"
   }
+},
+{
+  "model": "products.product",
+  "pk": 21,
+  "fields": {
+    "name": "Planet Drop Shoulder Tee",
+    "price": 10,
+    "size": "XS",
+    "stock": 30,
+    "category": "T-Shirts",
+    "gender": "F",
+    "colour": "Beige"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 22,
+  "fields": {
+    "name": "Mushroom Print Crop Tee",
+    "price": 4,
+    "size": "S",
+    "stock": 20,
+    "category": "T-Shirts",
+    "gender": "F",
+    "colour": "Beige"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 23,
+  "fields": {
+    "name": "Drawstring Teddy Hoodie",
+    "price": 13,
+    "size": "M",
+    "stock": 30,
+    "category": "Jumpers",
+    "gender": "F",
+    "colour": "Pink"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 24,
+  "fields": {
+    "name": "10 Pairs Men Crew Socks",
+    "price": 5,
+    "size": "M",
+    "stock": 25,
+    "category": "Socks",
+    "gender": "M",
+    "colour": "Black"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 25,
+  "fields": {
+    "name": "5 Pairs Men Striped Socks",
+    "price": 3,
+    "size": "L",
+    "stock": 30,
+    "category": "Socks",
+    "gender": "M",
+    "colour": "White"
+  }
 }
 ]
