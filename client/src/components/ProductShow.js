@@ -109,6 +109,7 @@ const ProductShow = () => {
           <Grid.Column>
             <section className='product-info-wrapper'>
               <p className='product-name' textAlign='center'>{product.name}</p>
+              <Divider />
               <p className='product-price'><Icon name='gbp' />{product.price}</p>
               <Container>
                 <Button circular color={`${product.colour}`} disabled/>
@@ -117,9 +118,12 @@ const ProductShow = () => {
               <div className='product-colour'>Colour: {product.colour}</div>
               <div className='product-size'>Size: {product.size}</div>
               <br />
+              <div>Sold by: </div>
+              <br />
               <Button size='huge' color='teal'>Add to Bag</Button>
               <br />
               <br />
+              <Divider />
               <Accordion defaultActiveIndex={0} panels={accordion}/>
             </section>
           </Grid.Column>
