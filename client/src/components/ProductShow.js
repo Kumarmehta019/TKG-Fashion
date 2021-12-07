@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import { Grid, Image, Divider, Container, Segment, Button, Accordion, Icon } from 'semantic-ui-react'
+import { Grid, Image, Divider, Header, Container, Comment, Segment, Button, Accordion, Icon } from 'semantic-ui-react'
 
 
 const ProductShow = () => {
@@ -22,6 +22,7 @@ const ProductShow = () => {
     }
     getData()
   }, [id])
+
 
   const accordion = [
     {
@@ -49,9 +50,20 @@ const ProductShow = () => {
       title: 'Reviews',
       content: {
         content: (
-          <div>
-            <p>Reviews go here</p>
-          </div>
+        // {product.review_set.map(review => {
+        //   console.log(review.comment)
+        // })}
+          <Comment.Group>
+            <Comment>
+              <Comment.Content>
+                <Comment.Author as='a'>Matt</Comment.Author>
+                <Comment.Metadata>
+                  <div>Today at 5:42PM</div>
+                </Comment.Metadata>
+                {/* <Comment.Text>{product.review_set[0].comment}</Comment.Text> */}
+              </Comment.Content>
+            </Comment>
+          </Comment.Group>
         ),
       },
     }
