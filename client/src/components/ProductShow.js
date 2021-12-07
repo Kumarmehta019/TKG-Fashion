@@ -3,18 +3,15 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { Grid, Image, Divider, Header, Container, Comment, Segment, Button, Accordion, Icon, Form } from 'semantic-ui-react'
+import { getUsernameFromLocalStorage } from './helpers/auth'
 
 
 const ProductShow = () => {
 
   const [product, setProduct] = useState([])
   const [reviews, setReviews] = useState([])
-  // const [reviewData, setReviewData] = useState({
-  //   comment: '',
-  //   rating: '',
-  //   // owner_id: reviews.owner.username,
-  // })
   const { id } = useParams()
+  const username = getUsernameFromLocalStorage()
 
   useEffect(() => {
     const getData = async () => {
@@ -62,6 +59,7 @@ const ProductShow = () => {
       title: 'Reviews',
       content: {
         content: (
+          //Add if user is not authenitcated here
           <Comment.Group size='large'>
             <Comment>
               {reviews.map(review => {
@@ -70,23 +68,27 @@ const ProductShow = () => {
                     <Comment.Author><Icon name='user circle'/>Author: {review.owner.username}</Comment.Author>
                     <Comment.Metadata>
                       <div><Icon name='calendar alternate'/>Posted on: {review.posted_on}</div>
+                      <Divider />
                       <div><Icon name='star'/>Rating: {review.rating}/5</div>
                     </Comment.Metadata>
                     <Comment.Text>{review.comment}</Comment.Text>
+                    <Divider />
                   </Comment.Content>
                 )
               })}
             </Comment>
-
-            <Form reply>
-              <Form.Field onChange={handleChange}>
-                <label>Username: </label>
-                <label>Rating out of 5:</label>
-                <input type='number' min={1} max={5} value={reviews.rating}/>
-              </Form.Field>
-              <Form.TextArea value={reviews.comment}/>
-              <Button content='Add a Comment' icon='comment alternate outline' labelPosition='left' color='teal'></Button>
-            </Form>
+            
+            <Segment>
+              <Form reply>
+                <Form.Field onChange={handleChange}>
+                  <label>Username: {username}</label>
+                  <label>Rating out of 5:</label>
+                  <input type='number' min={1} max={5} value={reviews.rating}/>
+                </Form.Field>
+                <Form.TextArea value={reviews.comment} onChange={handleChange}/>
+                <Button content='Add a Comment' icon='comment alternate outline' labelPosition='left' color='teal'></Button>
+              </Form>
+            </Segment>
 
           </Comment.Group>
         ),
