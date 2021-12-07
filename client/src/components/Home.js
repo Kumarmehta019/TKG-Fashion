@@ -1,9 +1,10 @@
 import React from 'react'
+import HeroCarousel from './HeroCarousel'
 
 const Home = () => {
   return (
     <div id='home-section'>
-      <h1>HOMESCREEN TESTING</h1>
+      <HeroCarousel />
     </div>
   )
 }

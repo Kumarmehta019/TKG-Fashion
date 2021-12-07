@@ -1,0 +1,182 @@
+[
+{
+  "model": "images.image",
+  "pk": 1,
+  "fields": {
+    "title": "Letter Graphic Jumpers Image",
+    "image": "images/letter-graphic_xn6xnq",
+    "product": 1
+  }
+},
+{
+  "model": "images.image",
+  "pk": 2,
+  "fields": {
+    "title": "High Waist Jeans Image",
+    "image": "images/high-waist-jeans_hsatvt",
+    "product": 2
+  }
+},
+{
+  "model": "images.image",
+  "pk": 3,
+  "fields": {
+    "title": "Rib-Knit Dress Image",
+    "image": "images/rib-knit-dress_ogl7f3",
+    "product": 3
+  }
+},
+{
+  "model": "images.image",
+  "pk": 4,
+  "fields": {
+    "title": "Zipper Dress Image",
+    "image": "images/zipper-dress_g7wp73",
+    "product": 4
+  }
+},
+{
+  "model": "images.image",
+  "pk": 5,
+  "fields": {
+    "title": "Bomber Jacket Image",
+    "image": "images/bomber-jacket_x4bm4x",
+    "product": 5
+  }
+},
+{
+  "model": "images.image",
+  "pk": 6,
+  "fields": {
+    "title": "Mens Skinny Jeans Image",
+    "image": "images/men-jeans_zubklo",
+    "product": 6
+  }
+},
+{
+  "model": "images.image",
+  "pk": 7,
+  "fields": {
+    "title": "Men Plaid Shirt Image",
+    "image": "images/men-shirt-plaid_rgegnc",
+    "product": 7
+  }
+},
+{
+  "model": "images.image",
+  "pk": 8,
+  "fields": {
+    "title": "Men Shirt Green Image",
+    "image": "images/men-shirt-green_ie1lqj",
+    "product": 8
+  }
+},
+{
+  "model": "images.image",
+  "pk": 9,
+  "fields": {
+    "title": "Men Blue Shorts Image",
+    "image": "images/men-shorts-blue_uotgpi",
+    "product": 9
+  }
+},
+{
+  "model": "images.image",
+  "pk": 10,
+  "fields": {
+    "title": "Men Shorts Beige Image",
+    "image": "images/men-shorts-beige_clw9ze",
+    "product": 10
+  }
+},
+{
+  "model": "images.image",
+  "pk": 11,
+  "fields": {
+    "title": "Mens Shorts Black Image",
+    "image": "images/men-shorts-black_dta9fp",
+    "product": 11
+  }
+},
+{
+  "model": "images.image",
+  "pk": 12,
+  "fields": {
+    "title": "Men Cargo Trs Image",
+    "image": "images/men-cargo-trs_lrfvsd",
+    "product": 12
+  }
+},
+{
+  "model": "images.image",
+  "pk": 13,
+  "fields": {
+    "title": "Men Dad Tshirt Image",
+    "image": "images/men-dad-tshirt_aa0c3x",
+    "product": 13
+  }
+},
+{
+  "model": "images.image",
+  "pk": 14,
+  "fields": {
+    "title": "Men Gaming Slogan Tee Image",
+    "image": "images/men-gaming-tshirt_ckt1oh",
+    "product": 14
+  }
+},
+{
+  "model": "images.image",
+  "pk": 15,
+  "fields": {
+    "title": "Women Polka Dress Image",
+    "image": "images/women-polka-dress_net8mv",
+    "product": 15
+  }
+},
+{
+  "model": "images.image",
+  "pk": 16,
+  "fields": {
+    "title": "Women Jeans Image",
+    "image": "images/women-jeans_ia5d3o",
+    "product": 16
+  }
+},
+{
+  "model": "images.image",
+  "pk": 17,
+  "fields": {
+    "title": "Women Purple Tshirt Image",
+    "image": "images/women-ny-tshirt_ojnm59",
+    "product": 17
+  }
+},
+{
+  "model": "images.image",
+  "pk": 18,
+  "fields": {
+    "title": "Floral Dress Image",
+    "image": "images/floral-dress_nwi3to",
+    "product": 18
+  }
+},
+{
+  "model": "images.image",
+  "pk": 19,
+  "fields": {
+    "title": "Gingham Dress Image",
+    "image": "images/gingham-dress_zzu8xn",
+    "product": 19
+  }
+},
+{
+  "model": "images.image",
+  "pk": 20,
+  "fields": {
+    "title": "White Tweed Dress Image",
+    "image": "images/tweed-dress_dbwzsg",
+    "product": 20
+  }
+}
+]
