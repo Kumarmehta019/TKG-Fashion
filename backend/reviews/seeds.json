@@ -1,2 +1,24 @@
 [
+{
+  "model": "reviews.review",
+  "pk": 2,
+  "fields": {
+    "comment": "Love it!! So comfy!!",
+    "rating": 4,
+    "product": 1,
+    "owner": 2,
+    "posted_on": "2021-12-07"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 3,
+  "fields": {
+    "comment": "Love the colour, got it for my sister and now I want one too!!",
+    "rating": 4,
+    "product": 1,
+    "owner": 2,
+    "posted_on": "2021-12-06"
+  }
+}
 ]
