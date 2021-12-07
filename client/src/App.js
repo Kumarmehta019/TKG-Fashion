@@ -19,6 +19,7 @@ const App = () => {
           <Route exact path='/profile' element={<Profile />} />
           <Route exact path='/browse' element={<ProductIndex />} />
           <Route exact path='/:id' element={<ProductShow />} />
+          
         </Routes>
       </div>
       <Footer />
