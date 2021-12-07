@@ -151,5 +151,32 @@
     "image": "images/women-ny-tshirt_ojnm59",
     "product": 17
   }
+},
+{
+  "model": "images.image",
+  "pk": 18,
+  "fields": {
+    "title": "Floral Dress Image",
+    "image": "images/floral-dress_nwi3to",
+    "product": 18
+  }
+},
+{
+  "model": "images.image",
+  "pk": 19,
+  "fields": {
+    "title": "Gingham Dress Image",
+    "image": "images/gingham-dress_zzu8xn",
+    "product": 19
+  }
+},
+{
+  "model": "images.image",
+  "pk": 20,
+  "fields": {
+    "title": "White Tweed Dress Image",
+    "image": "images/tweed-dress_dbwzsg",
+    "product": 20
+  }
 }
 ]

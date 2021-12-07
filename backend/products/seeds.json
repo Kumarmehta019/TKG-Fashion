@@ -219,5 +219,44 @@
     "gender": "F",
     "colour": "Purple"
   }
+},
+{
+  "model": "products.product",
+  "pk": 18,
+  "fields": {
+    "name": "Floral Print Sleeve Dress",
+    "price": 8,
+    "size": "XL",
+    "stock": 20,
+    "category": "Dresses",
+    "gender": "F",
+    "colour": "Blue"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 19,
+  "fields": {
+    "name": "Gingham Cami Dress",
+    "price": 9,
+    "size": "XL",
+    "stock": 15,
+    "category": "Dresses",
+    "gender": "F",
+    "colour": "Blue"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 20,
+  "fields": {
+    "name": "Button Plaid Tweed Dress",
+    "price": 22,
+    "size": "M",
+    "stock": 31,
+    "category": "Dresses",
+    "gender": "F",
+    "colour": "White"
+  }
 }
 ]
