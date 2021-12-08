@@ -13,15 +13,12 @@ const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
-      <div className="site-wrapper">
-        <Routes>
-          <Route exact path='/' element={<Home />} />
-          <Route exact path='/profile' element={<Profile />} />
-          <Route exact path='/browse' element={<ProductIndex />} />
-          <Route exact path='/:id' element={<ProductShow />} />
-          
-        </Routes>
-      </div>
+      <Routes>
+        <Route exact path='/' element={<Home />} />
+        <Route exact path='/profile' element={<Profile />} />
+        <Route exact path='/browse' element={<ProductIndex />} />
+        <Route exact path='/:id' element={<ProductShow />} />
+      </Routes>
       <Footer />
     </BrowserRouter>
   )

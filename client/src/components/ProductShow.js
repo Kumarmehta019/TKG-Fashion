@@ -11,6 +11,7 @@ const ProductShow = () => {
   const [product, setProduct] = useState([])
   const [category, setCategory] = useState([])
   const [hasError, setHasError] = useState(false)
+  const [reviews, setReviews] = useState([])
   const { id } = useParams()
 
   useEffect(() => {
@@ -21,6 +22,7 @@ const ProductShow = () => {
         window.scrollTo(0, 0)
         setProduct(data)
         setCategory(product.category)
+        setReviews(data.reviews)
       } catch (err) {
         console.log(err)
         setHasError(true)
@@ -57,18 +59,19 @@ const ProductShow = () => {
       title: 'Reviews',
       content: {
         content: (
-          // {product.review_set.map(review => {
-          //   console.log(review.comment)
-          // })}
-          <Comment.Group>
+          <Comment.Group size='large'>
             <Comment>
-              <Comment.Content>
-                <Comment.Author as='a'>Matt</Comment.Author>
-                <Comment.Metadata>
-                  <div>Today at 5:42PM</div>
-                </Comment.Metadata>
-                {/* <Comment.Text>{product.review_set[0].comment}</Comment.Text> */}
-              </Comment.Content>
+              {reviews.map(review => {
+                return (
+                  <Comment.Content key={review.id}>
+                    <Comment.Author><Icon name='user circle'/>Author: {review.owner.username}</Comment.Author>
+                    <Comment.Metadata>
+                      <div><Icon name='calendar alternate'/>Posted on: {review.posted_on}</div>
+                    </Comment.Metadata>
+                    <Comment.Text>{review.comment}</Comment.Text>
+                  </Comment.Content>
+                )
+              })}
             </Comment>
           </Comment.Group>
         ),
