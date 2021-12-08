@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { Container, Image, Menu, Icon, Dropdown, Button } from 'semantic-ui-react'
-import { getPayload, getTokenFromLocalStorage } from './helpers/auth'
+import { Container, Image, Menu, Icon, Dropdown } from 'semantic-ui-react'
+import { getPayload } from './helpers/auth'
 import Register from './Register'
 import Login from './Login'
-import axios from 'axios'
 
 
 const Navbar = () => {
-  const [getUsername, setUsername] = useState([])
+  // const [getUsername, setUsername] = useState([])
   const navigate = useNavigate()
   const location = useLocation()
-  const token = getTokenFromLocalStorage()
+  // const token = getTokenFromLocalStorage()
 
   useEffect(() => {
 
@@ -29,23 +28,23 @@ const Navbar = () => {
     navigate('/')
   }
 
-  useEffect(() => {
-    const getData = async () => {
-      if (userIsAuthenticated()) {
-        try {
-          const { data } = await axios.get('/api/auth/login/', 
-            {
-              headers: { Authorization: `Bearer ${token}` },
-            })
-          console.log('DATA', data)
-          setUsername(data.username)
-        } catch (err) {
-          console.log(err)
-        }
-      }
-    }
-    getData()
-  }, [token])
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     if (userIsAuthenticated()) {
+  //       try {
+  //         const { data } = await axios.get('/api/auth/login/', 
+  //           {
+  //             headers: { Authorization: `Bearer ${token}` },
+  //           })
+  //         console.log('DATA', data)
+  //         setUsername(data.username)
+  //       } catch (err) {
+  //         console.log(err)
+  //       }
+  //     }
+  //   }
+  //   getData()
+  // }, [token])
 
 
   return (
@@ -81,7 +80,7 @@ const Navbar = () => {
               <Icon name='user' size='large' />
               <Dropdown floating closeOnChange inline direction='left'>
                 <Dropdown.Menu size='mini'>
-                  <Dropdown.Header>Signed in as: {getUsername} </Dropdown.Header>
+                  <Dropdown.Header>Signed in as: </Dropdown.Header>
                   <Dropdown.Item as='a' href='/profile' icon='log out' size='large' text='Log Out' onClick={handleLogout}/>
                 </Dropdown.Menu>
               </Dropdown>
