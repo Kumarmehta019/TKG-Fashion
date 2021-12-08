@@ -4,13 +4,15 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { Grid, Image, Divider, Header, Container, Comment, Segment, Button, Accordion, Icon, Form, Card } from 'semantic-ui-react'
 import { getUsernameFromLocalStorage, getPayload } from './helpers/auth'
+import SimilarProducts from './SimilarProducts'
 
 
 const ProductShow = () => {
 
   const [product, setProduct] = useState([])
-  const [reviews, setReviews] = useState([])
+  const [category, setCategory] = useState([])
   const [hasError, setHasError] = useState(false)
+  const [reviews, setReviews] = useState([])
   const { id } = useParams()
   const username = getUsernameFromLocalStorage()
 
@@ -19,7 +21,9 @@ const ProductShow = () => {
       try {
         const { data } = await axios.get(`api/products/${id}`)
         console.log(data)
+        window.scrollTo(0, 0)
         setProduct(data)
+        setCategory(product.category)
         setReviews(data.reviews)
       } catch (err) {
         console.log(err)
@@ -27,7 +31,8 @@ const ProductShow = () => {
       }
     }
     getData()
-  }, [id])
+  }, [id, product.category])
+
 
   const handleChange = (event) => {
     const newReviewData = { ...reviews, [event.target.name]: event.target.value }
@@ -107,41 +112,54 @@ const ProductShow = () => {
     }
   ]
 
+
+  // console.log(category)
+  // console.log(product.image_set[0].image)
+  // console.log(product.category)
+  // console.log(filteredProducts)
   return (
     <Container>
-      <Grid divided='vertically'>
-        <Grid.Row columns={2}>
-          <Grid.Column>
-            <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
-          </Grid.Column>
+      {product ?
+        <Container>
+          <Grid divided='vertically'>
+            <Grid.Row columns={2}>
+              <Grid.Column>
+                <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
+                {/* <Image size='large' src={product.image_set[0].image} /> */}
+              </Grid.Column>
 
-          <Grid.Column>
-            <section className='product-info-wrapper'>
-              <p className='product-name' textAlign='center'>{product.name}</p>
-              <Divider />
-              <p className='product-price'><Icon name='gbp' />{product.price}</p>
-              <Container>
-                <Button circular color={`${product.colour}`} disabled/>
-              </Container>
-              <br />
-              <div className='product-colour'>Colour: {product.colour}</div>
-              <div className='product-size'>Size: {product.size}</div>
-              <br />
-              <div>Sold by: </div>
-              <br />
-              <Button size='huge' color='teal'>Add to Bag</Button>
-              <br />
-              <br />
-              <Divider />
-              <Accordion defaultActiveIndex={0} panels={accordion}/>
-            </section>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
 
-      <Divider />
+              <Grid.Column>
+                <section className='product-info-wrapper'>
+                  <p className='product-name' textAlign='center'>{product.name}</p>
+                  <p className='product-price'><Icon name='gbp' />{product.price}</p>
+                  <Container>
+                    <Segment compact inverted color={product.colour} />
+                  </Container>
+                  <br />
+                  <div className='product-colour'>Colour: {product.colour}</div>
+                  <div className='product-size'>Size: {product.size}</div>
+                  <br />
+                  <Button size='huge' color='teal'>Add to Bag</Button>
+                  <br />
+                  <br />
+                  <Accordion defaultActiveIndex={0} panels={accordion} />
+                </section>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+
+          <Divider />
+
+          
+          <SimilarProducts category={ category } />
+        </Container>
+        :
+        <Header as='h3'>{hasError ? 'Sorry, something has gone wrong 🚨 ' : 'Loading product 👗 🩳 👚 '}</Header>
+      }
+
     </Container>
-  
+
   )
 }
 export default ProductShow
