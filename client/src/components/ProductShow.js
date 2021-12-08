@@ -10,8 +10,6 @@ const ProductShow = () => {
 
   const [product, setProduct] = useState([])
   const [reviews, setReviews] = useState([])
-  const [allProducts, setAllProducts] = useState([])
-  const [category, setCategory] = useState([])
   const [hasError, setHasError] = useState(false)
   const { id } = useParams()
   const username = getUsernameFromLocalStorage()
@@ -21,10 +19,8 @@ const ProductShow = () => {
       try {
         const { data } = await axios.get(`api/products/${id}`)
         console.log(data)
-        window.scrollTo(0, 0)
         setProduct(data)
         setReviews(data.reviews)
-        // setCategory(product.category)
       } catch (err) {
         console.log(err)
         setHasError(true)
@@ -33,30 +29,9 @@ const ProductShow = () => {
     getData()
   }, [id])
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const { data } = await axios.get('api/products')
-        console.log(data)
-        setAllProducts(data)
-      } catch (err) {
-        console.log(err)
-        setHasError(true)
-      }
-    }
-    getData()
-  }, [])
-
   const handleChange = (event) => {
     const newReviewData = { ...reviews, [event.target.name]: event.target.value }
     setReviews(newReviewData)
-  }
-
-  const filterByCategory = () => {
-
-    return allProducts.filter(product => {
-      return product.category === category
-    })
   }
 
   const userIsAuthenticated = () => {
@@ -140,7 +115,6 @@ const ProductShow = () => {
             <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
           </Grid.Column>
 
-
           <Grid.Column>
             <section className='product-info-wrapper'>
               <p className='product-name' textAlign='center'>{product.name}</p>
@@ -166,44 +140,8 @@ const ProductShow = () => {
       </Grid>
 
       <Divider />
-
-      <Header as='h3'>You may also like...</Header>
-      {filterByCategory().length ?
-        <Container>
-          <Grid>
-            <Grid.Row columns={4}>
-              {filterByCategory().map((product, index) => {
-                console.log(product)
-                console.log(product.name)
-                return (
-                  <>
-                    <Grid.Column>
-                      <Card key={index} as='a' href={`/${product.id}`}>
-                        <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
-                        <Card.Content>
-                          <Card.Header>{product.name}</Card.Header>
-                          <Card.Description>GBP £{product.price}</Card.Description>
-                        </Card.Content>
-                      </Card>
-                    </Grid.Column>
-                  </>
-                )
-              })}
-            </Grid.Row>
-          </Grid>
-        </Container>
-        :
-        <Header as='h3'>{hasError ? 'Looks like you&apos;ve grabbed the last gem! :gem: ' : 'Loading products... :dress: :shorts: :womans_clothes: '}</Header>
-      }
-
-      
     </Container>
   
-  
-
-  
-
-
   )
 }
 export default ProductShow

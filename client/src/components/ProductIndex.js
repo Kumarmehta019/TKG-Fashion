@@ -143,16 +143,13 @@ const ProductIndex = () => {
                 {filteredProducts.map(product => {
                   return (
                     <>
-                      {/* <Link to={`/${product.id}`}> */}
                       <Card key={product.name} as='a' href={`/${product.id}`}>
                         <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
                         <Card.Content>
                           <Card.Header>{product.name}</Card.Header>
                           <Card.Description>GBP £{product.price}</Card.Description>
                         </Card.Content>
-                        {/* <Card.Content extra>GBP £{product.price}</Card.Content> */}
                       </Card>
-                      {/* </Link> */}
                     </>
                   )
                 })}
