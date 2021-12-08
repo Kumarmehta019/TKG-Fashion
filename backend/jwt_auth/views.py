@@ -39,7 +39,7 @@ class LoginView(APIView):
         try:
             user_to_login = User.objects.get(email=email)
         except User.DoesNotExist:
-            raise PermissionDenied(detail='Invalid Credentials')
+            raise PermissionDenied(detail='Email is not registered.')
         if not user_to_login.check_password(password):
             raise PermissionDenied(detail='Invalid Credentials')
 
