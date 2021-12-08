@@ -70,7 +70,7 @@ const Categories = () => {
         <Button.Content hidden><Icon name='angle double right' /> Trousers</Button.Content>
       </Button>
       <div>
-        <Link to="/browse?value=t-shirts">T Shirts</Link>
+        <Link to="/browse?value=T-Shirts">T Shirts</Link>
       </div>
     </Segment>
 

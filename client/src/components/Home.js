@@ -2,7 +2,8 @@ import React from 'react'
 import { Container } from 'semantic-ui-react'
 import Categories from './Categories'
 import HeroCarousel from './HeroCarousel'
-import Advertisement from './Advertisement'
+import Ads from './Ads'
+
 
 const Home = () => {
   return (
@@ -11,7 +12,7 @@ const Home = () => {
         <HeroCarousel />
       </Container>
       <Container>
-        <Advertisement />
+        <Ads />
       </Container>
       <Container style={{ background: 'black' }}>
         <Categories />

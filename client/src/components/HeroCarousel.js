@@ -34,30 +34,29 @@ const HeroCarousel = () => {
 
   return (
 
-
-    <CarouselProvider
-      naturalSlideWidth={100}
-      naturalSlideHeight={125}
-      totalSlides={images.length}
-      interval={5000}
-      isPlaying={true}
-      playDirection='forward'
-      orientation='horizontal'
-      visibleSlides={3}
-      infinite={true}
-    >
-      <Slider>
-        {images.map((image, index) => {
-          return (
-            <Slide key={index} index={index}>
-              <Image src={image}></Image>
-            </Slide>
-          )
-        })}
-      </Slider>
-    </CarouselProvider>
-
-
+    <>
+      <CarouselProvider
+        naturalSlideWidth={100}
+        naturalSlideHeight={125}
+        totalSlides={images.length}
+        interval={5000}
+        isPlaying={true}
+        playDirection='forward'
+        orientation='horizontal'
+        visibleSlides={3}
+        infinite={true}
+      >
+        <Slider>
+          {images.map((image, index) => {
+            return (
+              <Slide key={index} index={index}>
+                <Image src={image}></Image>
+              </Slide>
+            )
+          })}
+        </Slider>
+      </CarouselProvider>
+    </>
   )
 }
 
