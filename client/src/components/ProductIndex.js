@@ -50,7 +50,7 @@ const ProductIndex = () => {
 
     const getData = async () => {
       const { data } = await axios.get('api/products')
-      if (value){ 
+      if (value) {
         setCategoryValue(value)
       }
       setProducts(data)
@@ -72,77 +72,77 @@ const ProductIndex = () => {
   })
 
   return (
-    <>
-      <Container style={{ marginBottom: '10px' }}>
-        <Header as="h1">Browse our products</Header>
 
-        <Grid columns="two">
-          <Grid.Row>
-            <Grid.Column width={3} textAlign="left">
-              <Container>
-                <Grid.Column>
-                  <Header
-                    as="h2"
-                    content="Filters"
-                    icon="filter"
-                    size="medium"
-                  />
-                </Grid.Column>
-              </Container>
+    <Container style={{ marginBottom: '10px' }} id='productindex-container'>
+      <Header as="h1">Browse our products</Header>
 
-              <Container>
-                <Menu style={{ margin: '10px' }} compact>
-                  <Dropdown
-                    placeholder="By Category"
-                    value={categoryValue}
-                    options={categoryOptions}
-                    onChange={(_e, data) => setCategoryValue(data.value)}
-                    clearable
-                    item
-                  />
-                </Menu>
-                <Menu style={{ margin: '10px' }} compact>
-                  <Dropdown
-                    placeholder="By Gender"
-                    options={genderOptions}
-                    onChange={(_e, data) => setGenderValue(data.value)}
-                    clearable
-                    item
-                  />
-                </Menu>
-                <Menu style={{ margin: '10px' }} compact>
-                  <Dropdown
-                    placeholder="By Price"
-                    options={priceOptions}
-                    onChange={(_e, data) => setPriceValue(data.value)}
-                    clearable
-                    item
-                  />
-                </Menu>
-              </Container>
-            </Grid.Column>
+      <Grid columns="two">
+        <Grid.Row>
+          <Grid.Column width={3} textAlign="left">
+            <Container>
+              <Grid.Column>
+                <Header
+                  as="h2"
+                  content="Filters"
+                  icon="filter"
+                  size="medium"
+                />
+              </Grid.Column>
+            </Container>
 
-            <Grid.Column width={13}>
-              <Card.Group itemsPerRow={3}>
-                {filteredProducts.map(product => {
-                  return (
-                    <>
-                      <Card key={product.name} as='a' href={`/${product.id}`}>
-                        <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
-                        <Card.Content>
-                          <Card.Header>{product.name}</Card.Header>
-                          <Card.Description>GBP £{product.price}</Card.Description>
-                        </Card.Content>
-                      </Card>
-                    </>
-                  )
-                })}
-              </Card.Group>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Container>
-    </>
+            <Container>
+              <Menu style={{ margin: '10px' }} compact>
+                <Dropdown
+                  placeholder="By Category"
+                  value={categoryValue}
+                  options={categoryOptions}
+                  onChange={(_e, data) => setCategoryValue(data.value)}
+                  clearable
+                  item
+                />
+              </Menu>
+              <Menu style={{ margin: '10px' }} compact>
+                <Dropdown
+                  placeholder="By Gender"
+                  options={genderOptions}
+                  onChange={(_e, data) => setGenderValue(data.value)}
+                  clearable
+                  item
+                />
+              </Menu>
+              <Menu style={{ margin: '10px' }} compact>
+                <Dropdown
+                  placeholder="By Price"
+                  options={priceOptions}
+                  onChange={(_e, data) => setPriceValue(data.value)}
+                  clearable
+                  item
+                />
+              </Menu>
+            </Container>
+          </Grid.Column>
+
+          <Grid.Column width={13}>
+            <Card.Group itemsPerRow={3}>
+              {filteredProducts.map(product => {
+                return (
+                  <>
+                    <Card key={product.name} as='a' href={`/${product.id}`}>
+                      <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
+                      <Card.Content>
+                        <Card.Header>{product.name}</Card.Header>
+                        <Card.Description>GBP £{product.price}</Card.Description>
+                      </Card.Content>
+                    </Card>
+                  </>
+                )
+              })}
+            </Card.Group>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    </Container>
+
   )
 }
 
