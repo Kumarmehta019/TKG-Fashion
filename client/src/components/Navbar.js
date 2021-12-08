@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { Container, Image, Menu, Icon, Dropdown, Modal, Header, Button } from 'semantic-ui-react'
-import { getPayload, getUsernameFromLocalStorage } from './helpers/auth'
+import { Container, Image, Menu, Icon, Dropdown, Button } from 'semantic-ui-react'
+import { getPayload, getTokenFromLocalStorage } from './helpers/auth'
 import Register from './Register'
 import Login from './Login'
+import axios from 'axios'
 
 
 const Navbar = () => {
-  const [open, setOpen] = useState([])
+  const [getUsername, setUsername] = useState([])
   const navigate = useNavigate()
   const location = useLocation()
+  const token = getTokenFromLocalStorage()
 
   useEffect(() => {
 
@@ -27,7 +29,23 @@ const Navbar = () => {
     navigate('/')
   }
 
-  const username = getUsernameFromLocalStorage()
+  useEffect(() => {
+    const getData = async () => {
+      if (userIsAuthenticated()) {
+        try {
+          const { data } = await axios.get('/api/auth/login/', 
+            {
+              headers: { Authorization: `Bearer ${token}` },
+            })
+          console.log('DATA', data)
+          setUsername(data.username)
+        } catch (err) {
+          console.log(err)
+        }
+      }
+    }
+    getData()
+  }, [token])
 
 
   return (
@@ -37,47 +55,34 @@ const Navbar = () => {
           <Image style={{ marginRight: '10px' }} size='tiny' src='https://i.imgur.com/uOjwmDf.png' circular />
           <h3 style={{ marginTop: 'unset', color: 'white' }}>TKG Fashion</h3>
         </Menu.Item>
-        <Menu.Item as='a' href=''><Icon name='search' size='large' />Browse</Menu.Item>
+        <Menu.Item as='a' href='/browse'>
+          <Icon name='search' size='large' />
+          Browse
+        </Menu.Item>
         
         {!userIsAuthenticated() ?
           <>
-            <Menu.Item position='right' as='a'><Icon name='signup' size='large' /><Register /></Menu.Item>
-            <Menu.Item as='a'><Icon name='user circle' size='large' /><Login /></Menu.Item>
-            <Menu.Item as='a'><Icon name='shopping bag' size='large' />Bag</Menu.Item>
+            <Menu.Item as='a' position='right' fitted='horizontally'>
+              <Icon name='signup' size='large'/>
+              <Register />
+            </Menu.Item>
+            <Menu.Item as='a'>
+              <Icon name='user circle' size='large' fitted='horizontally'/>
+              <Login />
+            </Menu.Item>
           </>
           :
           <>
-            <Menu.Item as='a' href=''><Icon name='shopping bag' size='large' />Bag</Menu.Item>
-            <Menu.Item><Icon name='user secret' size='large' />
+            <Menu.Item as='a' href=''>
+              <Icon name='shopping bag' size='large' />
+              Bag
+            </Menu.Item>
+            <Menu.Item>
+              <Icon name='user' size='large' />
               <Dropdown floating closeOnChange inline direction='left'>
                 <Dropdown.Menu size='mini'>
-                  <Dropdown.Header>Signed In / Register </Dropdown.Header>
-                  <Dropdown.Item as='a' href='/profile' icon='user circle' size='large' text={username} />
-                  <Modal
-                    basic
-                    onClose={() => setOpen(false)}
-                    onOpen={() => setOpen(true)}
-                    open={open}
-                    size='small'
-                    trigger={<Dropdown.Item as='a' onClick={handleLogout} icon='log out' text='Log Out' />}
-                    centered={true}
-                  >
-                    <Header icon>
-                      <Icon name='frown outline' />
-                      Logging Out?
-                    </Header>
-                    <Modal.Content>
-                      <p> Are you sure you want to log out, you will be missed?</p>
-                    </Modal.Content>
-                    <Modal.Actions>
-                      <Button basic color='red' onClick={() => setOpen(false)}>
-                        <Icon name='remove' /> No
-                      </Button>
-                      <Button basic color='green' onClick={() => setOpen(false)}>
-                        <Icon name='checkmark' /> Yes
-                      </Button>
-                    </Modal.Actions>
-                  </Modal>
+                  <Dropdown.Header>Signed in as: {getUsername} </Dropdown.Header>
+                  <Dropdown.Item as='a' href='/profile' icon='log out' size='large' text='Log Out' onClick={handleLogout}/>
                 </Dropdown.Menu>
               </Dropdown>
             </Menu.Item>
