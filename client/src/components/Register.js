@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
-import { Modal, Button, Form, Header } from 'semantic-ui-react'
+import { Modal, Button, Form, Header, Message } from 'semantic-ui-react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import Login from './Login'
 
 
 const Register = () => {
-  const navigate = useNavigate()
+  const [displayMessage, setMessage] = useState(false)
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -39,10 +39,12 @@ const Register = () => {
     console.log('Form Data ->', formData)
     try {
       await axios.post('api/auth/register/', formData)
-      navigate('api/auth/login/')
+      setOpen(false)
+      setMessage(true)
     } catch (err) {
       console.log(err)
       setErrors(err.response.data.errors)
+      setMessage(false)
     }
   }
 
@@ -55,6 +57,7 @@ const Register = () => {
         onOpen={() => setOpen(true)}
         open={open}
         trigger={<p>Register</p>}
+        success
       >
         <Header>Register</Header>
         <Modal.Content>
@@ -71,12 +74,12 @@ const Register = () => {
 
           <Form.Field onChange={handleChange} value={formData.password}>
             <label>Password</label>
-            <input name='password' />
+            <input name='password' type='password' />
           </Form.Field>
 
           <Form.Field onChange={handleChange} value={formData.password_confirmation}>
             <label>Password Confirmation</label>
-            <input name='password_confirmation' />
+            <input name='password_confirmation' type='password' />
           </Form.Field>
 
           <Form.Group widths={2}>
@@ -90,12 +93,28 @@ const Register = () => {
               <input name='lastName' placeholder='e.g. Smith' />
             </Form.Field>
           </Form.Group>
-
+          {displayMessage ? (
+            <>
+              <Message
+                success
+                header='Your user registration was successful'
+                content='You may now log-in with the username you have chosen'
+              />
+            </>
+          ) : (errors && <Message 
+            error
+            header='Action Forbidden'
+            content='Please check all fields have been entered correctly.'
+          />)
+          }
+          
         </Modal.Content>
+        
         <Modal.Actions>
-          <Button type="submit" color="red" icon="times" content="Close" />
-          <Button type="submit" color="green" icon="save" content="Register" />
+          <Button type="submit" color="red" icon="times" content="Close" onClick={() => setOpen(false)}/>
+          <Button type="submit" color="green" icon="save" content="Register" ></Button>
         </Modal.Actions>
+        
       </Modal>
 
     </div>

@@ -58,7 +58,7 @@ const Login = () => {
 
           <Form.Field onChange={handleChange} value={formData.password}>
             <label>Password</label>
-            <input name='password' />
+            <input name='password' type='password' />
           </Form.Field>
 
         </Modal.Content>

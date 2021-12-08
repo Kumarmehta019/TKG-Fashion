@@ -81,7 +81,7 @@ const Navbar = () => {
               <Dropdown floating closeOnChange inline direction='left'>
                 <Dropdown.Menu size='mini'>
                   <Dropdown.Header>Signed in as: </Dropdown.Header>
-                  <Dropdown.Item as='a' href='/profile' icon='log out' size='large' text='Log Out' onClick={handleLogout}/>
+                  <Dropdown.Item as='a' icon='log out' size='large' text='Log Out' onClick={handleLogout}/>
                 </Dropdown.Menu>
               </Dropdown>
             </Menu.Item>
