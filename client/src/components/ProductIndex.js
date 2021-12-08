@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Card, Container, Dropdown, Grid, Header, Menu, Image } from 'semantic-ui-react'

@@ -1,0 +1,40 @@
+[
+{
+  "model": "jwt_auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$yjICQA61EeL0ifhZhkqtwV$PE/jjFH6Oz45wqq/+W/0CFqv/9rr3uCXGWznULRW+M8=",
+    "last_login": "2021-12-07T15:16:10.927Z",
+    "is_superuser": true,
+    "username": "admin",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-12-07T09:38:27.754Z",
+    "email": "admin@mail.com",
+    "first_name": "",
+    "last_name": "",
+    "address": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "jwt_auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pass234",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "gayatri",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-12-07T15:16:50Z",
+    "email": "gayatri@email.com",
+    "first_name": "Gayatri",
+    "last_name": "Rajgor",
+    "address": "London",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

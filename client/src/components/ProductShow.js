@@ -8,6 +8,7 @@ import { Grid, Image, Divider, Header, Container, Comment, Segment, Button, Acco
 const ProductShow = () => {
 
   const [product, setProduct] = useState([])
+  const [reviews, setReviews] = useState([])
   const { id } = useParams()
 
   useEffect(() => {
@@ -16,6 +17,7 @@ const ProductShow = () => {
         const { data } = await axios.get(`api/products/${id}`)
         console.log(data)
         setProduct(data)
+        setReviews(data.reviews)
       } catch (err) {
         console.log(err)
       }
@@ -50,18 +52,19 @@ const ProductShow = () => {
       title: 'Reviews',
       content: {
         content: (
-        // {product.review_set.map(review => {
-        //   console.log(review.comment)
-        // })}
-          <Comment.Group>
+          <Comment.Group size='large'>
             <Comment>
-              <Comment.Content>
-                <Comment.Author as='a'>Matt</Comment.Author>
-                <Comment.Metadata>
-                  <div>Today at 5:42PM</div>
-                </Comment.Metadata>
-                {/* <Comment.Text>{product.review_set[0].comment}</Comment.Text> */}
-              </Comment.Content>
+              {reviews.map(review => {
+                return (
+                  <Comment.Content key={review.id}>
+                    <Comment.Author><Icon name='user circle'/>Author: {review.owner.username}</Comment.Author>
+                    <Comment.Metadata>
+                      <div><Icon name='calendar alternate'/>Posted on: {review.posted_on}</div>
+                    </Comment.Metadata>
+                    <Comment.Text>{review.comment}</Comment.Text>
+                  </Comment.Content>
+                )
+              })}
             </Comment>
           </Comment.Group>
         ),
@@ -69,15 +72,12 @@ const ProductShow = () => {
     }
   ]
 
-
-
-  // console.log(product.image_set[0].image)
   return (
     <Container>
       <Grid divided='vertically'>
         <Grid.Row columns={2}>
           <Grid.Column>
-            {/* <Image src={product.image_set !== undefined ? product.image_set[0].image : null} /> */}
+            <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
             {/* <Image size='large' src={product.image_set[0].image} /> */}
           </Grid.Column>
 
@@ -96,7 +96,7 @@ const ProductShow = () => {
               <Button size='huge' color='teal'>Add to Bag</Button>
               <br />
               <br />
-              <Accordion defaultActiveIndex={0} panels={accordion} />
+              <Accordion defaultActiveIndex={0} panels={accordion}/>
             </section>
           </Grid.Column>
         </Grid.Row>

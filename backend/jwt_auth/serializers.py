@@ -33,3 +33,10 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('username', 'email', 'password', 'password_confirmation',)
+
+
+class PopulatedUserSerializer(UserSerializer):
+  class Meta:
+    model = User
+    fields = ('username',)
+    
