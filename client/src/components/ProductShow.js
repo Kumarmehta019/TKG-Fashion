@@ -2,14 +2,17 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import { Grid, Image, Divider, Header, Container, Comment, Segment, Button, Accordion, Icon, Form } from 'semantic-ui-react'
-import { getUsernameFromLocalStorage } from './helpers/auth'
+import { Grid, Image, Divider, Header, Container, Comment, Segment, Button, Accordion, Icon, Form, Card } from 'semantic-ui-react'
+import { getUsernameFromLocalStorage, getPayload } from './helpers/auth'
 
 
 const ProductShow = () => {
 
   const [product, setProduct] = useState([])
   const [reviews, setReviews] = useState([])
+  const [allProducts, setAllProducts] = useState([])
+  const [category, setCategory] = useState([])
+  const [hasError, setHasError] = useState(false)
   const { id } = useParams()
   const username = getUsernameFromLocalStorage()
 
@@ -18,18 +21,49 @@ const ProductShow = () => {
       try {
         const { data } = await axios.get(`api/products/${id}`)
         console.log(data)
+        window.scrollTo(0, 0)
         setProduct(data)
         setReviews(data.reviews)
+        // setCategory(product.category)
       } catch (err) {
         console.log(err)
+        setHasError(true)
       }
     }
     getData()
   }, [id])
 
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const { data } = await axios.get('api/products')
+        console.log(data)
+        setAllProducts(data)
+      } catch (err) {
+        console.log(err)
+        setHasError(true)
+      }
+    }
+    getData()
+  }, [])
+
   const handleChange = (event) => {
     const newReviewData = { ...reviews, [event.target.name]: event.target.value }
     setReviews(newReviewData)
+  }
+
+  const filterByCategory = () => {
+
+    return allProducts.filter(product => {
+      return product.category === category
+    })
+  }
+
+  const userIsAuthenticated = () => {
+    const payload = getPayload()
+    if (!payload) return false
+    const now = Math.round(Date.now() / 1000)
+    return now < payload.exp
   }
 
 
@@ -59,37 +93,39 @@ const ProductShow = () => {
       title: 'Reviews',
       content: {
         content: (
-          //Add if user is not authenitcated here
+          
           <Comment.Group size='large'>
-            <Comment>
-              {reviews.map(review => {
-                return (
-                  <Comment.Content key={review.id}>
-                    <Comment.Author><Icon name='user circle'/>Author: {review.owner.username}</Comment.Author>
-                    <Comment.Metadata>
-                      <div><Icon name='calendar alternate'/>Posted on: {review.posted_on}</div>
+            {!userIsAuthenticated() ?
+              <Comment>
+                {reviews.map(review => {
+                  return (
+                    <Comment.Content key={review.id}>
+                      <Comment.Author><Icon name='user circle'/>Author: {review.owner.username}</Comment.Author>
+                      <Comment.Metadata>
+                        <div><Icon name='calendar alternate'/>Posted on: {review.posted_on}</div>
+                        <Divider />
+                        <div><Icon name='star'/>Rating: {review.rating}/5</div>
+                      </Comment.Metadata>
+                      <Comment.Text>{review.comment}</Comment.Text>
                       <Divider />
-                      <div><Icon name='star'/>Rating: {review.rating}/5</div>
-                    </Comment.Metadata>
-                    <Comment.Text>{review.comment}</Comment.Text>
-                    <Divider />
-                  </Comment.Content>
-                )
-              })}
-            </Comment>
-            
-            <Segment>
-              <Form reply>
-                <Form.Field onChange={handleChange}>
-                  <label>Username: {username}</label>
-                  <label>Rating out of 5:</label>
-                  <input type='number' min={1} max={5} value={reviews.rating}/>
-                </Form.Field>
-                <Form.TextArea value={reviews.comment} onChange={handleChange}/>
-                <Button content='Add a Comment' icon='comment alternate outline' labelPosition='left' color='teal'></Button>
-              </Form>
-            </Segment>
+                    </Comment.Content>
+                  )
+                })}
+              </Comment>
+              :
+              <Segment>
+                <Form reply>
+                  <Form.Field onChange={handleChange}>
+                    <label>Username: {username}</label>
+                    <label>Rating out of 5:</label>
+                    <input type='number' min={1} max={5} value={reviews.rating}/>
+                  </Form.Field>
+                  <Form.TextArea value={reviews.comment} onChange={handleChange}/>
+                  <Button content='Add a Comment' icon='comment alternate outline' labelPosition='left' color='teal'></Button>
+                </Form>
+              </Segment>
 
+            }
           </Comment.Group>
         ),
       },
@@ -102,7 +138,6 @@ const ProductShow = () => {
         <Grid.Row columns={2}>
           <Grid.Column>
             <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
-            {/* <Image size='large' src={product.image_set[0].image} /> */}
           </Grid.Column>
 
 
@@ -132,23 +167,35 @@ const ProductShow = () => {
 
       <Divider />
 
-      <p>You may also like...</p>
-      <Grid>
-        <Grid.Row columns={4}>
-          <Grid.Column>
-            <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-          </Grid.Column>
-          <Grid.Column>
-            <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-          </Grid.Column>
-          <Grid.Column>
-            <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-          </Grid.Column>
-          <Grid.Column>
-            <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+      <Header as='h3'>You may also like...</Header>
+      {filterByCategory().length ?
+        <Container>
+          <Grid>
+            <Grid.Row columns={4}>
+              {filterByCategory().map((product, index) => {
+                console.log(product)
+                console.log(product.name)
+                return (
+                  <>
+                    <Grid.Column>
+                      <Card key={index} as='a' href={`/${product.id}`}>
+                        <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
+                        <Card.Content>
+                          <Card.Header>{product.name}</Card.Header>
+                          <Card.Description>GBP £{product.price}</Card.Description>
+                        </Card.Content>
+                      </Card>
+                    </Grid.Column>
+                  </>
+                )
+              })}
+            </Grid.Row>
+          </Grid>
+        </Container>
+        :
+        <Header as='h3'>{hasError ? 'Looks like you&apos;ve grabbed the last gem! :gem: ' : 'Loading products... :dress: :shorts: :womans_clothes: '}</Header>
+      }
+
       
     </Container>
   
