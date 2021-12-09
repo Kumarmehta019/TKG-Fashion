@@ -1,10 +1,10 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import { Grid, Image, Divider, Header, Container, Comment, Segment, Button, Accordion, Icon, Form, Card } from 'semantic-ui-react'
+import { Grid, Image, Divider, Header, Container, Comment, Segment, Button, Accordion, Icon } from 'semantic-ui-react'
 import { getPayload, getTokenFromLocalStorage } from './helpers/auth'
 import SimilarProducts from './SimilarProducts'
+import ReviewForm from './ReviewForm'
 import Sellers from './Sellers'
 import 'animate.css'
 
@@ -20,7 +20,6 @@ const ProductShow = () => {
   const token = getTokenFromLocalStorage()
 
   const getUsername = reviews.map(review => {
-    console.log('ID -->', review.owner.id)
     return (
       review.owner.id
     )
@@ -33,19 +32,11 @@ const ProductShow = () => {
     return currentUserId === payload.sub 
   }
   
-  const [reviewForm, setFormData] = useState({
-    product: id,
-    comment: '',
-    rating: '',
-    owner_id: userIsOwner(getUsername[0]),
-  })
-
   const [bagItems, setBagItems] = useState({
     product: id,
     customer: userIsOwner(getUsername[0]),
   })
   
-
   useEffect(() => {
     const getData = async () => {
       try {
@@ -63,12 +54,6 @@ const ProductShow = () => {
     getData()
   }, [id, product.category])
 
-
-  const handleChange = (event) => {
-    const newReviewData = { ...reviewForm, [event.target.name]: event.target.value }
-    setFormData(newReviewData)
-  }
-
   const handleBagSubmit = async event => {
     event.preventDefault()
     try {
@@ -84,22 +69,6 @@ const ProductShow = () => {
     }
   }
 
-  const handleSubmit = async event => {
-    event.preventDefault()
-    console.log('review ->', reviewForm)
-    try {
-      await axios.post('/api/reviews/', reviewForm, 
-        {
-          
-          headers: { Authorization: `Bearer ${token}` } ,
-        }
-      )
-      window.location.reload()
-    } catch (err) {
-      setHasError(true)
-    }
-  }
-
   const userIsAuthenticated = () => {
     const payload = getPayload()
     if (!payload) return false
@@ -107,7 +76,6 @@ const ProductShow = () => {
     return now < payload.exp
   }
 
-  
   const accordion = [
     {
       key: 'details-and-care',
@@ -120,7 +88,6 @@ const ProductShow = () => {
           <p className='accordion-text'>All clothes are made from 100% recyclable material. Wash at no higher than 30 degrees and do not tumbledry.</p>
         ),
       },
-      
     },
     {
       key: 'delivery-collections-and-returns',
@@ -185,25 +152,10 @@ const ProductShow = () => {
                 </Comment>
                 
                 <Segment>
-                  <Form reply onSubmit={handleSubmit}>
-                    <Form.Field onChange={handleChange}>
-                      <Header as='h4'>Add your review</Header>
-                      <input 
-                        type='number' 
-                        min={1} 
-                        max={5} 
-                        value={reviewForm.rating} 
-                        name='rating' 
-                        placeholder='Rating out of 5'
-                      />
-                    </Form.Field>
-                    <Form.TextArea 
-                      value={reviewForm.comment} 
-                      onChange={handleChange} 
-                      name='comment'
-                    />
-                    <Button content='Add a Comment' type='submit' icon='comment alternate outline' labelPosition='left' color='teal'></Button>
-                  </Form>
+                  <ReviewForm 
+                    userIsOwner = {userIsOwner}
+                    getUsername = {getUsername}
+                  />
                 </Segment>
               </>
             } 
@@ -213,7 +165,7 @@ const ProductShow = () => {
     }
   ]
 
-  console.log('BAG', bagItems)
+
   return (
     <Container style={{ marginBottom: '15px' }}>
       {product ?
