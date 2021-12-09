@@ -33,7 +33,7 @@ const Categories = () => {
 
   return (
 
-    <Segment inverted style={{ background: 'black', textAlign: 'center' }} id='categories-segment'>
+    <Segment inverted color='black' style={{ textAlign: 'center', marginTop: '15px' }}>
       <Button animated inverted color='red' size='big' value='T-Shirts' onClick={handleTS}>
         <Button.Content visible>T-Shirts</Button.Content>
         <Button.Content hidden><Icon name='angle double right' /> T-Shirts</Button.Content>

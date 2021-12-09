@@ -3,19 +3,23 @@ import { Container } from 'semantic-ui-react'
 import Categories from './Categories'
 import HeroCarousel from './HeroCarousel'
 import Ads from './Ads'
+import RandomCards from './RandomCards'
 
 
 const Home = () => {
   return (
     <div id='home-section'>
-      <Container style={{ background: 'black' }}>
+      <Container>
         <HeroCarousel />
       </Container>
       <Container>
         <Ads />
       </Container>
-      <Container style={{ background: 'black' }}>
+      <Container>
         <Categories />
+      </Container>
+      <Container>
+        <RandomCards />
       </Container>
     </div>
   )
