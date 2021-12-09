@@ -7,10 +7,9 @@ import Login from './Login'
 
 
 const Navbar = () => {
-  // const [getUsername, setUsername] = useState([])
   const navigate = useNavigate()
   const location = useLocation()
-  // const token = getTokenFromLocalStorage()
+  const payload = getPayload()
 
   useEffect(() => {
 
@@ -28,24 +27,7 @@ const Navbar = () => {
     navigate('/')
   }
 
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     if (userIsAuthenticated()) {
-  //       try {
-  //         const { data } = await axios.get('/api/auth/login/', 
-  //           {
-  //             headers: { Authorization: `Bearer ${token}` },
-  //           })
-  //         console.log('DATA', data)
-  //         setUsername(data.username)
-  //       } catch (err) {
-  //         console.log(err)
-  //       }
-  //     }
-  //   }
-  //   getData()
-  // }, [token])
-
+  console.log('PAYLOAD', payload)
 
   return (
     <Menu style={{ padding: '0px 50px' }} color='teal' secondary inverted size='large' id='nav'>
@@ -80,7 +62,7 @@ const Navbar = () => {
               <Icon name='user' size='large' />
               <Dropdown floating closeOnChange inline direction='left'>
                 <Dropdown.Menu size='mini'>
-                  <Dropdown.Header>Signed in as: </Dropdown.Header>
+                  <Dropdown.Header>Signed in as: {payload.username} </Dropdown.Header>
                   <Dropdown.Item as='a' icon='log out' size='large' text='Log Out' onClick={handleLogout}/>
                 </Dropdown.Menu>
               </Dropdown>

@@ -3,9 +3,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { Grid, Image, Divider, Header, Container, Comment, Segment, Button, Accordion, Icon, Form, Card } from 'semantic-ui-react'
-import { getUsernameFromLocalStorage, getPayload, getTokenFromLocalStorage } from './helpers/auth'
+import { getPayload, getTokenFromLocalStorage } from './helpers/auth'
 import SimilarProducts from './SimilarProducts'
-
 
 const ProductShow = () => {
 
@@ -14,21 +13,27 @@ const ProductShow = () => {
   const [hasError, setHasError] = useState(false)
   const [reviews, setReviews] = useState([])
   const { id } = useParams()
-  const username = getUsernameFromLocalStorage()
   const token = getTokenFromLocalStorage()
+
   const getUsername = reviews.map(review => {
+    console.log('ID -->', review.owner.id)
     return (
       review.owner.id
     )
   })
+
+  const userIsOwner = (currentUserId) => {
+    const payload = getPayload()
+    if (!payload) return false
+    console.log('CURRENT', currentUserId)
+    return currentUserId === payload.sub 
+  }
   const [reviewForm, setFormData] = useState({
     product: id,
     comment: '',
     rating: '',
-    owner_id: getUsername,
+    owner_id: userIsOwner(getUsername[0]),
   })
-  
-
   
 
   useEffect(() => {
@@ -55,15 +60,12 @@ const ProductShow = () => {
 
   const handleSubmit = async event => {
     event.preventDefault()
+    console.log('review ->', reviewForm)
     try {
       await axios.post('/api/reviews/', reviewForm, 
         {
-          'owner_id': getUsername,
-        },
-        {
           
           headers: { Authorization: `Bearer ${token}` } ,
-          // data: { product: 'product.id' } ,
         }
       )
       window.location.reload()
@@ -78,7 +80,6 @@ const ProductShow = () => {
     const now = Math.round(Date.now() / 1000)
     return now < payload.exp
   }
-
 
   const accordion = [
     {
@@ -108,7 +109,7 @@ const ProductShow = () => {
         content: (
           
           <Comment.Group size='large'>
-            {!userIsAuthenticated() ?
+            {!userIsAuthenticated()  ?
               <Comment>
                 {reviews.map(review => {
                   return (
@@ -143,15 +144,11 @@ const ProductShow = () => {
                     )
                   })}
                 </Comment>
+                
                 <Segment>
                   <Form reply onSubmit={handleSubmit}>
                     <Form.Field onChange={handleChange}>
-                      <label>Username: {username}</label>
-                      {/* <label
-                        onChange={handleChange}
-                        name='product'
-                        value={reviewForm.product}
-                      >{product.id}</label> */}
+                      <label>Username: </label>
                       <label>Rating out of 5:</label>
                       <input 
                         type='number' 
@@ -171,14 +168,12 @@ const ProductShow = () => {
                   </Form>
                 </Segment>
               </>
-            }
+            } 
           </Comment.Group>
         ),
       },
     }
   ]
-
-  // console.log(getUsername)
 
   return (
     <Container>
@@ -190,19 +185,23 @@ const ProductShow = () => {
                 <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
               </Grid.Column>
 
-
               <Grid.Column>
                 <section className='product-info-wrapper'>
                   <p className='product-name' textAlign='center'>{product.name}</p>
                   <p className='product-price'><Icon name='gbp' />{product.price}</p>
                   <Container>
-                    <Segment compact inverted color={product.colour} />
+                    <Segment compact color={product.colour} />
                   </Container>
                   <br />
                   <div className='product-colour'>Colour: {product.colour}</div>
                   <div className='product-size'>Size: {product.size}</div>
                   <br />
-                  <Button size='huge' color='teal'>Add to Bag</Button>
+                  <Button animated size='huge' color='teal'>
+                    <Button.Content visible>Add to Bag</Button.Content>
+                    <Button.Content hidden>
+                      <Icon name='cart' />
+                    </Button.Content>
+                  </Button>
                   <br />
                   <br />
                   <Accordion defaultActiveIndex={0} panels={accordion} />
@@ -213,7 +212,6 @@ const ProductShow = () => {
 
           <Divider />
 
-          
           <SimilarProducts category={ category } />
         </Container>
         :
