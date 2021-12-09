@@ -11,7 +11,7 @@ const HeroCarousel = () => {
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get('http://localhost:8000/api/products/')
-      console.log(data)
+      // console.log(data)
       setProducts(data)
     }
     getData()
@@ -22,12 +22,12 @@ const HeroCarousel = () => {
   const product = products.map(product => {
     return product
   })
-  console.log('PRODUCT ARRAY->', product)
+  // console.log('PRODUCT ARRAY->', product)
 
   const images = product.map(image => {
     return image.image_set[0].image
   })
-  console.log('IMAGES ARRAY->', images)
+  // console.log('IMAGES ARRAY->', images)
 
 
 

@@ -14,6 +14,7 @@ const ProductShow = () => {
   const [hasError, setHasError] = useState(false)
   const [reviews, setReviews] = useState([])
   const [productID, setProductID] = useState([])
+  const [toggled, setToggle] = useState(false)
   const { id } = useParams()
   const token = getTokenFromLocalStorage()
 
@@ -76,6 +77,7 @@ const ProductShow = () => {
         {
           headers: { Authorization: `Bearer ${token}` } ,
         })
+      setToggle(true)
     } catch (err) {
       setHasError(true)
     }
@@ -204,43 +206,51 @@ const ProductShow = () => {
   return (
     <Container style={{ marginBottom: '15px' }}>
       {product ?
-        <Container>
-          <Grid divided='vertically'>
-            <Grid.Row columns={2}>
-              <Grid.Column>
-                <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
-              </Grid.Column>
+        <>
+          <Container>
+            <Grid divided='vertically'>
+              <Grid.Row columns={2}>
+                <Grid.Column>
+                  <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
+                </Grid.Column>
 
-              <Grid.Column>
-                <section className='product-info-wrapper'>
-                  <p className='product-name' textAlign='center'>{product.name}</p>
-                  <Sellers id={ productID }/>
-                  <p className='product-price' ><Icon name='gbp' />{product.price}.00</p>
-                  <Container>
-                    <Segment compact color={product.colour} />
-                  </Container>
-                  <br />
-                  <div className='product-colour' >Colour: {product.colour}</div>
-                  <div className='product-size'>Size: {product.size}</div>
-                  <br />
-                  <Button animated size='huge' color='teal' onClick={handleBagSubmit}>
-                    <Button.Content visible>Add to Bag</Button.Content>
-                    <Button.Content hidden>
-                      <Icon name='cart' />
-                    </Button.Content>
-                  </Button>
-                  <br />
-                  <br />
-                  <Accordion defaultActiveIndex={0} panels={accordion} />
-                </section>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
+                <Grid.Column>
+                  <section className='product-info-wrapper'>
+                    <p className='product-name' textAlign='center'>{product.name}</p>
+                    <Sellers id={ productID }/>
+                    <p className='product-price' ><Icon name='gbp' />{product.price}.00</p>
+                    <Container>
+                      <Segment compact color={product.colour} />
+                    </Container>
+                    <br />
+                    <div className='product-colour' >Colour: {product.colour}</div>
+                    <div className='product-size'>Size: {product.size}</div>
+                    <br />
 
-          <Divider />
+                    {!toggled ?
+                      <Button animated size='huge' color='teal' onClick={handleBagSubmit} >
+                        <Button.Content visible>Add to Bag</Button.Content>
+                        <Button.Content hidden>
+                          <Icon name='cart' />
+                        </Button.Content>
+                      </Button>
+                      :
+                      <Button disabled>Added to Cart</Button>
+                    } 
+                    
+                    <br />
+                    <br />
+                    <Accordion defaultActiveIndex={0} panels={accordion} />
+                  </section>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
 
-          <SimilarProducts category={ category } />
-        </Container>
+            <Divider />
+
+            <SimilarProducts category={ category } />
+          </Container>
+        </>
         :
         <Header as='h3'>{hasError ? 'Sorry, something has gone wrong 🚨 ' : 'Loading product 👗 🩳 👚 '}</Header>
       }

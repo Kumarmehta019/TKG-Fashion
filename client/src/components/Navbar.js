@@ -54,7 +54,7 @@ const Navbar = () => {
           </>
           :
           <>
-            <Menu.Item as='a' href=''>
+            <Menu.Item as='a' href='/orders'>
               <Icon name='shopping bag' size='large' />
               Bag
             </Menu.Item>
