@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Image } from 'semantic-ui-react'
+import { Image, Segment } from 'semantic-ui-react'
 import axios from 'axios'
 import { CarouselProvider, Slider, Slide } from 'pure-react-carousel'
 import 'pure-react-carousel/dist/react-carousel.es.css'
@@ -34,7 +34,8 @@ const HeroCarousel = () => {
 
   return (
 
-    <>
+    <Segment inverted color='orange' tertiary >
+      <h2 style={{ textAlign: 'center', textDecoration: 'underline', color: 'black', textShadow: '0px 0px 8px #ffffff'  }}>OUR COLLECTION</h2>
       <CarouselProvider
         naturalSlideWidth={100}
         naturalSlideHeight={125}
@@ -56,7 +57,7 @@ const HeroCarousel = () => {
           })}
         </Slider>
       </CarouselProvider>
-    </>
+    </Segment>
   )
 }
 

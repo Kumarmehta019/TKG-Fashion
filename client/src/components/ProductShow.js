@@ -66,8 +66,8 @@ const ProductShow = () => {
         content: (
           <div>
             <p>Free Standard Delivery - order recieved within 3-5 days</p>
-            <p>Orders can be collected for free from your local TFG Fashion store</p>
-            <p>Items can be fully refunded if they are returned by post (free return label included in packaging) or to a local TFK Fashion store within 28 days of the order being delivered or collected</p>
+            <p>Orders can be collected for free from your local TKG Fashion store</p>
+            <p>Items can be fully refunded if they are returned by post (free return label included in packaging) or to a local TKG Fashion store within 28 days of the order being delivered or collected</p>
           </div>
         ),
       },
@@ -134,7 +134,7 @@ const ProductShow = () => {
   ]
 
   return (
-    <Container>
+    <Container style={{ marginBottom: '15px' }}>
       {product ?
         <Container>
           <Grid divided='vertically'>
@@ -147,12 +147,12 @@ const ProductShow = () => {
               <Grid.Column>
                 <section className='product-info-wrapper'>
                   <p className='product-name' textAlign='center'>{product.name}</p>
-                  <p className='product-price'><Icon name='gbp' />{product.price}</p>
+                  <p className='product-price' ><Icon name='gbp' />{product.price}.00</p>
                   <Container>
                     <Segment compact inverted color={product.colour} />
                   </Container>
                   <br />
-                  <div className='product-colour'>Colour: {product.colour}</div>
+                  <div className='product-colour' >Colour: {product.colour}</div>
                   <div className='product-size'>Size: {product.size}</div>
                   <br />
                   <Button size='huge' color='teal'>Add to Bag</Button>
