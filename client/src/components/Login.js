@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom'
 import { Modal, Button, Form, Header } from 'semantic-ui-react'
 
 
-
 const Login = () => {
   const navigate = useNavigate()
   const [open, setOpen] = useState(false)
@@ -49,7 +48,7 @@ const Login = () => {
         open={open}
         trigger={<p>Login</p>}
       >
-        <Header>Register</Header>
+        <Header>Login</Header>
         <Modal.Content>
 
           <Form.Field onChange={handleChange} value={formData.email}>
@@ -59,14 +58,14 @@ const Login = () => {
 
           <Form.Field onChange={handleChange} value={formData.password}>
             <label>Password</label>
-            <input name='password' />
+            <input name='password' type='password' />
           </Form.Field>
 
         </Modal.Content>
 
         <Modal.Actions>
           <Button type="submit" color="red" icon="times" content="Close" />
-          <Button type="submit" color="green" icon="save" content="Register" />
+          <Button type="submit" color="green" icon="save" content="Login" />
         </Modal.Actions>
       </Modal>
 

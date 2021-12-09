@@ -7,8 +7,8 @@ from rest_framework.response import Response
 from rest_framework.exceptions import PermissionDenied
 from django.contrib.auth import get_user_model
 from django.conf import settings
-import jwt, datetime
-from datetime import timedelta
+import jwt
+from datetime import timedelta, datetime
 from .serializers import UserSerializer
 User = get_user_model()
 
@@ -21,7 +21,6 @@ class RegisterView(APIView):
             return Response({'message': 'Registration successful'})
 
         return Response(serializer.errors, status=422)
-
 
 class LoginView(APIView):
 

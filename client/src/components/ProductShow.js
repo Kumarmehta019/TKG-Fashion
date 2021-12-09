@@ -39,6 +39,10 @@ const ProductShow = () => {
     setReviews(newReviewData)
   }
 
+  const handleSubmit = () => {
+    
+  }
+
   const userIsAuthenticated = () => {
     const payload = getPayload()
     if (!payload) return false
@@ -93,18 +97,35 @@ const ProductShow = () => {
                 })}
               </Comment>
               :
-              <Segment>
-                <Form reply>
-                  <Form.Field onChange={handleChange}>
-                    <label>Username: {username}</label>
-                    <label>Rating out of 5:</label>
-                    <input type='number' min={1} max={5} value={reviews.rating}/>
-                  </Form.Field>
-                  <Form.TextArea value={reviews.comment} onChange={handleChange}/>
-                  <Button content='Add a Comment' icon='comment alternate outline' labelPosition='left' color='teal'></Button>
-                </Form>
-              </Segment>
-
+              <>
+                <Comment>
+                  {reviews.map(review => {
+                    return (
+                      <Comment.Content key={review.id}>
+                        <Comment.Author><Icon name='user circle'/>Author: {review.owner.username}</Comment.Author>
+                        <Comment.Metadata>
+                          <div><Icon name='calendar alternate'/>Posted on: {review.posted_on}</div>
+                          <Divider />
+                          <div><Icon name='star'/>Rating: {review.rating}/5</div>
+                        </Comment.Metadata>
+                        <Comment.Text>{review.comment}</Comment.Text>
+                        <Divider />
+                      </Comment.Content>
+                    )
+                  })}
+                </Comment>
+                <Segment>
+                  <Form reply>
+                    <Form.Field onChange={handleChange}>
+                      <label>Username: {username}</label>
+                      <label>Rating out of 5:</label>
+                      <input type='number' min={1} max={5} value={reviews.rating}/>
+                    </Form.Field>
+                    <Form.TextArea value={reviews.comment} onChange={handleChange}/>
+                    <Button content='Add a Comment' icon='comment alternate outline' labelPosition='left' color='teal'></Button>
+                  </Form>
+                </Segment>
+              </>
             }
           </Comment.Group>
         ),
@@ -112,11 +133,6 @@ const ProductShow = () => {
     }
   ]
 
-
-  // console.log(category)
-  // console.log(product.image_set[0].image)
-  // console.log(product.category)
-  // console.log(filteredProducts)
   return (
     <Container style={{ marginBottom: '15px' }}>
       {product ?
@@ -125,7 +141,6 @@ const ProductShow = () => {
             <Grid.Row columns={2}>
               <Grid.Column>
                 <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
-                {/* <Image size='large' src={product.image_set[0].image} /> */}
               </Grid.Column>
 
 
