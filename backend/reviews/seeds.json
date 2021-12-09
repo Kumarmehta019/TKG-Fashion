@@ -1,24 +1,288 @@
 [
 {
   "model": "reviews.review",
-  "pk": 2,
+  "pk": 1,
   "fields": {
-    "comment": "Love it!! So comfy!!",
-    "rating": 4,
-    "product": 1,
-    "owner": 2,
-    "posted_on": "2021-12-07"
+    "comment": "Ridiculous clothing!",
+    "rating": 2,
+    "product": 2,
+    "owner": 5,
+    "posted_on": "2021-12-08"
   }
 },
 {
   "model": "reviews.review",
-  "pk": 3,
+  "pk": 4,
   "fields": {
-    "comment": "Love the colour, got it for my sister and now I want one too!!",
+    "comment": "Got these for my husband for Christmas - he loved them! :)",
+    "rating": 5,
+    "product": 25,
+    "owner": 11,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 5,
+  "fields": {
+    "comment": "Great socks. Would wear again.",
+    "rating": 5,
+    "product": 24,
+    "owner": 8,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 6,
+  "fields": {
+    "comment": "Soooooo comfy",
+    "rating": 5,
+    "product": 23,
+    "owner": 7,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 7,
+  "fields": {
+    "comment": "I hate mushrooms but this is a very cute top",
+    "rating": 4,
+    "product": 22,
+    "owner": 9,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 8,
+  "fields": {
+    "comment": "This came up far too big! Definitely not an XS!",
+    "rating": 2,
+    "product": 21,
+    "owner": 13,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 9,
+  "fields": {
+    "comment": "Poor quality material and very badly made - don't buy!",
+    "rating": 1,
+    "product": 20,
+    "owner": 7,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 10,
+  "fields": {
+    "comment": "Such a gorgeous shade of blue! My new favourite outfit!",
+    "rating": 5,
+    "product": 19,
+    "owner": 13,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 11,
+  "fields": {
+    "comment": "Honestly what's wrong with your sizing?!?!?!?! This is definitely not an XL, it comes up far too small. I always buy your products in XL and they fit perfectly, but this product is ridiculous!!!",
+    "rating": 1,
+    "product": 18,
+    "owner": 11,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 12,
+  "fields": {
+    "comment": "Nice plain tshirt. It's good. Not a lot to say really. It's very average",
+    "rating": 3,
+    "product": 17,
+    "owner": 13,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 13,
+  "fields": {
+    "comment": "Wore these all summer - love them!!",
+    "rating": 4,
+    "product": 16,
+    "owner": 9,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 14,
+  "fields": {
+    "comment": "Not sure about this one...bizzarre piece of clothing that just sits funny - doesn't make the prettiest of outfits...",
+    "rating": 2,
+    "product": 15,
+    "owner": 12,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 15,
+  "fields": {
+    "comment": "Ya classic black slogan tee - gotta love it",
+    "rating": 5,
+    "product": 14,
+    "owner": 8,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 16,
+  "fields": {
+    "comment": "Great weekend tshirt!",
+    "rating": 4,
+    "product": 13,
+    "owner": 10,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 17,
+  "fields": {
+    "comment": "Wow these are so cool!! I look so cool!! They make me feel so cool!!!",
+    "rating": 5,
+    "product": 12,
+    "owner": 14,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 18,
+  "fields": {
+    "comment": "These come up far too small - I'm usually a M/L but think I'll have to get an XL in these",
+    "rating": 2,
+    "product": 11,
+    "owner": 10,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 19,
+  "fields": {
+    "comment": "Great shorts - perfect for holiday!",
+    "rating": 4,
+    "product": 10,
+    "owner": 8,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 20,
+  "fields": {
+    "comment": "Love this colour!",
+    "rating": 4,
+    "product": 9,
+    "owner": 14,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 21,
+  "fields": {
+    "comment": "Great green",
+    "rating": 3,
+    "product": 8,
+    "owner": 10,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 22,
+  "fields": {
+    "comment": "Turned grey after one wash - such poor quality!",
+    "rating": 1,
+    "product": 7,
+    "owner": 14,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 23,
+  "fields": {
+    "comment": "Found my dream pair of skinny jeans :D",
+    "rating": 5,
+    "product": 6,
+    "owner": 10,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 24,
+  "fields": {
+    "comment": "For a jacket this isn't very warm...cool design though",
+    "rating": 3,
+    "product": 5,
+    "owner": 9,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 25,
+  "fields": {
+    "comment": "Love this dress AND IT'S GOT POCKETS!! Is that a win or is that a win #amirite",
+    "rating": 5,
+    "product": 4,
+    "owner": 7,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 26,
+  "fields": {
+    "comment": "Gorgeous dress - can't wait to wear it for my birthday next weekend :)",
+    "rating": 5,
+    "product": 3,
+    "owner": 11,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 27,
+  "fields": {
+    "comment": "If these were any more high-waisted they would come up to my shoulders",
+    "rating": 1,
+    "product": 2,
+    "owner": 13,
+    "posted_on": "2021-12-08"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 28,
+  "fields": {
+    "comment": "So comfy - I love it! (and I look cool so that's a plus too)",
     "rating": 4,
     "product": 1,
-    "owner": 2,
-    "posted_on": "2021-12-06"
+    "owner": 12,
+    "posted_on": "2021-12-08"
   }
 }
 ]
