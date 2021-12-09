@@ -5,7 +5,7 @@ const Ads = () => {
 
   return (
     <Container >
-      <Segment inverted color='blue' tertiary style={{ marginTop: '20px', marginBottom: '20px' }}>
+      <Segment style={{ marginTop: '20px', marginBottom: '20px', backgroundColor: 'lightBlue' }}>
         <h2 style={{ textAlign: 'center', textDecoration: 'underline', color: 'black', textShadow: '0px 0px 8px #ffffff', margin: '0px' }}>WINTER SALE NOW ON!</h2>
         <Grid container columns={3} style={{ marginTop: '1px', marginBottom: '1px' }}>
           <Grid.Column>

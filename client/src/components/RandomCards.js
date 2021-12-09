@@ -37,34 +37,34 @@ const RandomCards = () => {
   return (
     <Container style={{ marginTop: '20px', marginBottom: '20px' }}>
       {randomProductOne && randomProductTwo && randomProductThree ?
-        <Segment inverted color='pink' tertiary>
+        <Segment style={{ backgroundColor: '#F6DFEB' }}>
           <h2 style={{ textAlign: 'center', textDecoration: 'underline', color: 'black', textShadow: '0px 0px 8px #ffffff'  }}>CAN&apos;T DECIDE WHAT YOU WANT?</h2>
           <Grid columns={3}>
             <Grid.Row>
               <Grid.Column style={{ textAlign: 'center', fontWeight: 'bold' }}>
-                <Card as='a' href={`/${randomProductOne.id}`}>
+                <Card as='a' href={`/${randomProductOne.id}`} style={{ background: 'black' }}>
                   <Image src={randomProductOne.image_set !== undefined ? randomProductOne.image_set[0].image : null }/>
                   <Card.Content>
-                    <Card.Header>{randomProductOne.name}</Card.Header>
-                    <Card.Description style={{ color: 'red' }}>GBP £{randomProductOne.price}.00</Card.Description>
+                    <Card.Header style={{ color: 'white' }}>{randomProductOne.name}</Card.Header>
+                    <Card.Description style={{ color: 'white' }}>GBP £{randomProductOne.price}.00</Card.Description>
                   </Card.Content>
                 </Card>
               </Grid.Column>
               <Grid.Column style={{ textAlign: 'center', fontWeight: 'bold' }}>
-                <Card as='a' href={`/${randomProductTwo.id}`}>
+                <Card as='a' href={`/${randomProductTwo.id}`} style={{ background: 'black' }}>
                   <Image src={randomProductTwo.image_set !== undefined ? randomProductTwo.image_set[0].image : null} />
                   <Card.Content>
-                    <Card.Header>{randomProductTwo.name}</Card.Header>
-                    <Card.Description style={{ color: 'red' }}>GBP £{randomProductTwo.price}.00</Card.Description>
+                    <Card.Header style={{ color: 'white' }}>{randomProductTwo.name}</Card.Header>
+                    <Card.Description style={{ color: 'white' }}>GBP £{randomProductTwo.price}.00</Card.Description>
                   </Card.Content>
                 </Card>
               </Grid.Column>
               <Grid.Column style={{ textAlign: 'center', fontWeight: 'bold' }}>
-                <Card as='a' href={`/${randomProductThree.id}`}>
+                <Card as='a' href={`/${randomProductThree.id}`} style={{ background: 'black' }}>
                   <Image src={randomProductThree.image_set !== undefined ? randomProductThree.image_set[0].image : null} />
                   <Card.Content>
-                    <Card.Header>{randomProductThree.name}</Card.Header>
-                    <Card.Description style={{ color: 'red' }}>GBP £{randomProductThree.price}.00</Card.Description>
+                    <Card.Header style={{ color: 'white' }}>{randomProductThree.name}</Card.Header>
+                    <Card.Description style={{ color: 'white' }}>GBP £{randomProductThree.price}.00</Card.Description>
                   </Card.Content>
                 </Card>
               </Grid.Column>

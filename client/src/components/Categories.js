@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Segment, Icon } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 import { useNavigate } from 'react-router-dom'
 
 
@@ -27,46 +27,47 @@ const Categories = () => {
     } else if (event.currentTarget.value === 'Trousers') {
       navigate('/browse?value=Trousers')
     }
-    
+
   }
 
 
   return (
 
-    <Segment inverted color='black' style={{ textAlign: 'center', marginTop: '15px' }}>
-      <Button animated inverted color='red' size='big' value='T-Shirts' onClick={handleTS}>
+    // <Segment style={{ textAlign: 'center', marginTop: '15px' }}>
+    <>
+      <Button animated inverted color='red' size='massive' value='T-Shirts' onClick={handleTS}>
         <Button.Content visible>T-Shirts</Button.Content>
         <Button.Content hidden><Icon name='angle double right' /> T-Shirts</Button.Content>
       </Button>
-      <Button animated inverted color='orange' size='big' value='Jumpers' onClick={handleTS}>
+      <Button animated inverted color='orange' size='massive' value='Jumpers' onClick={handleTS}>
         <Button.Content visible>Jumpers</Button.Content>
         <Button.Content hidden value='Jumpers'><Icon name='angle double right' /> Jumpers</Button.Content>
       </Button>
-      <Button animated inverted color='yellow' size='big' value='Dresses' onClick={handleTS}>
+      <Button animated inverted color='yellow' size='massive' value='Dresses' onClick={handleTS}>
         <Button.Content visible>Dresses</Button.Content>
         <Button.Content hidden><Icon name='angle double right' /> Dresses</Button.Content>
       </Button>
-      <Button animated inverted color='purple' size='big' value='Shorts' onClick={handleTS}>
+      <Button animated inverted color='purple' size='massive' value='Shorts' onClick={handleTS}>
         <Button.Content visible>Shorts</Button.Content>
         <Button.Content hidden><Icon name='angle double right' /> Shorts</Button.Content>
       </Button>
-      <Button animated inverted color='green' size='big' value='Jeans' onClick={handleTS}>
+      <Button animated inverted color='green' size='massive' value='Jeans' onClick={handleTS}>
         <Button.Content visible>Jeans</Button.Content>
         <Button.Content hidden><Icon name='angle double right' /> Jeans</Button.Content>
       </Button>
-      <Button animated inverted color='pink' size='big' value='Shirts' onClick={handleTS}>
+      <Button animated inverted color='pink' size='massive' value='Shirts' onClick={handleTS}>
         <Button.Content visible>Shirts</Button.Content>
         <Button.Content hidden><Icon name='angle double right' /> Shirts</Button.Content>
       </Button>
-      <Button animated inverted color='blue' size='big' value='Socks' onClick={handleTS}>
+      <Button animated inverted color='blue' size='massive' value='Socks' onClick={handleTS}>
         <Button.Content visible>Socks</Button.Content>
         <Button.Content hidden><Icon name='angle double right' /> Socks</Button.Content>
       </Button>
-      <Button animated inverted color='violet' size='big' value='Trousers' onClick={handleTS}>
+      <Button animated inverted color='violet' size='massive' value='Trousers' onClick={handleTS}>
         <Button.Content visible>Trousers</Button.Content>
         <Button.Content hidden><Icon name='angle double right' /> Trousers</Button.Content>
       </Button>
-    </Segment>
+    </>
 
   )
 }

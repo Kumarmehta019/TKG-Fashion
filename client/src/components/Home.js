@@ -12,11 +12,11 @@ const Home = () => {
       <Container>
         <HeroCarousel />
       </Container>
-      <Container>
-        <Ads />
+      <Container style={{ textAlign: 'center', margin: '15px' }}>
+        <Categories />
       </Container>
       <Container>
-        <Categories />
+        <Ads />
       </Container>
       <Container>
         <RandomCards />

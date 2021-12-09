@@ -34,7 +34,7 @@ const HeroCarousel = () => {
 
   return (
 
-    <Segment inverted color='orange' tertiary >
+    <Segment style={{ backgroundColor: '#F6DFEB' }}>
       <h2 style={{ textAlign: 'center', textDecoration: 'underline', color: 'black', textShadow: '0px 0px 8px #ffffff'  }}>OUR COLLECTION</h2>
       <CarouselProvider
         naturalSlideWidth={100}
