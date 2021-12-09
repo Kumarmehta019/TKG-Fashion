@@ -223,5 +223,59 @@
     "image": "images/men-socks-stripe_s6gqt6",
     "product": 25
   }
+},
+{
+  "model": "images.image",
+  "pk": 26,
+  "fields": {
+    "title": "Men Banana Shirt Image",
+    "image": "images/men-banana_dqnycc",
+    "product": 26
+  }
+},
+{
+  "model": "images.image",
+  "pk": 27,
+  "fields": {
+    "title": "Men Blue Tshirt Image",
+    "image": "images/men-blue-tshirt_onzd25",
+    "product": 27
+  }
+},
+{
+  "model": "images.image",
+  "pk": 28,
+  "fields": {
+    "title": "Men Pink Tshirt Image",
+    "image": "images/men-pink-shirt_th9uui",
+    "product": 28
+  }
+},
+{
+  "model": "images.image",
+  "pk": 29,
+  "fields": {
+    "title": "Men Galaxy Image",
+    "image": "images/men-galaxy-tshirt_htkrtq",
+    "product": 29
+  }
+},
+{
+  "model": "images.image",
+  "pk": 30,
+  "fields": {
+    "title": "Men Cup Image",
+    "image": "images/men-cup-shirt_b21stw",
+    "product": 30
+  }
+},
+{
+  "model": "images.image",
+  "pk": 31,
+  "fields": {
+    "title": "Men Ripped Jeans",
+    "image": "images/men-jeans_vszazu",
+    "product": 31
+  }
 }
 ]
