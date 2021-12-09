@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import { Header } from 'semantic-ui-react'
+import { List, Header } from 'semantic-ui-react'
 
 const Sellers = ( { productID }) => {
   
@@ -11,12 +11,10 @@ const Sellers = ( { productID }) => {
   const [hasError, setHasError] = useState(false)
   const { id } = useParams()
 
-
   useEffect(() => {
     const getData = async () => {
       try {
         const { data } = await axios.get('/api/sellers')
-        console.log(data)
         setSellers(data)
       } catch (err) {
         console.log(err)
@@ -32,16 +30,21 @@ const Sellers = ( { productID }) => {
       return seller.name
     }
   })
-  console.log(realSeller)
   
 
-
-
   return (
-    <Header as='h4'>sellers:{realSeller.map(seller => {
-      return <p key={seller}>{seller}</p>
-    })}
-    </Header>
+    <>
+      <Header as='h4'>Sold by:</Header>
+      <List divided horizontal relaxed>
+        {realSeller.map(seller => {
+          return (
+            <>
+              <List.Item key={seller}>{seller}</List.Item>
+            </>
+          )
+        })}
+      </List>
+    </>
   )
 }
 export default Sellers

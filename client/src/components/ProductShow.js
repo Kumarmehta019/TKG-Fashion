@@ -215,32 +215,34 @@ const ProductShow = () => {
                 </Grid.Column>
 
                 <Grid.Column>
-                  <section className='product-info-wrapper'>
-                    <p className='product-name' textAlign='center'>{product.name}</p>
-                    <Sellers id={ productID }/>
-                    <p className='product-price' ><Icon name='gbp' />{product.price}.00</p>
-                    <Container>
-                      <Segment compact style={{ backgroundColor: `${product.colour}` }}  />
-                    </Container>
-                    <br />
-                    <div className='product-size'>Size: {product.size}</div>
-                    <br />
+                  <Container>
+                    <section className='product-info-wrapper'>
+                      <Header as='h1' textAlign='center' style={{ padding: '20px' }}>{product.name}</Header>
+                      <Sellers id={ productID }/>
+                      <Divider />
+                      <Header as='h2' style={{ padding: '2px' }}>£ {product.price}.00</Header>
+                      <Container>
+                        <Button circular style={{ backgroundColor: `${product.colour}`, padding: '15px' }}  />
+                      </Container>
+                      <Header as='h2'>Size: {product.size}</Header>
+                      <br />
 
-                    {!toggled ?
-                      <Button animated size='huge' color='teal' onClick={handleBagSubmit} >
-                        <Button.Content visible>Add to Bag</Button.Content>
-                        <Button.Content hidden>
-                          <Icon name='cart' />
-                        </Button.Content>
-                      </Button>
-                      :
-                      <Button disabled>Added to Cart</Button>
-                    } 
-                    
-                    <br />
-                    <br />
-                    <Accordion defaultActiveIndex={0} panels={accordion} />
-                  </section>
+                      {!toggled ?
+                        <Button animated size='huge' color='teal' onClick={handleBagSubmit} >
+                          <Button.Content visible>Add to Bag</Button.Content>
+                          <Button.Content hidden>
+                            <Icon name='cart' />
+                          </Button.Content>
+                        </Button>
+                        :
+                        <Button disabled>Added to Cart</Button>
+                      } 
+                      
+                      <Divider />
+
+                      <Accordion defaultActiveIndex={0} panels={accordion} />
+                    </section>
+                  </Container>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
