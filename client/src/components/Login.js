@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
-import { Modal, Button, Form, Header } from 'semantic-ui-react'
+import { Modal, Button, Form, Header, Icon } from 'semantic-ui-react'
 
 
 const Login = () => {
@@ -48,7 +48,7 @@ const Login = () => {
         open={open}
         trigger={<p>Login</p>}
       >
-        <Header>Login</Header>
+        <Header as='h1'>Login</Header>
         <Modal.Content>
 
           <Form.Field onChange={handleChange} value={formData.email}>
@@ -64,8 +64,18 @@ const Login = () => {
         </Modal.Content>
 
         <Modal.Actions>
-          <Button type="submit" color="red" icon="times" content="Close" />
-          <Button type="submit" color="green" icon="save" content="Login" />
+          <Button animated type="submit" color="red" onClick={() => setOpen(false)}>
+            <Button.Content visible>Close</Button.Content>
+            <Button.Content hidden>
+              <Icon name='close' />
+            </Button.Content>
+          </Button>
+          <Button animated type="submit" color="teal">
+            <Button.Content visible>Login</Button.Content>
+            <Button.Content hidden>
+              <Icon name='sign-in' />
+            </Button.Content>
+          </Button>
         </Modal.Actions>
       </Modal>
 

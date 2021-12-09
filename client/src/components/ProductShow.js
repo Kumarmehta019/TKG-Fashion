@@ -48,7 +48,7 @@ const ProductShow = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get(`api/products/${id}`)
+        const { data } = await axios.get(`/api/products/${id}`)
         window.scrollTo(0, 0)
         setProduct(data)
         setCategory(product.category)
