@@ -10,7 +10,7 @@ from .serializers import OrderSerializer
 from rest_framework.permissions import IsAuthenticated
 
 class OrderListView(APIView):
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
     def get(self, _request):
 
@@ -24,11 +24,14 @@ class OrderListView(APIView):
 
     ## POST ROUTE
     def post(self, request):
+        
+        request.data["customer"] = request.user.id
+        print('DATA ->', request.data)
         orders = OrderSerializer(data=request.data)
         # checks if it is valid
         if orders.is_valid():
             # saves it to the DB
-            orders.save()
+            orders.save(customer = request.user)
             # sends 201 back to the front-end
             return Response(orders.data, status=status.HTTP_201_CREATED)
         else:
@@ -36,7 +39,7 @@ class OrderListView(APIView):
 
 ## CREATE, DELETE & UPDATE ROUTE
 class OrderDetailView(APIView):
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     ## GET BY ID
     def get(self, _request, pk):
         order = Order.objects.get(id=pk)
@@ -57,8 +60,10 @@ class OrderDetailView(APIView):
     def put(self, request, pk):
         order = Order.objects.get(id=pk)
         updated_order = OrderSerializer(order, data=request.data)
+        
         if updated_order.is_valid():
             updated_order.save()
+            
             return Response(updated_order.data, status=status.HTTP_202_ACCEPTED)
         else:
             return Response(updated_order.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
