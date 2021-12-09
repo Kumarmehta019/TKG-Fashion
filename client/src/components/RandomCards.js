@@ -14,9 +14,19 @@ const RandomCards = () => {
     const getData = async () => {
       try {
         const { data } = await axios.get('api/products')
-        setRandomProductOne(data[Math.floor(Math.random() * data.length)])
-        setRandomProductTwo(data[Math.floor(Math.random() * data.length)])
-        setRandomProductThree(data[Math.floor(Math.random() * data.length)])
+        let randomIndex =  Math.floor(Math.random() * data.length)
+        let randomCardOne = data.splice(randomIndex, 1 )
+        randomCardOne = randomCardOne[0]
+        randomIndex = Math.floor(Math.random() * data.length)
+        let randomCardTwo = data.splice(randomIndex, 1)
+        randomCardTwo = randomCardTwo[0]
+        randomIndex = Math.floor(Math.random() * data.length)
+        let randomCardThree = data.splice(randomIndex, 1)
+        randomCardThree = randomCardThree[0]
+
+        setRandomProductOne(randomCardOne)
+        setRandomProductTwo(randomCardTwo)
+        setRandomProductThree(randomCardThree)
       } catch (err) {
         setHasError(true)
       }
@@ -33,7 +43,7 @@ const RandomCards = () => {
             <Grid.Row>
               <Grid.Column style={{ textAlign: 'center', fontWeight: 'bold' }}>
                 <Card as='a' href={`/${randomProductOne.id}`}>
-                  <Image src={randomProductOne.image_set[0].image} />
+                  <Image src={randomProductOne.image_set !== undefined ? randomProductOne.image_set[0].image : null }/>
                   <Card.Content>
                     <Card.Header>{randomProductOne.name}</Card.Header>
                     <Card.Description style={{ color: 'red' }}>GBP £{randomProductOne.price}.00</Card.Description>
@@ -42,7 +52,7 @@ const RandomCards = () => {
               </Grid.Column>
               <Grid.Column style={{ textAlign: 'center', fontWeight: 'bold' }}>
                 <Card as='a' href={`/${randomProductTwo.id}`}>
-                  <Image src={randomProductTwo.image_set[0].image} />
+                  <Image src={randomProductTwo.image_set !== undefined ? randomProductTwo.image_set[0].image : null} />
                   <Card.Content>
                     <Card.Header>{randomProductTwo.name}</Card.Header>
                     <Card.Description style={{ color: 'red' }}>GBP £{randomProductTwo.price}.00</Card.Description>
@@ -51,7 +61,7 @@ const RandomCards = () => {
               </Grid.Column>
               <Grid.Column style={{ textAlign: 'center', fontWeight: 'bold' }}>
                 <Card as='a' href={`/${randomProductThree.id}`}>
-                  <Image src={randomProductThree.image_set[0].image} />
+                  <Image src={randomProductThree.image_set !== undefined ? randomProductThree.image_set[0].image : null} />
                   <Card.Content>
                     <Card.Header>{randomProductThree.name}</Card.Header>
                     <Card.Description style={{ color: 'red' }}>GBP £{randomProductThree.price}.00</Card.Description>
