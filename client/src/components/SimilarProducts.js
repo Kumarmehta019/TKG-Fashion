@@ -29,7 +29,7 @@ const SimilarProducts = ( { category }) => {
   }
 
   return (
-    <Container>
+    <Container className='animate__animated animate__slideInUp'>
       {filterByCategory().length ?
         <Container>
           <Header 

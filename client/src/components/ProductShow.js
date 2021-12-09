@@ -6,6 +6,7 @@ import { Grid, Image, Divider, Header, Container, Comment, Segment, Button, Acco
 import { getPayload, getTokenFromLocalStorage } from './helpers/auth'
 import SimilarProducts from './SimilarProducts'
 import Sellers from './Sellers'
+import 'animate.css'
 
 const ProductShow = () => {
 
@@ -114,10 +115,12 @@ const ProductShow = () => {
         content: 'Details & Care',
         icon: 'heart',
       },
-      content: [
-        'All clothes are made from 100% recyclable material. Wash at no higher than 30 degrees and do not tumbledry.'
-      ].join(' '),
-      icon: 'heart',
+      content: {
+        content: (
+          <p className='accordion-text'>All clothes are made from 100% recyclable material. Wash at no higher than 30 degrees and do not tumbledry.</p>
+        ),
+      },
+      
     },
     {
       key: 'delivery-collections-and-returns',
@@ -127,7 +130,7 @@ const ProductShow = () => {
       },
       content: {
         content: (
-          <div>
+          <div className='accordion-text'>
             <p>Free Standard Delivery - order recieved within 3-5 days</p>
             <p>Orders can be collected for free from your local TKG Fashion store</p>
             <p>Items can be fully refunded if they are returned by post (free return label included in packaging) or to a local TKG Fashion store within 28 days of the order being delivered or collected</p>
@@ -219,11 +222,11 @@ const ProductShow = () => {
             <Grid divided='vertically'>
               <Grid.Row columns={2}>
                 <Grid.Column>
-                  <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
+                  <Image className='animate__animated animate__slideInLeft' src={product.image_set !== undefined ? product.image_set[0].image : null} />
                 </Grid.Column>
 
                 <Grid.Column>
-                  <Container>
+                  <Container className='animate__animated animate__slideInRight'>
                     <section className='product-info-wrapper'>
                       <Header as='h1' textAlign='center' style={{ padding: '20px' }}>{product.name}</Header>
                       <Sellers id={ productID }/>
@@ -248,7 +251,7 @@ const ProductShow = () => {
                       
                       <Divider />
 
-                      <Accordion defaultActiveIndex={0} panels={accordion} />
+                      <Accordion defaultActiveIndex={0} panels={accordion} style={{ fontSize: '20px' }}/>
                     </section>
                   </Container>
                 </Grid.Column>
