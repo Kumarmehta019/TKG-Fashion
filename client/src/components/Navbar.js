@@ -48,7 +48,8 @@ const Navbar = () => {
               <Register />
             </Menu.Item>
             <Menu.Item as='a'>
-              <Icon name='user circle' size='large' fitted='horizontally'/>
+              <Icon name='user circle' size='large' fitted='horizontally' style={{ paddingRight: '8px' }}/> 
+
               <Login />
             </Menu.Item>
           </>

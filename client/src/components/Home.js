@@ -4,6 +4,7 @@ import Categories from './Categories'
 import HeroCarousel from './HeroCarousel'
 import Ads from './Ads'
 import RandomCards from './RandomCards'
+import Brands from './Brands'
 
 
 const Home = () => {
@@ -12,7 +13,7 @@ const Home = () => {
       <Container>
         <HeroCarousel />
       </Container>
-      <Container style={{ textAlign: 'center', margin: '15px' }}>
+      <Container style={{ textAlign: 'center', margin: '18px' }}>
         <Categories />
       </Container>
       <Container>
@@ -20,6 +21,9 @@ const Home = () => {
       </Container>
       <Container>
         <RandomCards />
+      </Container>
+      <Container style={{ marginBottom: '20px' }}>
+        <Brands />
       </Container>
     </div>
   )
