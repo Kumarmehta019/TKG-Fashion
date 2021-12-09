@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import { Grid, Image, Divider, Header, Container, Comment, Segment, Button, Accordion, Icon, Form, Card } from 'semantic-ui-react'
 import { getPayload, getTokenFromLocalStorage } from './helpers/auth'
 import SimilarProducts from './SimilarProducts'
+import Sellers from './Sellers'
 
 const ProductShow = () => {
 
@@ -12,6 +13,7 @@ const ProductShow = () => {
   const [category, setCategory] = useState([])
   const [hasError, setHasError] = useState(false)
   const [reviews, setReviews] = useState([])
+  const [productID, setProductID] = useState([])
   const { id } = useParams()
   const token = getTokenFromLocalStorage()
 
@@ -50,6 +52,7 @@ const ProductShow = () => {
         setProduct(data)
         setCategory(product.category)
         setReviews(data.reviews)
+        setProductID(data.id)
       } catch (err) {
         console.log(err)
         setHasError(true)
@@ -211,6 +214,7 @@ const ProductShow = () => {
               <Grid.Column>
                 <section className='product-info-wrapper'>
                   <p className='product-name' textAlign='center'>{product.name}</p>
+                  <Sellers id={ productID }/>
                   <p className='product-price' ><Icon name='gbp' />{product.price}.00</p>
                   <Container>
                     <Segment compact color={product.colour} />
