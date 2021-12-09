@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import { Grid, Image, Divider, Header, Container, Comment, Segment, Button, Accordion, Icon } from 'semantic-ui-react'
+import { Grid, Image, Divider, Header, Container, Comment, Segment, Button, Accordion, Icon, Message } from 'semantic-ui-react'
 import { getPayload, getTokenFromLocalStorage } from './helpers/auth'
 import SimilarProducts from './SimilarProducts'
 import ReviewForm from './ReviewForm'
@@ -216,11 +216,18 @@ const ProductShow = () => {
           </Container>
         </>
         :
-        <Header as='h3'>{hasError ? 'Sorry, something has gone wrong 🚨 ' : 'Loading product 👗 🩳 👚 '}</Header>
+        (hasError && 
+          <Message negative icon>
+            <Icon name='frown outline'/>
+            <Message.Content>
+              <Message.Header>Sorry something went wrong!</Message.Header>
+              Please try again later
+            </Message.Content>
+          </Message>
+        )
       }
 
     </Container>
-
   )
 }
 export default ProductShow
