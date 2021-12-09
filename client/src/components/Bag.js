@@ -29,9 +29,6 @@ const Bag = () => {
   const total = totalFiltered.map(item => {
     return item.product.price
   })
-
-  
-  console.log('ITEM',  total)
   
   return (
     <>
@@ -39,7 +36,6 @@ const Bag = () => {
         <Item.Group divided>
           {item.map(item => {
             if (item.customer === payload.sub) {
-              console.log(item.product.name)
               return (
                 <Item key={item.product.name}>
                   <Item.Image src={item.product.image_set[0].image} />

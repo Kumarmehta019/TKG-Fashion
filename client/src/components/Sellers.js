@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import { List, Header } from 'semantic-ui-react'
+import { List, Header, Segment, Message, Icon } from 'semantic-ui-react'
 
 const Sellers = ( { productID }) => {
   
@@ -42,7 +42,16 @@ const Sellers = ( { productID }) => {
           })}
         </List>
         :        
-        <Header as='h3'>{hasError ? 'Sorry, something has gone wrong 🚨 ' : 'Loading sellers 👗 🩳 👚 '}</Header>  
+        (hasError &&                 
+        <Segment>
+          <Message negative icon>
+            <Icon name='frown outline'/>
+            <Message.Content>
+              <Message.Header>Sorry something went wrong!</Message.Header>
+              Please try again later
+            </Message.Content>
+          </Message>
+        </Segment>)  
       }
     </>
   )
