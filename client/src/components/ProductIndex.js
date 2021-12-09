@@ -74,12 +74,10 @@ const ProductIndex = () => {
   return (
 
     <Container style={{ marginBottom: '10px' }} id='productindex-container'>
-      <Header as="h1">Browse our products</Header>
-
       <Grid columns="two">
         <Grid.Row>
           <Grid.Column width={3} textAlign="left">
-            <Container>
+            <Container className='animate__animated animate__slideInLeft'>
               <Grid.Column>
                 <Header
                   as="h2"
@@ -90,7 +88,7 @@ const ProductIndex = () => {
               </Grid.Column>
             </Container>
 
-            <Container>
+            <Container className='animate__animated animate__slideInLeft'>
               <Menu style={{ margin: '10px' }} compact>
                 <Dropdown
                   placeholder="By Category"
@@ -121,13 +119,13 @@ const ProductIndex = () => {
               </Menu>
             </Container>
           </Grid.Column>
-
+          
           <Grid.Column width={13}>
             <Card.Group itemsPerRow={3}>
               {filteredProducts.map(product => {
                 return (
                   <>
-                    <Card key={product.name} as='a' href={`/browse/${product.id}`}>
+                    <Card key={product.name} as='a' href={`/browse/${product.id}`} className='animate__animated animate__pulse'>
                       <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
                       <Card.Content>
                         <Card.Header>{product.name}</Card.Header>
