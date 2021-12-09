@@ -184,8 +184,7 @@ const ProductShow = () => {
                 <Segment>
                   <Form reply onSubmit={handleSubmit}>
                     <Form.Field onChange={handleChange}>
-                      <label>Username: </label>
-                      <label>Rating out of 5:</label>
+                      <Header as='h4'>Add your review</Header>
                       <input 
                         type='number' 
                         min={1} 
