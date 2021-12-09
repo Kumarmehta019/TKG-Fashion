@@ -107,18 +107,24 @@ const ProductShow = () => {
   }
 
   
-
   const accordion = [
     {
       key: 'details-and-care',
-      title: 'Details & Care',
+      title: {
+        content: 'Details & Care',
+        icon: 'heart',
+      },
       content: [
         'All clothes are made from 100% recyclable material. Wash at no higher than 30 degrees and do not tumbledry.'
       ].join(' '),
+      icon: 'heart',
     },
     {
       key: 'delivery-collections-and-returns',
-      title: 'Delivery, Collections & Returns',
+      title: {
+        content: 'Delivery, Collections & Returns',
+        icon: 'box',
+      },
       content: {
         content: (
           <div>
@@ -131,7 +137,10 @@ const ProductShow = () => {
     },
     {
       key: 'reviews',
-      title: 'Reviews',
+      title: {
+        content: 'Reviews',
+        icon: 'comments outline',
+      },
       content: {
         content: (
           
