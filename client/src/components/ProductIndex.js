@@ -127,7 +127,7 @@ const ProductIndex = () => {
               {filteredProducts.map(product => {
                 return (
                   <>
-                    <Card key={product.name} as='a' href={`/${product.id}`}>
+                    <Card key={product.name} as='a' href={`/browse/${product.id}`}>
                       <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
                       <Card.Content>
                         <Card.Header>{product.name}</Card.Header>

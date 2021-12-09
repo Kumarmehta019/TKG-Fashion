@@ -48,7 +48,7 @@ const ProductShow = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get(`api/products/${id}`)
+        const { data } = await axios.get(`/api/products/${id}`)
         window.scrollTo(0, 0)
         setProduct(data)
         setCategory(product.category)
@@ -220,10 +220,9 @@ const ProductShow = () => {
                     <Sellers id={ productID }/>
                     <p className='product-price' ><Icon name='gbp' />{product.price}.00</p>
                     <Container>
-                      <Segment compact color={product.colour} />
+                      <Segment compact style={{ backgroundColor: `${product.colour}` }}  />
                     </Container>
                     <br />
-                    <div className='product-colour' >Colour: {product.colour}</div>
                     <div className='product-size'>Size: {product.size}</div>
                     <br />
 

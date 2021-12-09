@@ -18,8 +18,8 @@ const App = () => {
       <Routes>
         <Route exact path='/' element={<Home />} />
         <Route exact path='/profile' element={<Profile />} />
+        <Route exact path='/browse/:id' element={<ProductShow />} />
         <Route exact path='/browse' element={<ProductIndex />} />
-        <Route exact path='/:id' element={<ProductShow />} />
         <Route path='/orders' element={<Bag />} />
       </Routes>
       <Footer />
