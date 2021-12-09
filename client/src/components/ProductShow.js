@@ -28,11 +28,17 @@ const ProductShow = () => {
     console.log('CURRENT', currentUserId)
     return currentUserId === payload.sub 
   }
+  
   const [reviewForm, setFormData] = useState({
     product: id,
     comment: '',
     rating: '',
     owner_id: userIsOwner(getUsername[0]),
+  })
+
+  const [bagItems, setBagItems] = useState({
+    product: id,
+    customer: userIsOwner(getUsername[0]),
   })
   
 
@@ -58,6 +64,20 @@ const ProductShow = () => {
     setFormData(newReviewData)
   }
 
+  const handleBagSubmit = async event => {
+    event.preventDefault()
+    try {
+      const newItems = { ...bagItems }
+      setBagItems(newItems)
+      await axios.post('/api/orders/', bagItems, 
+        {
+          headers: { Authorization: `Bearer ${token}` } ,
+        })
+    } catch (err) {
+      setHasError(true)
+    }
+  }
+
   const handleSubmit = async event => {
     event.preventDefault()
     console.log('review ->', reviewForm)
@@ -80,6 +100,8 @@ const ProductShow = () => {
     const now = Math.round(Date.now() / 1000)
     return now < payload.exp
   }
+
+  
 
   const accordion = [
     {
@@ -175,6 +197,7 @@ const ProductShow = () => {
     }
   ]
 
+  console.log('BAG', bagItems)
   return (
     <Container style={{ marginBottom: '15px' }}>
       {product ?
@@ -196,7 +219,7 @@ const ProductShow = () => {
                   <div className='product-colour' >Colour: {product.colour}</div>
                   <div className='product-size'>Size: {product.size}</div>
                   <br />
-                  <Button animated size='huge' color='teal'>
+                  <Button animated size='huge' color='teal' onClick={handleBagSubmit}>
                     <Button.Content visible>Add to Bag</Button.Content>
                     <Button.Content hidden>
                       <Icon name='cart' />
