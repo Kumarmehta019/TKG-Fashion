@@ -1,10 +1,8 @@
 import React from 'react'
-import { getUsernameFromLocalStorage } from './helpers/auth'
 import { Breadcrumb, Segment } from 'semantic-ui-react'
 
 const Profile = () => {
 
-  const username = getUsernameFromLocalStorage(null)
   const myDate = new Date(null)
   const hrs = myDate.getHours(null)
 
@@ -33,7 +31,7 @@ const Profile = () => {
         </Breadcrumb>
       </Segment>
       <div >
-        <h1>{greet} {username}!</h1>
+        <h1>{greet}</h1>
       </div>
     </section>
 

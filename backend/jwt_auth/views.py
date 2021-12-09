@@ -44,7 +44,7 @@ class LoginView(APIView):
 
         dt = datetime.now() + timedelta(days=7)
         token = jwt.encode(
-            {'sub': user_to_login.id, 'exp': int(dt.strftime('%s'))},
+            {'sub': user_to_login.id, 'exp': int(dt.strftime('%s')), 'username': user_to_login.username},
             settings.SECRET_KEY,
             algorithm = 'HS256'
         )

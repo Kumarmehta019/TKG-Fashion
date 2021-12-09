@@ -1,3 +1,4 @@
+from datetime import date
 from rest_framework.exceptions import NotFound
 from .models import Review
 from rest_framework.views import APIView
@@ -44,7 +45,7 @@ class ReviewListView(APIView):
         request.data["owner"] = request.user.id
         review = PopulatedReviewSerializer(data = request.data)
         if review.is_valid():
-            review.save() # <--- django ORM method to save to db
+            review.save(owner = request.user) # <--- django ORM method to save to db
             return Response(review.data, status=status.HTTP_201_CREATED)
         else:
             return Response(review.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)

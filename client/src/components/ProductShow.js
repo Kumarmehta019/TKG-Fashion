@@ -3,10 +3,9 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { Grid, Image, Divider, Header, Container, Comment, Segment, Button, Accordion, Icon, Form, Card } from 'semantic-ui-react'
-import { getUsernameFromLocalStorage, getPayload } from './helpers/auth'
+import { getPayload, getTokenFromLocalStorage } from './helpers/auth'
 import SimilarProducts from './SimilarProducts'
 import Sellers from './Sellers'
-
 
 const ProductShow = () => {
 
@@ -16,13 +15,33 @@ const ProductShow = () => {
   const [reviews, setReviews] = useState([])
   const [productID, setProductID] = useState([])
   const { id } = useParams()
-  const username = getUsernameFromLocalStorage()
+  const token = getTokenFromLocalStorage()
+
+  const getUsername = reviews.map(review => {
+    console.log('ID -->', review.owner.id)
+    return (
+      review.owner.id
+    )
+  })
+
+  const userIsOwner = (currentUserId) => {
+    const payload = getPayload()
+    if (!payload) return false
+    console.log('CURRENT', currentUserId)
+    return currentUserId === payload.sub 
+  }
+  const [reviewForm, setFormData] = useState({
+    product: id,
+    comment: '',
+    rating: '',
+    owner_id: userIsOwner(getUsername[0]),
+  })
+  
 
   useEffect(() => {
     const getData = async () => {
       try {
         const { data } = await axios.get(`api/products/${id}`)
-        console.log(data)
         window.scrollTo(0, 0)
         setProduct(data)
         setCategory(product.category)
@@ -38,12 +57,24 @@ const ProductShow = () => {
 
 
   const handleChange = (event) => {
-    const newReviewData = { ...reviews, [event.target.name]: event.target.value }
-    setReviews(newReviewData)
+    const newReviewData = { ...reviewForm, [event.target.name]: event.target.value }
+    setFormData(newReviewData)
   }
 
-  const handleSubmit = () => {
-    
+  const handleSubmit = async event => {
+    event.preventDefault()
+    console.log('review ->', reviewForm)
+    try {
+      await axios.post('/api/reviews/', reviewForm, 
+        {
+          
+          headers: { Authorization: `Bearer ${token}` } ,
+        }
+      )
+      window.location.reload()
+    } catch (err) {
+      setHasError(true)
+    }
   }
 
   const userIsAuthenticated = () => {
@@ -52,7 +83,6 @@ const ProductShow = () => {
     const now = Math.round(Date.now() / 1000)
     return now < payload.exp
   }
-
 
   const accordion = [
     {
@@ -82,7 +112,7 @@ const ProductShow = () => {
         content: (
           
           <Comment.Group size='large'>
-            {!userIsAuthenticated() ?
+            {!userIsAuthenticated()  ?
               <Comment>
                 {reviews.map(review => {
                   return (
@@ -117,19 +147,31 @@ const ProductShow = () => {
                     )
                   })}
                 </Comment>
+                
                 <Segment>
-                  <Form reply>
+                  <Form reply onSubmit={handleSubmit}>
                     <Form.Field onChange={handleChange}>
-                      <label>Username: {username}</label>
+                      <label>Username: </label>
                       <label>Rating out of 5:</label>
-                      <input type='number' min={1} max={5} value={reviews.rating}/>
+                      <input 
+                        type='number' 
+                        min={1} 
+                        max={5} 
+                        value={reviewForm.rating} 
+                        name='rating' 
+                        placeholder='Rating out of 5'
+                      />
                     </Form.Field>
-                    <Form.TextArea value={reviews.comment} onChange={handleChange}/>
-                    <Button content='Add a Comment' icon='comment alternate outline' labelPosition='left' color='teal'></Button>
+                    <Form.TextArea 
+                      value={reviewForm.comment} 
+                      onChange={handleChange} 
+                      name='comment'
+                    />
+                    <Button content='Add a Comment' type='submit' icon='comment alternate outline' labelPosition='left' color='teal'></Button>
                   </Form>
                 </Segment>
               </>
-            }
+            } 
           </Comment.Group>
         ),
       },
@@ -146,20 +188,24 @@ const ProductShow = () => {
                 <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
               </Grid.Column>
 
-
               <Grid.Column>
                 <section className='product-info-wrapper'>
                   <p className='product-name' textAlign='center'>{product.name}</p>
                   <Sellers id={ productID }/>
                   <p className='product-price' ><Icon name='gbp' />{product.price}.00</p>
                   <Container>
-                    <Segment compact inverted color={product.colour} />
+                    <Segment compact color={product.colour} />
                   </Container>
                   <br />
                   <div className='product-colour' >Colour: {product.colour}</div>
                   <div className='product-size'>Size: {product.size}</div>
                   <br />
-                  <Button size='huge' color='teal'>Add to Bag</Button>
+                  <Button animated size='huge' color='teal'>
+                    <Button.Content visible>Add to Bag</Button.Content>
+                    <Button.Content hidden>
+                      <Icon name='cart' />
+                    </Button.Content>
+                  </Button>
                   <br />
                   <br />
                   <Accordion defaultActiveIndex={0} panels={accordion} />
@@ -170,7 +216,6 @@ const ProductShow = () => {
 
           <Divider />
 
-          
           <SimilarProducts category={ category } />
         </Container>
         :

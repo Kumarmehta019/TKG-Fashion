@@ -323,5 +323,83 @@
     "gender": "M",
     "colour": "White"
   }
+},
+{
+  "model": "products.product",
+  "pk": 26,
+  "fields": {
+    "name": "Men Banana Tshirt",
+    "price": 5,
+    "size": "M",
+    "stock": 20,
+    "category": "T-Shirts",
+    "gender": "M",
+    "colour": "Grey"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 27,
+  "fields": {
+    "name": "Men Solid Blue T-Shirt",
+    "price": 4,
+    "size": "L",
+    "stock": 15,
+    "category": "T-Shirts",
+    "gender": "M",
+    "colour": "Blue"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 28,
+  "fields": {
+    "name": "Men Pink Shirt",
+    "price": 5,
+    "size": "S",
+    "stock": 20,
+    "category": "T-Shirts",
+    "gender": "M",
+    "colour": "Pink"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 29,
+  "fields": {
+    "name": "Men Galaxy T-Shirt",
+    "price": 4,
+    "size": "M",
+    "stock": 15,
+    "category": "T-Shirts",
+    "gender": "M",
+    "colour": "White"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 30,
+  "fields": {
+    "name": "Men Cup Tshirt",
+    "price": 7,
+    "size": "XS",
+    "stock": 15,
+    "category": "T-Shirts",
+    "gender": "M",
+    "colour": "White"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 31,
+  "fields": {
+    "name": "Men Ripped Skinny Jeans",
+    "price": 22,
+    "size": "M",
+    "stock": 25,
+    "category": "Jeans",
+    "gender": "M",
+    "colour": "Grey"
+  }
 }
 ]

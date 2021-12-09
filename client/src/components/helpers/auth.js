@@ -2,10 +2,6 @@ export const getTokenFromLocalStorage = () => {
   return window.localStorage.getItem('token') // get token from local storage
 }
 
-export const getUsernameFromLocalStorage = () => {
-  return window.localStorage.getItem('username') // get username from local storage
-}
-
 export const getPayload = () => {
   const token = getTokenFromLocalStorage() // store the response of get token function in variable
   if (!token) return // if no token exists just return here
