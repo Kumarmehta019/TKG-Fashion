@@ -1,12 +1,12 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
-import { Item, Label } from 'semantic-ui-react'
+import { Container, Item, Button } from 'semantic-ui-react'
+import { getPayload } from './helpers/auth'
 
 const Bag = () => {
 
-  const { id } = useParams()
   const [item, setItem] = useState([])
+  const payload = getPayload()
 
   useEffect(() => {
     const getData = async () => {
@@ -18,29 +18,52 @@ const Bag = () => {
       }
     }
     getData()
-  }, [id])
+  }, [])
+
+  const totalFiltered = item.filter(item => {
+    if (item.customer === payload.sub){
+      return item.product.price
+    }
+  })
+
+  const total = totalFiltered.map(item => {
+    return item.product.price
+  })
+
   
-  console.log('ITEM', item)
+  console.log('ITEM',  total)
   
   return (
-    
-    <Item.Group divided>
-      <Item>
-        <Item.Image src='/images/wireframe/image.png' />
+    <>
+      <Container>
+        <Item.Group divided>
+          {item.map(item => {
+            if (item.customer === payload.sub) {
+              console.log(item.product.name)
+              return (
+                <Item key={item.product.name}>
+                  <Item.Image src={item.product.image_set[0].image} />
 
-        <Item.Content>
-          <Item.Header as='a'>Product name: </Item.Header>
-          <Item.Meta>
-            <span className='cinema'>Price: </span>
-          </Item.Meta>
-          <Item.Description></Item.Description>
-          <Item.Extra>
-            <Label>DELETE</Label>
-            <Label icon='globe' content='Additional Languages' />
-          </Item.Extra>
-        </Item.Content>
-      </Item>
-    </Item.Group>
+                  <Item.Content>
+                    <Item.Header as='a'>Product name: {item.product.name}</Item.Header>
+                    <Item.Meta>
+                      <span className='cinema'>Price: £{item.product.price}</span>
+                    </Item.Meta>
+                    <Item.Extra>
+                      <Button>DELETE</Button>
+                    </Item.Extra>
+                  </Item.Content>
+                </Item>
+              )
+            }
+          })}
+        </Item.Group>
+        <Item.Header>Total: £{total.reduce((acc, price) =>{
+          return acc + price
+        }, 0)} </Item.Header>
+      </Container>
+    </>
+  
   )
 }
 

@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from .models import Order
-from .serializers import OrderSerializer
+from .serializers import OrderSerializer, PopulatedOrderSerializer
 from rest_framework.permissions import IsAuthenticated
 
 class OrderListView(APIView):
@@ -18,7 +18,7 @@ class OrderListView(APIView):
         # get all the orders from the db
         orders = Order.objects.all()
         print('ORDERS ->', orders)
-        serialized_orders = OrderSerializer(orders, many=True)
+        serialized_orders = PopulatedOrderSerializer(orders, many=True)
         print('SERIALIZED ORDERS ->', serialized_orders)
         return Response(serialized_orders.data, status=status.HTTP_200_OK)
 
@@ -44,7 +44,7 @@ class OrderDetailView(APIView):
     def get(self, _request, pk):
         order = Order.objects.get(id=pk)
         # converts python object into JSON
-        serialized_order = OrderSerializer(order)
+        serialized_order = PopulatedOrderSerializer(order)
         return Response(serialized_order.data, status=status.HTTP_200_OK)
 
     ## DELETE BY ID
