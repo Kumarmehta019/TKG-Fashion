@@ -1,11 +1,12 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import { Grid, Image, Divider, Header, Container, Comment, Segment, Button, Accordion, Icon, Form, Card } from 'semantic-ui-react'
+import { Grid, Image, Divider, Header, Container, Comment, Segment, Button, Accordion, Icon, Message } from 'semantic-ui-react'
 import { getPayload, getTokenFromLocalStorage } from './helpers/auth'
 import SimilarProducts from './SimilarProducts'
+import ReviewForm from './ReviewForm'
 import Sellers from './Sellers'
+import 'animate.css'
 
 const ProductShow = () => {
 
@@ -19,7 +20,6 @@ const ProductShow = () => {
   const token = getTokenFromLocalStorage()
 
   const getUsername = reviews.map(review => {
-    console.log('ID -->', review.owner.id)
     return (
       review.owner.id
     )
@@ -28,23 +28,14 @@ const ProductShow = () => {
   const userIsOwner = (currentUserId) => {
     const payload = getPayload()
     if (!payload) return false
-    console.log('CURRENT', currentUserId)
     return currentUserId === payload.sub 
   }
   
-  const [reviewForm, setFormData] = useState({
-    product: id,
-    comment: '',
-    rating: '',
-    owner_id: userIsOwner(getUsername[0]),
-  })
-
   const [bagItems, setBagItems] = useState({
     product: id,
     customer: userIsOwner(getUsername[0]),
   })
   
-
   useEffect(() => {
     const getData = async () => {
       try {
@@ -62,12 +53,6 @@ const ProductShow = () => {
     getData()
   }, [id, product.category])
 
-
-  const handleChange = (event) => {
-    const newReviewData = { ...reviewForm, [event.target.name]: event.target.value }
-    setFormData(newReviewData)
-  }
-
   const handleBagSubmit = async event => {
     event.preventDefault()
     try {
@@ -83,22 +68,6 @@ const ProductShow = () => {
     }
   }
 
-  const handleSubmit = async event => {
-    event.preventDefault()
-    console.log('review ->', reviewForm)
-    try {
-      await axios.post('/api/reviews/', reviewForm, 
-        {
-          
-          headers: { Authorization: `Bearer ${token}` } ,
-        }
-      )
-      window.location.reload()
-    } catch (err) {
-      setHasError(true)
-    }
-  }
-
   const userIsAuthenticated = () => {
     const payload = getPayload()
     if (!payload) return false
@@ -106,22 +75,28 @@ const ProductShow = () => {
     return now < payload.exp
   }
 
-  
-
   const accordion = [
     {
       key: 'details-and-care',
-      title: 'Details & Care',
-      content: [
-        'All clothes are made from 100% recyclable material. Wash at no higher than 30 degrees and do not tumbledry.'
-      ].join(' '),
+      title: {
+        content: 'Details & Care',
+        icon: 'heart',
+      },
+      content: {
+        content: (
+          <p className='accordion-text'>All clothes are made from 100% recyclable material. Wash at no higher than 30 degrees and do not tumbledry.</p>
+        ),
+      },
     },
     {
       key: 'delivery-collections-and-returns',
-      title: 'Delivery, Collections & Returns',
+      title: {
+        content: 'Delivery, Collections & Returns',
+        icon: 'box',
+      },
       content: {
         content: (
-          <div>
+          <div className='accordion-text'>
             <p>Free Standard Delivery - order recieved within 3-5 days</p>
             <p>Orders can be collected for free from your local TKG Fashion store</p>
             <p>Items can be fully refunded if they are returned by post (free return label included in packaging) or to a local TKG Fashion store within 28 days of the order being delivered or collected</p>
@@ -131,7 +106,10 @@ const ProductShow = () => {
     },
     {
       key: 'reviews',
-      title: 'Reviews',
+      title: {
+        content: 'Reviews',
+        icon: 'comments outline',
+      },
       content: {
         content: (
           
@@ -173,26 +151,10 @@ const ProductShow = () => {
                 </Comment>
                 
                 <Segment>
-                  <Form reply onSubmit={handleSubmit}>
-                    <Form.Field onChange={handleChange}>
-                      <label>Username: </label>
-                      <label>Rating out of 5:</label>
-                      <input 
-                        type='number' 
-                        min={1} 
-                        max={5} 
-                        value={reviewForm.rating} 
-                        name='rating' 
-                        placeholder='Rating out of 5'
-                      />
-                    </Form.Field>
-                    <Form.TextArea 
-                      value={reviewForm.comment} 
-                      onChange={handleChange} 
-                      name='comment'
-                    />
-                    <Button content='Add a Comment' type='submit' icon='comment alternate outline' labelPosition='left' color='teal'></Button>
-                  </Form>
+                  <ReviewForm 
+                    userIsOwner = {userIsOwner}
+                    getUsername = {getUsername}
+                  />
                 </Segment>
               </>
             } 
@@ -202,7 +164,7 @@ const ProductShow = () => {
     }
   ]
 
-  console.log('BAG', bagItems)
+
   return (
     <Container style={{ marginBottom: '15px' }}>
       {product ?
@@ -211,36 +173,38 @@ const ProductShow = () => {
             <Grid divided='vertically'>
               <Grid.Row columns={2}>
                 <Grid.Column>
-                  <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
+                  <Image className='animate__animated animate__slideInLeft' src={product.image_set !== undefined ? product.image_set[0].image : null} />
                 </Grid.Column>
 
                 <Grid.Column>
-                  <section className='product-info-wrapper'>
-                    <p className='product-name' textAlign='center'>{product.name}</p>
-                    <Sellers id={ productID }/>
-                    <p className='product-price' ><Icon name='gbp' />{product.price}.00</p>
-                    <Container>
-                      <Segment compact style={{ backgroundColor: `${product.colour}` }}  />
-                    </Container>
-                    <br />
-                    <div className='product-size'>Size: {product.size}</div>
-                    <br />
+                  <Container className='animate__animated animate__slideInRight'>
+                    <section className='product-info-wrapper'>
+                      <Header as='h1' textAlign='center' style={{ padding: '20px' }}>{product.name}</Header>
+                      <Sellers id={ productID }/>
+                      <Divider />
+                      <Header as='h2' style={{ padding: '2px' }}>£ {product.price}.00</Header>
+                      <Container>
+                        <Button circular style={{ backgroundColor: `${product.colour}`, padding: '15px' }}  />
+                      </Container>
+                      <Header as='h2'>Size: {product.size}</Header>
+                      <br />
 
-                    {!toggled ?
-                      <Button animated size='huge' color='teal' onClick={handleBagSubmit} >
-                        <Button.Content visible>Add to Bag</Button.Content>
-                        <Button.Content hidden>
-                          <Icon name='cart' />
-                        </Button.Content>
-                      </Button>
-                      :
-                      <Button disabled>Added to Cart</Button>
-                    } 
-                    
-                    <br />
-                    <br />
-                    <Accordion defaultActiveIndex={0} panels={accordion} />
-                  </section>
+                      {!toggled ?
+                        <Button animated size='huge' color='teal' onClick={handleBagSubmit} >
+                          <Button.Content visible>Add to Bag</Button.Content>
+                          <Button.Content hidden>
+                            <Icon name='cart' />
+                          </Button.Content>
+                        </Button>
+                        :
+                        <Button disabled>Added to Cart</Button>
+                      } 
+                      
+                      <Divider />
+
+                      <Accordion defaultActiveIndex={0} panels={accordion} style={{ fontSize: '20px' }}/>
+                    </section>
+                  </Container>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
@@ -251,11 +215,18 @@ const ProductShow = () => {
           </Container>
         </>
         :
-        <Header as='h3'>{hasError ? 'Sorry, something has gone wrong 🚨 ' : 'Loading product 👗 🩳 👚 '}</Header>
+        (hasError && 
+          <Message negative icon>
+            <Icon name='frown outline'/>
+            <Message.Content>
+              <Message.Header>Sorry something went wrong!</Message.Header>
+              Please try again later
+            </Message.Content>
+          </Message>
+        )
       }
 
     </Container>
-
   )
 }
 export default ProductShow

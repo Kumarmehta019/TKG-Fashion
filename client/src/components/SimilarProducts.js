@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Grid, Segment, Image, Card, Container, Message, Icon } from 'semantic-ui-react'
+import { Grid, Segment, Image, Card, Container, Message, Icon, Header } from 'semantic-ui-react'
 
 
 const SimilarProducts = ( { category }) => {
@@ -8,14 +8,10 @@ const SimilarProducts = ( { category }) => {
   const [allProducts, setAllProducts] = useState([])
   const [hasError, setHasError] = useState(false)
 
-
-  
-  
   useEffect(() => {
     const getData = async () => {
       try {
         const { data } = await axios.get('/api/products')
-        console.log(data)
         setAllProducts(data)
       } catch (err) {
         console.log(err)
@@ -32,21 +28,22 @@ const SimilarProducts = ( { category }) => {
     })
   }
 
-
   return (
-    <Container>
+    <Container className='animate__animated animate__slideInUp'>
       {filterByCategory().length ?
         <Container>
+          <Header 
+            as='h2'
+            content='👀 You may also like...'
+          />
           <Grid style={{ marginBottom: '10px' }}>
             <Grid.Row columns={4}>
 
               {filterByCategory().map((product, index) => {
-                console.log(product)
-                console.log(product.name)
                 return (
                   <>
                     <Grid.Column style={{ marginBottom: '15px' }}>
-                      <Card key={index} as='a' href={`/${product.id}`}>
+                      <Card key={index} as='a' href={`/browse/${product.id}`}>
                         <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
                         <Card.Content>
                           <Card.Header>{product.name}</Card.Header>

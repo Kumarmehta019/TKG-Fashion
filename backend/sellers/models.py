@@ -3,19 +3,19 @@ from django.db import models
 # Create your models here.
 class Seller(models.Model):
     SELLERS = (
-        ('TKG-D','TKG Design'),
-        ('TKG-E','TKG Edition'),
-        ('TKG-L','TKG Luxe'),
-        ('TKG-P','TKG Premium'),
-        ('TKG-F','TKG Finest'),
-        ('ADD','Addidos'),
-        ('NIC','Nic'),
-        ('PIN','Pineapple'),
-        ('TSF','The South Face'),
-        ('BC','British Connection'),
-        ('PF','Perry Fred'),
-        ('ZA','Zana'),
-        ('OC','Ocean Island'),
+        ('TKG Design','TKG Design'),
+        ('TKG Edition','TKG Edition'),
+        ('TKG Luxe','TKG Luxe'),
+        ('TKG Premium','TKG Premium'),
+        ('TKG Finest','TKG Finest'),
+        ('Addidos','Addidos'),
+        ('Nic','Nic'),
+        ('Pineapple','Pineapple'),
+        ('The South Face','The South Face'),
+        ('British Connection','British Connection'),
+        ('Perry Fred','Perry Fred'),
+        ('Zana','Zana'),
+        ('Ocean Island','Ocean Island'),
     )
     name = models.CharField(max_length=50, default=None, choices=SELLERS)
     products = models.ManyToManyField("products.Product") # appname.Modelname

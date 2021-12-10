@@ -1,22 +1,18 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import { Header } from 'semantic-ui-react'
+import { List, Header, Segment, Message, Icon } from 'semantic-ui-react'
 
 const Sellers = ( { productID }) => {
   
   const [sellers, setSellers] = useState([])
-  const [seller, setSeller] = useState([])
   const [hasError, setHasError] = useState(false)
   const { id } = useParams()
-
 
   useEffect(() => {
     const getData = async () => {
       try {
         const { data } = await axios.get('/api/sellers')
-        console.log(data)
         setSellers(data)
       } catch (err) {
         console.log(err)
@@ -26,22 +22,38 @@ const Sellers = ( { productID }) => {
     getData()
   }, [id])
 
-  
   const realSeller = sellers.map(seller => {
     if (seller.products[id] === productID) {
       return seller.name
     }
   })
-  console.log(realSeller)
   
-
-
-
   return (
-    <Header as='h4'>sellers:{realSeller.map(seller => {
-      return <p key={seller}>{seller}</p>
-    })}
-    </Header>
+    <>
+      <Header as='h4'>Sold by:</Header>
+      {sellers ? 
+        <List divided horizontal relaxed>
+          {realSeller.map(seller => {
+            return (
+              <>
+                <List.Item key={seller}>{seller}</List.Item>
+              </>
+            )
+          })}
+        </List>
+        :        
+        (hasError &&                 
+        <Segment>
+          <Message negative icon>
+            <Icon name='frown outline'/>
+            <Message.Content>
+              <Message.Header>Sorry something went wrong!</Message.Header>
+              Please try again later
+            </Message.Content>
+          </Message>
+        </Segment>)  
+      }
+    </>
   )
 }
 export default Sellers

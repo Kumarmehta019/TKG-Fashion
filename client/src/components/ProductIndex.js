@@ -1,12 +1,9 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Card, Container, Dropdown, Grid, Header, Menu, Image } from 'semantic-ui-react'
+import { Card, Container, Dropdown, Grid, Header, Menu, Image, Message, Icon, Segment } from 'semantic-ui-react'
 import { useLocation } from 'react-router'
 
-// * ive renamed these a bit, be sure to use pluralised names for arrays
-
-const categoryOptions = [ // * This is a static value, no need to be inside comp, prevents creation on every re render
+const categoryOptions = [ // This is a static value
   { key: 1, text: 'T-Shirts', value: 'T-Shirts' },
   { key: 2, text: 'Jumpers', value: 'Jumpers' },
   { key: 3, text: 'Dresses', value: 'Dresses' },
@@ -17,7 +14,6 @@ const categoryOptions = [ // * This is a static value, no need to be inside comp
   { key: 8, text: 'Trousers', value: 'Trousers' }
 ]
 
-// * Same with these
 const genderOptions = [
   { key: 1, text: 'Male', value: 'M', icon: 'male' },
   { key: 2, text: 'Female', value: 'F', icon: 'female' }
@@ -31,23 +27,17 @@ const priceOptions = [
 const ProductIndex = () => {
   const [products, setProducts] = useState([])
   const location = useLocation()
-  // * The idea here is that you just store the filter conditions, then your filteredProducts, can just be some "derived state"
-  // const [filteredProducts, setFilteredProducts] = useState([]) // * <-- No need to actually store this
 
-  // * Instead, we just store the filter conditions
+  // store the filter conditions
   const [categoryValue, setCategoryValue] = React.useState(null)
   const [genderValue, setGenderValue] = React.useState(null)
   const [priceValue, setPriceValue] = React.useState(null)
 
   useEffect(() => {
-    // * You can check for extra values inside the url here!
+    // can check for extra values inside the url here!
     const params = new URLSearchParams(location.search)
     const value = params.get('value')
-    // * like the button value, clicked from the link examples
-
-    // * You can then manually set these initial filter values above ^^^^^^
-
-
+    
     const getData = async () => {
       const { data } = await axios.get('api/products')
       if (value) {
@@ -58,28 +48,24 @@ const ProductIndex = () => {
     getData()
   }, [location.search])
 
-  // * We can create our derived filter state now
-
   const filteredProducts = products.filter(product => {
     return (
-      (product.category === categoryValue || categoryValue === null) && // * we can filter out for our category
-      (product.gender === genderValue || genderValue === null) // * and gender options in one go
+      (product.category === categoryValue || categoryValue === null) && // we can filter out for our category
+      (product.gender === genderValue || genderValue === null) // and gender options in one go
     )
-  }).sort((a, b) => { // * chaining on our sorting function at the end of filter
-    if (priceValue === null) return 0 // * If no price filter set dont sort
-    if (priceValue === 1) return a.price - b.price // * low to high
-    if (priceValue === 2) return b.price - a.price // * high to low
+  }).sort((a, b) => { // chaining on our sorting function at the end of filter
+    if (priceValue === null) return 0 // If no price filter set dont sort
+    if (priceValue === 1) return a.price - b.price // low to high
+    if (priceValue === 2) return b.price - a.price // high to low
   })
 
   return (
 
     <Container style={{ marginBottom: '10px' }} id='productindex-container'>
-      <Header as="h1">Browse our products</Header>
-
       <Grid columns="two">
         <Grid.Row>
           <Grid.Column width={3} textAlign="left">
-            <Container>
+            <Container className='animate__animated animate__slideInLeft'>
               <Grid.Column>
                 <Header
                   as="h2"
@@ -90,7 +76,7 @@ const ProductIndex = () => {
               </Grid.Column>
             </Container>
 
-            <Container>
+            <Container className='animate__animated animate__slideInLeft'>
               <Menu style={{ margin: '10px' }} compact>
                 <Dropdown
                   placeholder="By Category"
@@ -121,28 +107,41 @@ const ProductIndex = () => {
               </Menu>
             </Container>
           </Grid.Column>
-
+          
           <Grid.Column width={13}>
-            <Card.Group itemsPerRow={3}>
-              {filteredProducts.map(product => {
-                return (
-                  <>
-                    <Card key={product.name} as='a' href={`/browse/${product.id}`}>
-                      <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
-                      <Card.Content>
-                        <Card.Header>{product.name}</Card.Header>
-                        <Card.Description>GBP £{product.price}</Card.Description>
-                      </Card.Content>
-                    </Card>
-                  </>
-                )
-              })}
-            </Card.Group>
+            {products.length ?
+              <Card.Group itemsPerRow={3}>
+                {filteredProducts.map(product => {
+                  return (
+                    <>
+                      <Card key={product.name} as='a' href={`/browse/${product.id}`} className='animate__animated animate__pulse'>
+                        <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
+                        <Card.Content>
+                          <Card.Header>{product.name}</Card.Header>
+                          <Card.Description>GBP £{product.price}</Card.Description>
+                        </Card.Content>
+                      </Card>
+                    </>
+                  )
+                })}
+              </Card.Group>
+              :
+              <>
+                <Segment>
+                  <Message negative icon>
+                    <Icon name='frown outline'/>
+                    <Message.Content>
+                      <Message.Header>Sorry something went wrong!</Message.Header>
+                      Please try again later
+                    </Message.Content>
+                  </Message>
+                </Segment>
+              </>
+            }
           </Grid.Column>
         </Grid.Row>
       </Grid>
     </Container>
-
   )
 }
 

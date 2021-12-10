@@ -1,33 +1,53 @@
 [
-  {
-    "model": "sellers.seller",
-    "pk": 1,
-    "fields": {
-      "name": "TKG-D",
-      "products": [
-        1
-      ]
-    }
-  },
-  {
-    "model": "sellers.seller",
-    "pk": 2,
-    "fields": {
-      "name": "TKG-L",
-      "products": [
-        3
-      ]
-    }
-  },
-  {
-    "model": "sellers.seller",
-    "pk": 3,
-    "fields": {
-      "name": "BC",
-      "products": [
-        2,
-        6
-      ]
-    }
+{
+  "model": "sellers.seller",
+  "pk": 4,
+  "fields": {
+    "name": "Pineapple",
+    "products": [
+      6
+    ]
   }
-  ]
+},
+{
+  "model": "sellers.seller",
+  "pk": 5,
+  "fields": {
+    "name": "TKG Finest",
+    "products": [
+      4
+    ]
+  }
+},
+{
+  "model": "sellers.seller",
+  "pk": 6,
+  "fields": {
+    "name": "TKG Edition",
+    "products": [
+      2,
+      6
+    ]
+  }
+},
+{
+  "model": "sellers.seller",
+  "pk": 7,
+  "fields": {
+    "name": "Nic",
+    "products": [
+      3
+    ]
+  }
+},
+{
+  "model": "sellers.seller",
+  "pk": 8,
+  "fields": {
+    "name": "The South Face",
+    "products": [
+      18
+    ]
+  }
+}
+]
