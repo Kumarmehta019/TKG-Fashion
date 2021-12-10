@@ -8,6 +8,7 @@ import ReviewForm from './ReviewForm'
 import Sellers from './Sellers'
 import 'animate.css'
 
+
 const ProductShow = () => {
 
   const [product, setProduct] = useState([])
@@ -19,23 +20,31 @@ const ProductShow = () => {
   const { id } = useParams()
   const token = getTokenFromLocalStorage()
 
+
   const getUsername = reviews.map(review => {
     return (
       review.owner.id
     )
   })
 
+  const userIsAuthenticated = () => {
+    const payload = getPayload()
+    if (!payload) return false
+    const now = Math.round(Date.now() / 1000)
+    return now < payload.exp
+  }
+
   const userIsOwner = (currentUserId) => {
     const payload = getPayload()
     if (!payload) return false
-    return currentUserId === payload.sub 
+    return currentUserId === payload.sub
   }
-  
+
   const [bagItems, setBagItems] = useState({
     product: id,
     customer: userIsOwner(getUsername[0]),
   })
-  
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -58,9 +67,9 @@ const ProductShow = () => {
     try {
       const newItems = { ...bagItems }
       setBagItems(newItems)
-      await axios.post('/api/orders/', bagItems, 
+      await axios.post('/api/orders/', bagItems,
         {
-          headers: { Authorization: `Bearer ${token}` } ,
+          headers: { Authorization: `Bearer ${token}` },
         })
       setToggle(true)
     } catch (err) {
@@ -68,12 +77,7 @@ const ProductShow = () => {
     }
   }
 
-  const userIsAuthenticated = () => {
-    const payload = getPayload()
-    if (!payload) return false
-    const now = Math.round(Date.now() / 1000)
-    return now < payload.exp
-  }
+
 
   const accordion = [
     {
@@ -112,18 +116,18 @@ const ProductShow = () => {
       },
       content: {
         content: (
-          
+
           <Comment.Group size='large'>
-            {!userIsAuthenticated()  ?
+            {!userIsAuthenticated() ?
               <Comment>
                 {reviews.map(review => {
                   return (
                     <Comment.Content key={review.id}>
-                      <Comment.Author><Icon name='user circle'/>Author: {review.owner.username}</Comment.Author>
+                      <Comment.Author><Icon name='user circle' />Author: {review.owner.username}</Comment.Author>
                       <Comment.Metadata>
-                        <div><Icon name='calendar alternate'/>Posted on: {review.posted_on}</div>
+                        <div><Icon name='calendar alternate' />Posted on: {review.posted_on}</div>
                         <Divider />
-                        <div><Icon name='star'/>Rating: {review.rating}/5</div>
+                        <div><Icon name='star' />Rating: {review.rating}/5</div>
                       </Comment.Metadata>
                       <Comment.Text>{review.comment}</Comment.Text>
                       <Divider />
@@ -137,11 +141,11 @@ const ProductShow = () => {
                   {reviews.map(review => {
                     return (
                       <Comment.Content key={review.id}>
-                        <Comment.Author><Icon name='user circle'/>Author: {review.owner.username}</Comment.Author>
+                        <Comment.Author><Icon name='user circle' />Author: {review.owner.username}</Comment.Author>
                         <Comment.Metadata>
-                          <div><Icon name='calendar alternate'/>Posted on: {review.posted_on}</div>
+                          <div><Icon name='calendar alternate' />Posted on: {review.posted_on}</div>
                           <Divider />
-                          <div><Icon name='star'/>Rating: {review.rating}/5</div>
+                          <div><Icon name='star' />Rating: {review.rating}/5</div>
                         </Comment.Metadata>
                         <Comment.Text>{review.comment}</Comment.Text>
                         <Divider />
@@ -149,15 +153,15 @@ const ProductShow = () => {
                     )
                   })}
                 </Comment>
-                
+
                 <Segment>
-                  <ReviewForm 
-                    userIsOwner = {userIsOwner}
-                    getUsername = {getUsername}
+                  <ReviewForm
+                    userIsOwner={userIsOwner}
+                    getUsername={getUsername}
                   />
                 </Segment>
               </>
-            } 
+            }
           </Comment.Group>
         ),
       },
@@ -180,11 +184,11 @@ const ProductShow = () => {
                   <Container className='animate__animated animate__slideInRight'>
                     <section className='product-info-wrapper'>
                       <Header as='h1' textAlign='center' style={{ padding: '20px' }}>{product.name}</Header>
-                      <Sellers id={ productID }/>
+                      <Sellers id={productID} />
                       <Divider />
                       <Header as='h2' style={{ padding: '2px' }}>£ {product.price}.00</Header>
                       <Container>
-                        <Button circular style={{ backgroundColor: `${product.colour}`, padding: '15px' }}  />
+                        <Button circular style={{ backgroundColor: `${product.colour}`, padding: '15px' }} />
                       </Container>
                       <Header as='h2'>Size: {product.size}</Header>
                       <br />
@@ -198,11 +202,11 @@ const ProductShow = () => {
                         </Button>
                         :
                         <Button disabled>Added to Cart</Button>
-                      } 
-                      
+                      }
+
                       <Divider />
 
-                      <Accordion defaultActiveIndex={0} panels={accordion} style={{ fontSize: '20px' }}/>
+                      <Accordion defaultActiveIndex={0} panels={accordion} style={{ fontSize: '20px' }} />
                     </section>
                   </Container>
                 </Grid.Column>
@@ -211,13 +215,13 @@ const ProductShow = () => {
 
             <Divider />
 
-            <SimilarProducts category={ category } />
+            <SimilarProducts category={category} />
           </Container>
         </>
         :
-        (hasError && 
+        (hasError &&
           <Message negative icon>
-            <Icon name='frown outline'/>
+            <Icon name='frown outline' />
             <Message.Content>
               <Message.Header>Sorry something went wrong!</Message.Header>
               Please try again later

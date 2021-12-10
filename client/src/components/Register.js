@@ -62,18 +62,6 @@ const Register = () => {
         <Header as='h1'>Register</Header>
         <Modal.Content style={{ backgroundColor: '#F6DFEB' }}>
 
-          <Form.Group widths={2}>
-            <Form.Field onChange={handleChange} value={formData.firstName}>
-              <label>First Name</label>
-              <input name='firstName' placeholder='e.g. Jane' />
-            </Form.Field>
-
-            <Form.Field onChange={handleChange} value={formData.lastName}>
-              <label>Last Name</label>
-              <input name='lastName' placeholder='e.g. Smith' />
-            </Form.Field>
-          </Form.Group>
-
           <Form.Field required onChange={handleChange} value={formData.username}>
             <label>Username</label>
             <input name='username' placeholder='e.g. janesmith123' />
@@ -92,6 +80,18 @@ const Register = () => {
             <Form.Field required onChange={handleChange} value={formData.password_confirmation}>
               <label>Password Confirmation</label>
               <input name='password_confirmation' type='password' />
+            </Form.Field>
+          </Form.Group>
+
+          <Form.Group widths={2}>
+            <Form.Field onChange={handleChange} value={formData.firstName}>
+              <label>First Name</label>
+              <input name='firstName' placeholder='e.g. Jane' />
+            </Form.Field>
+
+            <Form.Field onChange={handleChange} value={formData.lastName}>
+              <label>Last Name</label>
+              <input name='lastName' placeholder='e.g. Smith' />
             </Form.Field>
           </Form.Group>
 
@@ -119,13 +119,13 @@ const Register = () => {
               <Icon name='close' />
             </Button.Content>
           </Button>
-          <Button type="submit" color="teal" content='Register' icon='check'/>
-          {/* <Button animated type="submit" color="teal">
+          {/* <Button type="submit" color="teal" content='Register' icon='check'/> */}
+          <Button animated type="submit" color="teal">
             <Button.Content visible>Register</Button.Content>
             <Button.Content hidden>
               <Icon name='check' />
             </Button.Content>
-          </Button> */}
+          </Button>
         </Modal.Actions>
         
       </Modal>
