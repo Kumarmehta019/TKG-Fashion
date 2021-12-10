@@ -27,6 +27,7 @@ const priceOptions = [
 const ProductIndex = () => {
   const [products, setProducts] = useState([])
   const location = useLocation()
+  const [hasError, setHasError] = useState(false)
 
   // store the filter conditions
   const [categoryValue, setCategoryValue] = React.useState(null)
@@ -37,13 +38,18 @@ const ProductIndex = () => {
     // can check for extra values inside the url here!
     const params = new URLSearchParams(location.search)
     const value = params.get('value')
-    
+
     const getData = async () => {
-      const { data } = await axios.get('api/products')
-      if (value) {
-        setCategoryValue(value)
+      try {
+        const { data } = await axios.get('api/products')
+        if (value) {
+          setCategoryValue(value)
+        }
+        setProducts(data)
+      } catch (err) {
+        console.log(err)
+        setHasError(true)
       }
-      setProducts(data)
     }
     getData()
   }, [location.search])
@@ -107,7 +113,7 @@ const ProductIndex = () => {
               </Menu>
             </Container>
           </Grid.Column>
-          
+
           <Grid.Column width={13}>
             {products.length ?
               <Card.Group itemsPerRow={3}>
@@ -127,15 +133,27 @@ const ProductIndex = () => {
               </Card.Group>
               :
               <>
-                <Segment>
-                  <Message negative icon>
-                    <Icon name='frown outline'/>
-                    <Message.Content>
-                      <Message.Header>Sorry something went wrong!</Message.Header>
-                      Please try again later
-                    </Message.Content>
-                  </Message>
-                </Segment>
+                {hasError ?
+                  <Segment>
+                    <Message negative icon>
+                      <Icon name='frown outline' />
+                      <Message.Content>
+                        <Message.Header>Sorry something went wrong!</Message.Header>
+                        Please try again later
+                      </Message.Content>
+                    </Message>
+                  </Segment>
+                  :
+                  <Segment>
+                    <Message icon color='blue'>
+                      <Icon name='circle notched' loading />
+                      <Message.Content>
+                        <Message.Header>Just one second</Message.Header>
+                        😎 We are fetching that content for you.
+                      </Message.Content>
+                    </Message>
+                  </Segment>
+                }
               </>
             }
           </Grid.Column>

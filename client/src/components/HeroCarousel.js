@@ -27,10 +27,9 @@ const HeroCarousel = () => {
   const images = product.map(image => {
     return image.image_set[0].image
   })
-  // console.log('IMAGES ARRAY->', images)
+  console.log('IMAGES ARRAY->', images)
 
-
-
+  
 
   return (
 

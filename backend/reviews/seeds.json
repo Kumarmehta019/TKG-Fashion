@@ -284,5 +284,16 @@
     "owner": 12,
     "posted_on": "2021-12-08"
   }
+},
+{
+  "model": "reviews.review",
+  "pk": 29,
+  "fields": {
+    "comment": "Love these so stylish",
+    "rating": 4,
+    "product": 2,
+    "owner": 14,
+    "posted_on": "2021-12-09"
+  }
 }
 ]
