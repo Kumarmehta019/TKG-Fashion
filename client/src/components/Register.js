@@ -60,7 +60,7 @@ const Register = () => {
         success
       >
         <Header as='h1'>Register</Header>
-        <Modal.Content>
+        <Modal.Content style={{ backgroundColor: '#F6DFEB' }}>
 
           <Form.Group widths={2}>
             <Form.Field onChange={handleChange} value={formData.firstName}>
@@ -119,12 +119,13 @@ const Register = () => {
               <Icon name='close' />
             </Button.Content>
           </Button>
-          <Button animated type="submit" color="teal">
+          <Button type="submit" color="teal" content='Register' icon='check'/>
+          {/* <Button animated type="submit" color="teal">
             <Button.Content visible>Register</Button.Content>
             <Button.Content hidden>
               <Icon name='check' />
             </Button.Content>
-          </Button>
+          </Button> */}
         </Modal.Actions>
         
       </Modal>

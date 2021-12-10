@@ -49,14 +49,14 @@ const Login = () => {
         trigger={<p>Login</p>}
       >
         <Header as='h1'>Login</Header>
-        <Modal.Content>
+        <Modal.Content style={{ backgroundColor: '#F6DFEB' }}>
 
-          <Form.Field onChange={handleChange} value={formData.email}>
+          <Form.Field required onChange={handleChange} value={formData.email}>
             <label>Email</label>
             <input name='email' placeholder='e.g. janesmith@email.com' />
           </Form.Field>
 
-          <Form.Field onChange={handleChange} value={formData.password}>
+          <Form.Field required onChange={handleChange} value={formData.password}>
             <label>Password</label>
             <input name='password' type='password' />
           </Form.Field>
