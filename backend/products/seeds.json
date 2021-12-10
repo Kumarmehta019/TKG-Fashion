@@ -401,5 +401,122 @@
     "gender": "M",
     "colour": "Grey"
   }
+},
+{
+  "model": "products.product",
+  "pk": 32,
+  "fields": {
+    "name": "Round Neck Sweatshirt",
+    "price": 8,
+    "size": "M",
+    "stock": 20,
+    "category": "Jumpers",
+    "gender": "F",
+    "colour": "Green"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 33,
+  "fields": {
+    "name": "Lightning Print Shorts",
+    "price": 8,
+    "size": "S",
+    "stock": 25,
+    "category": "Shorts",
+    "gender": "M",
+    "colour": "Pink"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 34,
+  "fields": {
+    "name": "Men Plaid Shirt",
+    "price": 15,
+    "size": "XS",
+    "stock": 30,
+    "category": "Shirts",
+    "gender": "M",
+    "colour": "Orange"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 35,
+  "fields": {
+    "name": "Men Blue Shirt",
+    "price": 15,
+    "size": "XL",
+    "stock": 15,
+    "category": "Shirts",
+    "gender": "M",
+    "colour": "Blue"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 36,
+  "fields": {
+    "name": "Men Duck Socks",
+    "price": 3,
+    "size": "S",
+    "stock": 25,
+    "category": "Socks",
+    "gender": "M",
+    "colour": "Pink"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 37,
+  "fields": {
+    "name": "Men Dog Socks",
+    "price": 2,
+    "size": "M",
+    "stock": 16,
+    "category": "Socks",
+    "gender": "M",
+    "colour": "Blue"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 38,
+  "fields": {
+    "name": "Men Black Cargo Trousers",
+    "price": 18,
+    "size": "S",
+    "stock": 20,
+    "category": "Trousers",
+    "gender": "M",
+    "colour": "Black"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 39,
+  "fields": {
+    "name": "Men Waist Pants",
+    "price": 19,
+    "size": "M",
+    "stock": 20,
+    "category": "Trousers",
+    "gender": "M",
+    "colour": "Beige"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 40,
+  "fields": {
+    "name": "Men Slogan Joggers",
+    "price": 19,
+    "size": "L",
+    "stock": 26,
+    "category": "Trousers",
+    "gender": "M",
+    "colour": "Grey"
+  }
 }
 ]
