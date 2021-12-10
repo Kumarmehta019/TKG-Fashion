@@ -28,7 +28,6 @@ const ProductShow = () => {
   const userIsOwner = (currentUserId) => {
     const payload = getPayload()
     if (!payload) return false
-    console.log('CURRENT', currentUserId)
     return currentUserId === payload.sub 
   }
   
