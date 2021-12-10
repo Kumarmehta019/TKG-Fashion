@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
-import { Modal, Button, Form, Header } from 'semantic-ui-react'
+import { Modal, Button, Form, Header, Icon } from 'semantic-ui-react'
 
 
 const Login = () => {
@@ -48,15 +48,15 @@ const Login = () => {
         open={open}
         trigger={<p>Login</p>}
       >
-        <Header>Login</Header>
-        <Modal.Content>
+        <Header as='h1'>Login</Header>
+        <Modal.Content style={{ backgroundColor: '#F6DFEB' }}>
 
-          <Form.Field onChange={handleChange} value={formData.email}>
+          <Form.Field required onChange={handleChange} value={formData.email}>
             <label>Email</label>
             <input name='email' placeholder='e.g. janesmith@email.com' />
           </Form.Field>
 
-          <Form.Field onChange={handleChange} value={formData.password}>
+          <Form.Field required onChange={handleChange} value={formData.password}>
             <label>Password</label>
             <input name='password' type='password' />
           </Form.Field>
@@ -64,8 +64,18 @@ const Login = () => {
         </Modal.Content>
 
         <Modal.Actions>
-          <Button type="submit" color="red" icon="times" content="Close" />
-          <Button type="submit" color="green" icon="save" content="Login" />
+          <Button animated type="submit" color="red" onClick={() => setOpen(false)}>
+            <Button.Content visible>Close</Button.Content>
+            <Button.Content hidden>
+              <Icon name='close' />
+            </Button.Content>
+          </Button>
+          <Button animated type="submit" color="teal">
+            <Button.Content visible>Login</Button.Content>
+            <Button.Content hidden>
+              <Icon name='sign-in' />
+            </Button.Content>
+          </Button>
         </Modal.Actions>
       </Modal>
 
