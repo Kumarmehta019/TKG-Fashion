@@ -10,7 +10,7 @@ const Brands = () => {
   
   return (
     <Segment style={{ backgroundColor: 'lightBlue' }}>
-      <h2 style={{ textAlign: 'center', textDecoration: 'underline', color: 'black', textShadow: '0px 0px 8px #ffffff'  }}>TRENDING BRANDS</h2>
+      <h2 style={{ textAlign: 'center', textDecoration: 'underline', color: 'black', textShadow: '0px 0px 8px #ffffff', fontFamily: 'Cinzel, serif' }}>TRENDING BRANDS</h2>
       <CarouselProvider
         naturalSlideWidth={100}
         naturalSlideHeight={100}

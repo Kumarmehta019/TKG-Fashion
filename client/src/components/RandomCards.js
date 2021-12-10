@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Container, Segment, Image, Grid, Card, Message, Icon } from 'semantic-ui-react'
 
+
 const RandomCards = () => {
 
   const [randomProductOne, setRandomProductOne] = useState(null)
@@ -38,11 +39,11 @@ const RandomCards = () => {
     <Container style={{ marginTop: '20px', marginBottom: '20px' }}>
       {randomProductOne && randomProductTwo && randomProductThree ?
         <Segment style={{ backgroundColor: '#F6DFEB' }}>
-          <h2 style={{ textAlign: 'center', textDecoration: 'underline', color: 'black', textShadow: '0px 0px 8px #ffffff' }}>CAN&apos;T DECIDE WHAT YOU WANT?</h2>
+          <h2 style={{ textAlign: 'center', textDecoration: 'underline', color: 'black', textShadow: '0px 0px 8px #ffffff', fontFamily: 'Cinzel, serif' }}>CAN&apos;T DECIDE WHAT YOU WANT?</h2>
           <Grid columns={3}>
             <Grid.Row>
               <Grid.Column style={{ textAlign: 'center', fontWeight: 'bold' }}>
-                <Card as='a' href={`/browse/${randomProductOne.id}`} style={{ background: 'black' }}>
+                <Card as='a' href={`/browse/${randomProductOne.id}`} style={{ background: 'black' }} id='random-card'>
                   <Image src={randomProductOne.image_set !== undefined ? randomProductOne.image_set[0].image : null }/>
                   <Card.Content>
                     <Card.Header style={{ color: 'white' }}>{randomProductOne.name}</Card.Header>
@@ -51,7 +52,7 @@ const RandomCards = () => {
                 </Card>
               </Grid.Column>
               <Grid.Column style={{ textAlign: 'center', fontWeight: 'bold' }}>
-                <Card as='a' href={`/browse/${randomProductTwo.id}`} style={{ background: 'black' }}>
+                <Card as='a' href={`/browse/${randomProductTwo.id}`} style={{ background: 'black' }} id='random-card'>
                   <Image src={randomProductTwo.image_set !== undefined ? randomProductTwo.image_set[0].image : null} />
                   <Card.Content>
                     <Card.Header style={{ color: 'white' }}>{randomProductTwo.name}</Card.Header>
@@ -60,7 +61,7 @@ const RandomCards = () => {
                 </Card>
               </Grid.Column>
               <Grid.Column style={{ textAlign: 'center', fontWeight: 'bold' }}>
-                <Card as='a' href={`/browse/${randomProductThree.id}`} style={{ background: 'black' }}>
+                <Card as='a' href={`/browse/${randomProductThree.id}`} style={{ background: 'black' }} id='random-card'>
                   <Image src={randomProductThree.image_set !== undefined ? randomProductThree.image_set[0].image : null} />
                   <Card.Content>
                     <Card.Header style={{ color: 'white' }}>{randomProductThree.name}</Card.Header>

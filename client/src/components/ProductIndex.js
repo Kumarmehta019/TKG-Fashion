@@ -118,7 +118,7 @@ const ProductIndex = () => {
                         <Image src={product.image_set !== undefined ? product.image_set[0].image : null} />
                         <Card.Content>
                           <Card.Header>{product.name}</Card.Header>
-                          <Card.Description>GBP £{product.price}</Card.Description>
+                          <Card.Description>GBP £{product.price}.00</Card.Description>
                         </Card.Content>
                       </Card>
                     </>

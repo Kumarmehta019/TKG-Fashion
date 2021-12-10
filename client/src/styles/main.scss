@@ -22,19 +22,28 @@ body {
 
 }
 
-//! *** HOME PAGE ***
-body {
-  background-color: #ECFBFC;
+//! *** RANDOM CARDS ***
+#random-card {
+  transition: .2s;
 }
 
-
-
-
-
-.accordion-content {
-  font-size: x-large;
+#random-card:hover {
+  transform: scale(1.05);
 }
+
+//! *** PRODUCTSHOW ***
 
 .accordion-text {
   color: grey;
 }
+
+//! *** Ads ***
+#ads-image {
+  transition: .2s;
+}
+
+#ads-image:hover {
+  transform: scale(1.05);
+}
+
+
