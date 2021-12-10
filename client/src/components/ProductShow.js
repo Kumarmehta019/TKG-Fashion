@@ -220,10 +220,9 @@ const ProductShow = () => {
                     <Sellers id={ productID }/>
                     <p className='product-price' ><Icon name='gbp' />{product.price}.00</p>
                     <Container>
-                      <Segment compact color={product.colour} />
+                      <Segment compact style={{ backgroundColor: `${product.colour}` }}  />
                     </Container>
                     <br />
-                    <div className='product-colour' >Colour: {product.colour}</div>
                     <div className='product-size'>Size: {product.size}</div>
                     <br />
 
