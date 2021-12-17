@@ -10,7 +10,7 @@ const HeroCarousel = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axios.get('http://localhost:8000/api/products/')
+      const { data } = await axios.get('/api/products/')
       // console.log(data)
       setProducts(data)
     }
