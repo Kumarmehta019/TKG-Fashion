@@ -5,6 +5,16 @@ name = "pypi"
 
 [packages]
 django = "*"
+psycopg2-binary = "*"
+pylint = "*"
+autopep8 = "*"
+djangorestframework = "*"
+cloudinary = "*"
+dj3-cloudinary-storage = "*"
+pillow = "*"
+pyjwt = "*"
+django-cors-headers = "*"
+django-on-heroku = "*"
 
 [dev-packages]
 
