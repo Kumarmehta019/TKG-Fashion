@@ -11,7 +11,7 @@ const SimilarProducts = ( { category }) => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get('/api/products')
+        const { data } = await axios.get('/api/products/')
         setAllProducts(data)
       } catch (err) {
         console.log(err)

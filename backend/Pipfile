@@ -14,6 +14,7 @@ dj3-cloudinary-storage = "*"
 pillow = "*"
 pyjwt = "*"
 django-cors-headers = "*"
+django-on-heroku = "*"
 
 [dev-packages]
 

@@ -14,7 +14,7 @@ const RandomCards = () => {
 
     const getData = async () => {
       try {
-        const { data } = await axios.get('api/products')
+        const { data } = await axios.get('api/products/')
         let randomIndex =  Math.floor(Math.random() * data.length)
         let randomCardOne = data.splice(randomIndex, 1 )
         randomCardOne = randomCardOne[0]

@@ -41,7 +41,7 @@ const ProductIndex = () => {
 
     const getData = async () => {
       try {
-        const { data } = await axios.get('api/products')
+        const { data } = await axios.get('api/products/')
         if (value) {
           setCategoryValue(value)
         }

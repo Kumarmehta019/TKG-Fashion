@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import os
+import django_on_heroku
 from pathlib import Path
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -83,7 +86,9 @@ ROOT_URLCONF = 'tkgfashion.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'client')
+                ]  #Look, we have added the root folder of frontend here
+        ,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -160,3 +165,9 @@ AUTH_USER_MODEL = 'jwt_auth.User'
 
 CORS_ORIGIN_ALLOW_ALL = True
 
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'client', "build", "static"),
+)
+
+django_on_heroku.settings(locals())

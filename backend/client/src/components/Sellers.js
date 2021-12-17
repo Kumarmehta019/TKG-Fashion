@@ -12,7 +12,7 @@ const Sellers = ( { productID }) => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get('/api/sellers')
+        const { data } = await axios.get('/api/sellers/')
         setSellers(data)
       } catch (err) {
         console.log(err)
