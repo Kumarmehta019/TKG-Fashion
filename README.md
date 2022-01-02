@@ -1,4 +1,4 @@
-### README progress... ![5%](https://progress-bar.dev/5)
+### README progress... ![25%](https://progress-bar.dev/25)
 
 # SEI Project Three: TKG Fashion
 
