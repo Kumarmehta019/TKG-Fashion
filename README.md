@@ -63,7 +63,7 @@ As a group of three we discussed various project options and eventually decided 
 - Cloudinary
 - Pipenv
 - Pyjwt
-- Lucid Chart- Entity Relationship Diagram (ERD)
+- LucidChart- Entity Relationship Diagram (ERD)
 - Python
 - Canva
 - Imgur
@@ -72,7 +72,7 @@ As a group of three we discussed various project options and eventually decided 
 ## 4. Project Timeline- 7 Days
 
 ### Planning:
-After deciding on the concept for our app, we worked together to create wireframes for the App. I also created the Entity Relationship Diagram (ERD), which you will see below. As the majority of the collaborators had used Asana before, we used it again to plan our MVP. Each collaborate was given tasks to work on for the App. We decided as a group to use Git and GitHub for version control and had daily stand up to ensure communication was maintained throughout the project. Collaborators also got together at the end of the day to add, commit, push their branches. After each commit the conents of the development branch were pulled and a new brach was created off that, to limit any issues.
+After deciding on the concept for our app, we worked together to create wireframes for the App. I also created the Entity Relationship Diagram (ERD), which you will see below. As the majority of the collaborators had used Asana before, we used it again to plan our MVP. Each collaborator was given tasks to work on for the App. We decided as a group to use Git and GitHub for version control and had daily stand ups to ensure communication was maintained throughout the project. Collaborators also got together at the end of the day to add, commit, push their branches. After each commit the contents of the development branch were pulled and a new branch was created off that, to limit any issues.
 
 #### Wireframe:
 
@@ -166,7 +166,7 @@ The backend CRUD API endpoints were tested on Insomnia to ensure that the inform
 
 #### Front-end
 
-Once we finished building out the backend, we used Asana to split out tasks to build out the front-end components. Each member of the group was given an equal amount of work to complete, so that there wasnt too much pressure or work on an individual member. At this point in time, we decided to use *Semantic UI*. I was excited to use a different CSS framework as I had always used Bulma before and really wanted to push myself for this project to see if I could learn a new framework. The front-end components I worked on were the Navbar, Footer, Favicon, the Home page and part of the filter categories on the product index page. Our group decided to come together after the components were built and decide on a colour scheme and then work on the CSS and styling for their respective components. Error handling was also added to these components at this point.
+Once we finished building out the backend, we used Asana to split out tasks to build out the front-end components. Each member of the group was given an equal amount of work to complete, so that there wasn't too much pressure or work on an individual member. At this point in time, we decided to use *Semantic UI*. I was excited to use a different CSS framework as I had always used Bulma before and really wanted to push myself for this project to see if I could learn a new framework. The front-end components I worked on were the Navbar, Footer, Favicon, the Home page and part of the filter categories on the product index page. Our group decided to come together after the components were built and decide on a colour scheme and then work on the CSS and styling for their respective components. Error handling was also added to these components at this point.
 
 
 #### Routes:
@@ -187,7 +187,7 @@ The routes to the various pages/components were built using `React` as well as `
 ```
 
 #### _**Navbar:**_ 
-I started working on the project by creating the navbar, I made a navbar from the Museum Mapper Project and was pretty confident I could replicate this again. On this ocassion it took me some time to get used to the way Semantic UI worked and I had to read the documentation. I partially created the navbar with the name/logo and Browse links and the `userIsAuthenticated` function. I then handed over the other elements such as the login, register and bag links and sections to a group member to complete.
+I started working on the project by creating the navbar, I made a navbar from the Museum Mapper Project and was pretty confident I could replicate this again. On this occasion it took me some time to get used to the way Semantic UI worked and I had to read the documentation. I partially created the navbar with the name/logo and Browse links and the `userIsAuthenticated` function. I then handed over the other elements such as the login, register and bag links and sections to a group member to complete.
 
 <img width="900" alt="Navbar" src="https://user-images.githubusercontent.com/88886169/147952904-d81a3f92-89bc-4c9a-b33b-77f50de1fc90.png">
 
@@ -279,7 +279,7 @@ const navigate = useNavigate()
 In order for the filtered category to work the product index component needed to be amended to add UrlSearchParams and a value. A useEffect would then implement the categoryValue as the value found from the URL and display the contents on the page.
 
 #### _**Home page- Random Products:**_ 
-I wanted to create three random products that would display on the website when a user goes to the website. In order to do that I created a random cards component where three random product useState were created. A useEffect hook was used and within this hook a random product was selected using `Math.floor` and `Math.random()` the random numper was then spliced from the products array (called data). The function was used again on the other two random products. This helped to avoid any duplication of random cards in the array.
+I wanted to create three random products that would display on the website when a user goes to the website. In order to do that I created a random cards component where three random product useState were created. A useEffect hook was used and within this hook a random product was selected using `Math.floor` and `Math.random()` the random number was then spliced from the products array (called data). The function was used again on the other two random products. This helped to avoid any duplication of random cards in the array.
 
 ```js
 const [randomProductOne, setRandomProductOne] = useState(null)
@@ -338,7 +338,7 @@ I wanted to create carousel which cycled through the brands TKG Fashion work wit
 
 - The bag component took longer than we had anticipated.
 - How to use Pure React Carousel and implement this in the project.
-- Working with seeding data using Django as we had wiped the data at one point, but were glad that we kept a back up of the data.
+- Working with seeding data using Django as we had wiped the data at one point, but were glad that we kept a backup of the data.
 
 ## 7. Future Improvements
 
@@ -346,17 +346,17 @@ I wanted to create carousel which cycled through the brands TKG Fashion work wit
 - Make the App mobile responsive.
 - Add more CSS and styling to the App.
 - Add a payment method using Stripe.
-- When an order is placed an automatic email is sent tot he user with a summary of the order.
+- When an order is placed an automatic email is sent to the user with a summary of the order.
 
 
 ## 8. Key Learnings
 
 - Learning to read documentation for a new library and implementing it on the project.
-- Learning to use Semantic UI.
+- How to use Semantic UI.
 - Creating a wireframe on Google Jamboard.
-- Learning to work as a group and working around each other's schedule.
-- Learning to use Canva to design logos and gifs.
-- Learning to create an ERD using Lucid Chart.
+- Working as a group, around each other's schedule.
+- Using Canva to design logos and gifs.
+- Creating an ERD using LucidChart.
 
 
 
