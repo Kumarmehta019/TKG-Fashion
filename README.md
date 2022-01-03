@@ -1,4 +1,4 @@
-### README progress... ![55%](https://progress-bar.dev/55)
+### README progress... ![95%](https://progress-bar.dev/95)
 
 # SEI Project Three: TKG Fashion
 
@@ -63,7 +63,7 @@ As a group of three we discussed various project options and eventually decided 
 - Cloudinary
 - Pipenv
 - Pyjwt
-- LucidChart-Entity Relationship Diagram (ERD)
+- Lucid Chart- Entity Relationship Diagram (ERD)
 - Python
 - Canva
 - Imgur
@@ -166,7 +166,7 @@ The backend CRUD API endpoints were tested on Insomnia to ensure that the inform
 
 #### Front-end
 
-Once we finished building out the backend, we used Asana to split out tasks to build out the front-end components. Each member of the group was given an equal amount of work to complete, so that there wasnt too much pressure or work on an individual member. At this point in time, we decided to use *Semantic UI*. I was excited to use a different CSS framework as I had always used Bulma before and really wanted to push myself for this project to see if I could learn a new framework. The front-end components I worked on were the Navbar, Footer, Favicon, the Home page and part of the filter categories on the product index page. Our group decided to come together after the components were built and decide on a colour scheme and then workon the CSS and styling for their respective components. Error handling was also added to these components at this point.
+Once we finished building out the backend, we used Asana to split out tasks to build out the front-end components. Each member of the group was given an equal amount of work to complete, so that there wasnt too much pressure or work on an individual member. At this point in time, we decided to use *Semantic UI*. I was excited to use a different CSS framework as I had always used Bulma before and really wanted to push myself for this project to see if I could learn a new framework. The front-end components I worked on were the Navbar, Footer, Favicon, the Home page and part of the filter categories on the product index page. Our group decided to come together after the components were built and decide on a colour scheme and then work on the CSS and styling for their respective components. Error handling was also added to these components at this point.
 
 
 #### Routes:
@@ -316,75 +316,51 @@ const [randomProductOne, setRandomProductOne] = useState(null)
 #### _**Home page- Brands carousel:**_ 
 I wanted to create carousel which cycled through the brands TKG Fashion work with and in order to implement this, I needed to use *Canva* to design their individual logos and then add them to a carousel. The carousel part was similar to the collections carousel discussed above. I started to use Canva to play around with the design for TKG Fashion's Logo so I was familiar with their design elements and created the different logos below. 
 
-
-
-
-
-
-
-
-
-
-#### _**Styling:**_
-
-The layout was created using the Bulma framework, CSS and FontAwesome. This really helped to provide the site with continuity and structure across all the pages of the App.
-
+<img width="150" alt="TKG Luxe Logo" src="https://user-images.githubusercontent.com/88886169/147959822-0dc44b31-e3ab-4c58-aa54-2fc198d4bf8c.png"> <img width="150" alt="TKG Premium Logo" src="https://user-images.githubusercontent.com/88886169/147960354-dcdc9367-8a63-4e51-bcc5-ebe2144cfaed.png"> <img width="150" alt="TKG Design Logo" src="https://user-images.githubusercontent.com/88886169/147960371-a6c81e0a-f15e-4cb1-939a-3cd2c292ee2c.png"> <img width="150" alt="TKG Edition Logo" src="https://user-images.githubusercontent.com/88886169/147960375-17717d3f-eb25-4341-85d1-6ce2dc3f2007.png"> <img width="150" alt="TKG Finest Logo" src="https://user-images.githubusercontent.com/88886169/147960376-3afda099-fffd-4f84-993f-489227c28d44.png"> <img width="150" alt="Addidos Logo" src="https://user-images.githubusercontent.com/88886169/147960377-f2de50e7-3df8-460b-8f1c-1b137109cd41.png"> <img width="150" alt="Nic Logo" src="https://user-images.githubusercontent.com/88886169/147960544-333acc1c-6c29-4dfd-b338-3f628299a274.png"> <img width="150" alt="Exotic Range Logo" src="https://user-images.githubusercontent.com/88886169/147960547-48ed5d19-36dc-45cb-ae65-1fa1f9001cd3.png"> <img width="150" alt="Penguin Clothes Logo" src="https://user-images.githubusercontent.com/88886169/147960624-b5d30000-00e7-4e5b-bb75-d24ce0c8a620.png"> <img width="150" alt="Zana Logo" src="https://user-images.githubusercontent.com/88886169/147960618-442ffcf5-9812-40ab-8b63-37d961ed800b.png"> <img width="150" alt="Ocean Island Logo" src="https://user-images.githubusercontent.com/88886169/147960621-2044853d-6ba0-4e09-9c0d-5f0391e2481a.png"> <img width="150" alt="Perry Fred Logo" src="https://user-images.githubusercontent.com/88886169/147960617-92e2d752-0b90-48cd-8299-c6e4a76ca1a9.png"> <img width="150" alt="The South Face Logo" src="https://user-images.githubusercontent.com/88886169/147960627-b92d1b54-75e5-4bff-b09a-acee2ba8aa69.png"> <img width="150" alt="British Connection" src="https://user-images.githubusercontent.com/88886169/147960616-5c8045a0-c2ec-4e85-a64b-ef363a0ca345.png"> <img width="150" alt="Family Group" src="https://user-images.githubusercontent.com/88886169/147960626-daeac5a9-6b72-4adf-a31d-c2f0685bba55.png">
 
 ## 5. Bugs
 
-- The App is not fully mobile responsive and with more time this could be fixed.
-- There was a bug with the carousel images displaying half an image size, but I managed to fix this.
-- The map doesn't seem to show up, since deploying the project on Heroku.
+- The similar items section within an individual product shows the individual product page you are on as a similar item.
+- The login and register sections dont work properly.
+
 
 ## 6. Wins and Challenges
 
 ### Wins:
 
-- Group Coding - this was my first time working in a big group coding on a full-stack project. Our group worked really well together and really played to each other's strengths and weaknesses. Having an extra pair of eyes on a project really helps to overcome problems and think of different solutions to problems. It also improves your learning on topics/areas you require further development on.
+- I was extremely pleased with what I was able to build within a short space of time and also implement skills I gained from the previous projects to push myself further. I am also more comfortable with implementing new libraries and dependencies to the project.
 
-- Functionality- Given the short time we were given, I am amazed at how far we came and what we were able to build. If given more time I wonder how much more we could have built out this App and made it more mobile responsive.
+- I was able to use the UrlParams to display different categories of the product index page, I never thought I could build something like that before starting this project. 
 
-- Full-Stack Project- As this was my first full-stack project it was great to see how the front-end connected with the backend. It was also amazing how much we had accomplished as a group but also individually to build out this App.
+- Using a different CSS framework and implementing it on the project to achieve desired results.
 
 ### Challenges:
 
-- One of the biggest challenges we faced during this project was completing the project to a standard we were all happy with. We were unable to implement a mobile responsive App but are extremely happy with the end result. 
-- How to use Swiperjs and implement this in the project.
-- How to use local storage to store data and use this data to display the username on the navbar.
+- The bag component took longer than we had anticipated.
+- How to use Pure React Carousel and implement this in the project.
+- Working with seeding data using Django as we had wiped the data at one point, but were glad that we kept a back up of the data.
 
 ## 7. Future Improvements
 
 - Fix the bugs.
 - Make the App mobile responsive.
 - Add more CSS and styling to the App.
+- Add a payment method using Stripe.
+- When an order is placed an automatic email is sent tot he user with a summary of the order.
 
 
 ## 8. Key Learnings
 
 - Learning to read documentation for a new library and implementing it on the project.
-- Learning to use Bulma CSS Framework.
-- Utilising Insomnia to test API endpoints and get requests.
-- Creating a wireframe on Figma.
+- Learning to use Semantic UI.
+- Creating a wireframe on Google Jamboard.
 - Learning to work as a group and working around each other's schedule.
+- Learning to use Canva to design logos and gifs.
+- Learning to create an ERD using Lucid Chart.
 
 
 
 
-<img width="100" alt="TKG Luxe Logo" src="https://user-images.githubusercontent.com/88886169/147959822-0dc44b31-e3ab-4c58-aa54-2fc198d4bf8c.png">
-<img width="100" alt="TKG Premium Logo" src="https://user-images.githubusercontent.com/88886169/147960354-dcdc9367-8a63-4e51-bcc5-ebe2144cfaed.png">
-<img width="100" alt="TKG Design Logo" src="https://user-images.githubusercontent.com/88886169/147960371-a6c81e0a-f15e-4cb1-939a-3cd2c292ee2c.png">
-<img width="100" alt="TKG Edition Logo" src="https://user-images.githubusercontent.com/88886169/147960375-17717d3f-eb25-4341-85d1-6ce2dc3f2007.png">
-<img width="100" alt="TKG Finest Logo" src="https://user-images.githubusercontent.com/88886169/147960376-3afda099-fffd-4f84-993f-489227c28d44.png">
-<img width="100" alt="Addidos Logo" src="https://user-images.githubusercontent.com/88886169/147960377-f2de50e7-3df8-460b-8f1c-1b137109cd41.png">
-<img width="100" alt="Nic Logo" src="https://user-images.githubusercontent.com/88886169/147960544-333acc1c-6c29-4dfd-b338-3f628299a274.png">
-<img width="100" alt="Exotic Range Logo" src="https://user-images.githubusercontent.com/88886169/147960547-48ed5d19-36dc-45cb-ae65-1fa1f9001cd3.png">
-<img width="100" alt="Penguin Clothes Logo" src="">
-<img width="100" alt="Zana Logo" src="">
-<img width="100" alt="Ocean Island Logo" src="">
-<img width="100" alt="Perry Fred Logo" src="">
-<img width="100" alt="The South Face Logo" src="">
-<img width="100" alt="British Connection" src="">
-<img width="100" alt="Family Group" src="">
 
 
 
