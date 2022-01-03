@@ -16,7 +16,7 @@
 |    8     | **`Key Learnings`**|
 
  ## 1. Project Overview
-TKG Fashion is a full-stack e-commerce app that allows customers to browse and buy clothes. Online retail websites such as [*Asos*](https://www.asos.com/women/), [*Boohoo*](https://www.boohoo.com/), and [*Shein*](https://www.shein.co.uk/) influenced this project.
+After discussing various project options, we decided to build an e-commerce App. I was particularly keen on the idea as I had not created an e-commerce app. I came up with the name TKG Fashion and this project then started to take shape from there. TKG Fashion focuses on users browsing and purchasing items of clothing. Online retail websites such as *Asos*, *Boohoo*, *Next* and *Shein* influenced this project.
 
 #### Deployed version available here: 👉🏽👉🏽[*TKG FASHION*](https://tkgfashion.herokuapp.com/) 👈🏽👈🏽
 
@@ -72,7 +72,7 @@ TKG Fashion is a full-stack e-commerce app that allows customers to browse and b
 ### Planning:
 We agreed as a group to develop a clothes e-commerce website as it would be a great experience, and so TKG Fashion was created. After deciding on the concept for our app, we worked together to create wireframes and entity-relationship diagrams. Asana was used to plan our MVP and develop user stories for both the front and back ends. Tasks were then given to ensure that work was distributed equitably and that all requirements were met. Git and GitHub were utilised for version control, and continual communication was maintained during pushes and pulls to reduce and resolve any merge conflicts.
 
-<img width="400" alt="Home Page Wireframe 1 of 2" src="https://user-images.githubusercontent.com/59033443/147569146-57c2995c-16ea-4a95-80de-e3fe77e1c3c6.png"> <img width="400" alt="Home Page Wireframe 2 of 2" src="https://user-images.githubusercontent.com/59033443/147569049-52201dcb-b94e-4a0f-bb6d-03dc2b693379.png"> <img width="400" alt="Login/Register Wireframe" src="https://user-images.githubusercontent.com/59033443/147569210-06300a24-c86d-4e69-af01-3e32f020782d.png"> <img width="400" alt="Card Index Wireframe" src="https://user-images.githubusercontent.com/59033443/147569260-6239a5ac-cfe4-4231-81bb-c857be1920a9.png"> <img width="400" alt="Card Show Wireframe 1 of 2" src="https://user-images.githubusercontent.com/59033443/147569288-99372109-4242-4bf1-8781-55bef2ab80c5.png"> <img width="400" alt="Card Show Wireframe 2 of 2" src="https://user-images.githubusercontent.com/59033443/147569314-995e7418-27ce-472a-8f44-45a2dd1c92a7.png"> <img width="400" alt="Bag Wireframe" src="https://user-images.githubusercontent.com/59033443/147569316-a63ac252-3cb2-4dfe-9b68-b776e8eb1757.png">
+<img width="300" alt="Home Page Wireframe 1 of 2" src="https://user-images.githubusercontent.com/59033443/147569146-57c2995c-16ea-4a95-80de-e3fe77e1c3c6.png"> <img width="300" alt="Home Page Wireframe 2 of 2" src="https://user-images.githubusercontent.com/59033443/147569049-52201dcb-b94e-4a0f-bb6d-03dc2b693379.png"> <img width="300" alt="Login/Register Wireframe" src="https://user-images.githubusercontent.com/59033443/147569210-06300a24-c86d-4e69-af01-3e32f020782d.png"> <img width="300" alt="Card Index Wireframe" src="https://user-images.githubusercontent.com/59033443/147569260-6239a5ac-cfe4-4231-81bb-c857be1920a9.png"> <img width="300" alt="Card Show Wireframe 1 of 2" src="https://user-images.githubusercontent.com/59033443/147569288-99372109-4242-4bf1-8781-55bef2ab80c5.png"> <img width="300" alt="Card Show Wireframe 2 of 2" src="https://user-images.githubusercontent.com/59033443/147569314-995e7418-27ce-472a-8f44-45a2dd1c92a7.png"> <img width="300" alt="Bag Wireframe" src="https://user-images.githubusercontent.com/59033443/147569316-a63ac252-3cb2-4dfe-9b68-b776e8eb1757.png">
 
 ### Entity Relationship Diagram (ERD):
 
@@ -149,74 +149,29 @@ Once we had created the models, we worked on the controllers. Serializers were a
 
 ### Front-end
 
-For the front-end, we would meet in our daily stand ups (morning and evening) and discuss what components everyone wanted to focus on for the day and what they accomplished that day. For this project, I worked on the Navbar, Footer, Favicon, Carousel and part of the Profile. I also worked on the CSS for the App.
+Once the backend had been completed, we split tasks to complete different components on the front-end. For styling, we decided to use [Semantic UI](https://react.semantic-ui.com/). For this project I worked on the Footer, the Home page and part of the filter categories on the product index page. I also worked on the CSS/styling for the Navbar, Footer and the Home page for this project.
 
 
 ### Routes:
-The routes to the various pages/components were built using `React` as well as `BrowserRouter`, `Switch` and `Route` from `React-Router-Dom`.
+The routes to the various pages/components were built using `React` as well as `BrowserRouter`, `Routes` and `Route` from `React-Router-Dom`.
 
-```javascript
+```js
     <BrowserRouter>
-      <NavBar />
-      <div className="site-wrapper">
-        <Switch>
-          <Route exact path='/register' component={Register} />
-          <Route exact path='/museums' component={MuseumsIndex} />
-          <Route exact path='/museums/:id' component={MuseumShow} />
-          <Route exact path='/login' component={Login} />
-          <Route exact path='/' component={Home} />
-          <Route exact path='/filteredmuseums' component={FilteredMuseums} />
-          <Route exact path='/profile' component={Profile} />
-          <Route exact path='/map' component={Map} />
-          <Route exact path='/exhibits' component={StandoutExhibit} />
-        </Switch>
-      </div>
+      <Navbar />
+      <Routes>
+        <Route exact path='/' element={<Home />} />
+        <Route exact path='/profile' element={<Profile />} />
+        <Route exact path='/browse/:id' element={<ProductShow />} />
+        <Route exact path='/browse' element={<ProductIndex />} />
+        <Route path='/orders' element={<Bag />} />
+      </Routes>
       <Footer />
     </BrowserRouter>
 ```
 
 
-### _**Navbar:**_ 
-I used Bulma and FontAwesome to assist me in building out the Navbar component and then began adding navigation links to the Home (by clicking on the logo), All Museums, Museum Map, Exhibits, Profile, Login, Register and Logout. 
-
-If a user was not logged in, I wanted the navbar to display the options 'Register' or 'Login,' and if the user was logged in, I wanted the navbar to show the options 'Logout,' and the 'Profile name' To do this, I utilised a ternary that determines whether or not the user is authenticated. The userIsAuthenticated function first determines whether or not a payload exists; if it does not, false is returned. The function then checks if the current time of the token is less than the expiry time, and if it returns true, the user can be authenticated. I also used the token to display the username and then use that to display on the profile name.
-
-
-```js
-
-const userIsAuthenticated = () => {
-   const payload = getPayload()
-   if (!payload) return false
-   const now = Math.round(Date.now() / 1000)
-   return now < payload.exp
-}
-```
-
-
-
-```js
-<div className="navbar-end">
- {!userIsAuthenticated() ?
-     <>
-        <div className="navbar-item"><Link to="/register" className="link is-size-6 has-text-weight-light"><i className="fas fa-clipboard-check has-text-success-dark"></i> Register</Link></div>
-        <div className="navbar-item"><Link to="/login" className="link is-size-6 has-text-weight-light"><i className="fas fa-sign-in-alt has-text-danger-dark"></i> Login</Link></div>
-     </>
-     :
-     <>
-        <div className="navbar-item"><Link to="/profile" className="link is-size-6 has-text-weight-light"><i className="fas fa-user has-text-info"></i> {username}</Link></div>
-        <div className="navbar-item"><a className="link is-size-6 has-text-weight-light" onClick={handleLogout}><i className="fas fa-sign-out-alt has-text-danger-dark"></i> Logout</a></div>
-     </>
- }
-</div>
-```
-
-<img width="1000" alt="Not Logged In" src="https://user-images.githubusercontent.com/88886169/147880318-2aecba4c-d1d5-49f7-804f-5ff05df17113.png">
-<img width="1000" alt="Logged In" src="https://user-images.githubusercontent.com/88886169/147880320-209fcac3-afc0-4bdd-a4df-b368afbce872.png">
-
-
-
 ### _**Footer:**_ 
-I built out the footer with the help from Bulma and FontAwesome. I had the idea to have the copyright date automatically change based on the year, this would mean that I wouldn't have to manually change the year every year. I also wanted to add navigation links to every member of the group's Github pages. Finally I wanted to add some interactivity to the logo and I created a gif for the logo. It was during the coding for the footer that I came across the issue of the footer not sticking to the bottom of the page. I went away and did some research on the topic and found out that this was a common problem, especially when a particular page didnt have enough content. The simple fix was to give the particular component page a minimum viewport height, this fixed the issue.
+I built out the footer using Semantic UI and created a . I had the idea to have the copyright date automatically change based on the year, this would mean that I wouldn't have to manually change the year every year. I also wanted to add navigation links to every member of the group's Github pages. Finally I wanted to add some interactivity to the logo and I created a gif for the logo. It was during the coding for the footer that I came across the issue of the footer not sticking to the bottom of the page. I went away and did some research on the topic and found out that this was a common problem, especially when a particular page didnt have enough content. The simple fix was to give the particular component page a minimum viewport height, this fixed the issue.
 
 ```js
 <div className="row">
