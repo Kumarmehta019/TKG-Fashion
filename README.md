@@ -16,7 +16,7 @@
 |    8     | **`Key Learnings`**|
 
  ## 1. Project Overview
-As a group of three we discussed various project options and eventually decided to build an e-commerce App. I was particularly keen on the idea as I had not created an e-commerce app before and was excited at the prospect of building my first e-commerce App. I came up with the name TKG Fashion (using each collaborator's initials) and the project then started to take shape from there. TKG Fashion focuses on user's browsing and purchasing items of clothing. *Asos*, *Boohoo*, *Next* and *Shein* influenced this project, a special thanks goes out to them.
+As a group of three we discussed various project options and eventually decided to build an e-commerce App. I was particularly keen on the idea as I had not created an e-commerce App before and was excited at the prospect of building my first e-commerce App. I came up with the name TKG Fashion (using each collaborator's initials) and the project then started to take shape from there. TKG Fashion focuses on user's browsing and purchasing items of clothing. *Asos*, *Boohoo*, *Next* and *Shein* influenced this project, a special thanks goes out to them.
 
 #### Deployed version available here: 👉🏽👉🏽[*TKG FASHION*](https://tkgfashion.herokuapp.com/) 👈🏽👈🏽
 
