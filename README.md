@@ -39,8 +39,8 @@ As a group of three we discussed various project options and eventually decided 
 ## 3. Technologies Used
 
 - React.js
-- JavaScript (ES6)
-- HTML5
+- JavaScript
+- HTML
 - CSS
 - Semantic UI
 - Animate.css
