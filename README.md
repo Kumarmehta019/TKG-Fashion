@@ -54,7 +54,7 @@ As a group of three we discussed various project options and eventually decided 
 - Yarn
 - Django
 - PostgreSQL
-- JSONWebToken
+- JSON Web Token
 - Asana- Planning
 - Zoom
 - Slack
