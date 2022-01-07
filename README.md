@@ -16,7 +16,7 @@
 |    8     | **`Key Learnings`**|
 
  ## 1. Project Overview
-As a group of three we discussed various project options and eventually decided to build an e-commerce App. I was particularly keen on the idea as I had not created an e-commerce App before and was excited at the prospect of building my first e-commerce App. I came up with the name TKG Fashion (using each collaborator's initials) and the project then started to take shape from there. TKG Fashion focuses on user's browsing and purchasing items of clothing. *Asos*, *Boohoo*, *Next* and *Shein* influenced this project, a special thanks goes out to them.
+As a group of three ([**Talia**](https://github.com/taliaglantz), [**Gayatri**](https://github.com/gayatrirajgor) and I) we discussed various project options and eventually decided to build an e-commerce App. I was particularly keen on the idea as I had not created an e-commerce App before and was excited at the prospect of building my first e-commerce App. I came up with the name TKG Fashion (using each collaborator's initials) and the project then started to take shape from there. TKG Fashion focuses on user's browsing and purchasing items of clothing. *Asos*, *Boohoo*, *Next* and *Shein* influenced this project, a special thanks goes out to them.
 
 #### Deployed version available here: 👉🏽👉🏽[*TKG FASHION*](https://tkgfashion.herokuapp.com/) 👈🏽👈🏽
 
@@ -38,41 +38,41 @@ As a group of three we discussed various project options and eventually decided 
 
 ## 3. Technologies Used
 
-- React.js
-- JavaScript
-- HTML
-- CSS
-- Semantic UI
-- Animate.css
-- Axios
-- Git
-- GitHub
-- Google Fonts
-- Google Jamboard- Wireframe
-- Insomnia- REST Client
-- TablePlus
-- Yarn
-- Django
-- PostgreSQL
-- JSON Web Token
-- Asana- Planning
-- Zoom
-- Slack
-- Heroku
-- Pure React Carousel
-- Cloudinary
-- Pipenv
-- Pyjwt
-- LucidChart- Entity Relationship Diagram (ERD)
-- Python
-- Canva
-- Imgur
+- React.js.
+- JavaScript.
+- HTML.
+- CSS.
+- Semantic UI.
+- Animate.css.
+- Axios.
+- Git.
+- GitHub.
+- Google Fonts.
+- Google Jamboard- Wireframe.
+- Insomnia- REST Client.
+- TablePlus.
+- Yarn.
+- Django.
+- PostgreSQL.
+- JSON Web Token.
+- Asana- Planning.
+- Zoom.
+- Slack.
+- Heroku.
+- Pure React Carousel.
+- Cloudinary.
+- Pipenv.
+- Pyjwt.
+- LucidChart- Entity Relationship Diagram (ERD).
+- Python.
+- Canva.
+- Imgur.
 
 
 ## 4. Project Timeline- 7 Days
 
 ### Planning:
-After deciding on the concept for our app, we worked together to create wireframes for the App. I also created the Entity Relationship Diagram (ERD), which you will see below. As the majority of the collaborators had used Asana before, we used it again to plan our MVP. Each collaborator was given tasks to work on for the App. We decided as a group to use Git and GitHub for version control and had daily stand ups to ensure communication was maintained throughout the project. Collaborators also got together at the end of the day to add, commit, push their branches. After each commit the contents of the development branch were pulled and a new branch was created off that, to limit any issues.
+After deciding on the concept for our App, we worked together to create wireframes for the App. I also created the Entity Relationship Diagram (ERD), which you will see below. As the majority of the collaborators had used Asana before, we used it again to plan our MVP. Each collaborator was given tasks to work on for the App. We decided as a group to use Git and GitHub for version control and had daily stand ups to ensure communication was maintained throughout the project. Collaborators also got together at the end of the day to add, commit, push their branches. After each commit the contents of the development branch were pulled and a new branch was created off that, to limit any issues.
 
 #### Wireframe:
 
@@ -82,12 +82,24 @@ After deciding on the concept for our app, we worked together to create wirefram
 
 <img width="1000" alt="Screenshot 2022-01-03 at 16 20 03" src="https://user-images.githubusercontent.com/88886169/147954170-daf5dcd2-51df-498b-ba32-1eedf656bcb5.png">
 
+### Work Split:
+
+We all built out the backend together but the front-end tasks were split as follows:
+
+#### 1. Talia:
+Talia worked on the login and register modal pages, the bag/cart, similar items feature and part of the navbar. Talia worked on the error handling and CSS for her components/features. 
+
+#### 2. Kumar:
+I worked on part of the navbar, footer, home page (which included the carousel, navigation buttons and partial coding of the filtered items page, random item generator, carousel with trending brands), website name and logo, brand logos and gifs. I worked on the error handling and CSS for my components/features.
+
+#### 3. Gayatri:
+Gayatri worked on the product index page, filtered categories, review form and styling of the product show page. Gayatri worked on the error handling and CSS for her components/features.
 
 ### Getting Started:
 
 #### Backend
 
-We agreed as a group to build out the backend components of the project together so that we could all help each other code this part and to also limit the amount of time spent on the backend. One person would screen share over a zoom video call and the others would guide the person coding and also look out for any errors/mistakes. The backend took a few days to create, with each member of the team coding, guiding and looking out for errors/mistakes during the live coding session. We also used this time to discuss and implement the embedded or referenced relationships for our App. The backend is a CRUD API, using PostgreSQL, Python and Django. We agreed as a group to seed data into various tables of our database.
+We agreed as a group to build out the backend components of the project together so that we could all help each other code this part and to also limit the amount of time spent on the backend. One person would screen share over a Zoom video call and the others would guide the person coding and also look out for any errors/mistakes. The backend took a few days to create, with each member of the team coding, guiding and looking out for errors/mistakes during the live coding session. We also used this time to discuss and implement the embedded or referenced relationships for our App. The backend is a CRUD API, using PostgreSQL, Python and Django. We agreed as a group to seed data into various tables of our database.
 
 We created six models (products, images, reviews, orders, sellers and jwt_auth). The product, image and review models are shown below:
 
@@ -166,7 +178,7 @@ The backend CRUD API endpoints were tested on Insomnia to ensure that the inform
 
 #### Front-end
 
-Once we finished building out the backend, we used Asana to split out tasks to build out the front-end components. Each member of the group was given an equal amount of work to complete, so that there wasn't too much pressure or work on an individual member. At this point in time, we decided to use *Semantic UI*. I was excited to use a different CSS framework as I had always used Bulma before and really wanted to push myself for this project to see if I could learn a new framework. The front-end components I worked on were the Navbar, Footer, Favicon, the Home page and part of the filter categories on the product index page. Our group decided to come together after the components were built and decide on a colour scheme and then work on the CSS and styling for their respective components. Error handling was also added to these components at this point.
+Once we finished building out the backend, we used Asana to split out tasks to build out the front-end components. Each member of the group was given an equal amount of work to complete, so that there wasn't too much pressure or work on an individual member. At this point in time, we decided to use *Semantic UI*. I was excited to use a different CSS framework as I had always used Bulma before and really wanted to push myself for this project to see if I could learn a new framework. Our group decided to come together after the components were built and decide on a colour scheme and then work on the CSS and styling for their respective components. Error handling was also added to these components at this point.
 
 
 #### Routes:
@@ -193,7 +205,7 @@ I started working on the project by creating the navbar, I made a navbar from th
 
 
 #### _**Footer:**_ 
-I built out the footer using Semantic UI and created a gif using Canva and Imgur. I had the idea to have the copyright date automatically change based on the year, this would mean that I wouldn't have to manually change the year every year. I also wanted to add navigation links to every member of the group's Github pages. 
+I built out the footer using Semantic UI and created a gif using Canva and Imgur. I had the idea to have the copyright date automatically change based on the year, this would mean that I wouldn't have to manually change the year every year. I also wanted to add navigation links to every member of the group's GitHub pages. 
 
 <img width="900" alt="Footer" src="https://user-images.githubusercontent.com/88886169/147952289-8dc51921-144b-444e-be39-6bac56c8542a.png">
 
