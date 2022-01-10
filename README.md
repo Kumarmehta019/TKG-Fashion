@@ -1,6 +1,6 @@
 ### README progress... ![95%](https://progress-bar.dev/95)
 
-# SEI Project Three: TKG Fashion
+# SEI Project Four: TKG Fashion
 
 ## Table of Contents:
 
